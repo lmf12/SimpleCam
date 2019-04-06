@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 191A603F1782103A77B17274 /* libPods-SimpleCam.a */; };
+		E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */; };
+		E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EF0225877A600ECFB98 /* SCViewController.m */; };
+		E8FF5A4B22586A090088C1B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FF5A4A22586A090088C1B2 /* AppDelegate.m */; };
+		E8FF5A5122586A090088C1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8FF5A4F22586A090088C1B2 /* Main.storyboard */; };
+		E8FF5A5322586A090088C1B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8FF5A5222586A090088C1B2 /* Assets.xcassets */; };
+		E8FF5A5622586A090088C1B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8FF5A5422586A090088C1B2 /* LaunchScreen.storyboard */; };
+		E8FF5A5922586A090088C1B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FF5A5822586A090088C1B2 /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.release.xcconfig"; sourceTree = "<group>"; };
+		191A603F1782103A77B17274 /* libPods-SimpleCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70BCE07029C9C80FA29BB356 /* Pods-SimpleCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.debug.xcconfig"; sourceTree = "<group>"; };
+		E8D18EE722586CEC00ECFB98 /* SCCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraViewController.h; sourceTree = "<group>"; };
+		E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraViewController.m; sourceTree = "<group>"; };
+		E8D18EEF225877A600ECFB98 /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
+		E8D18EF0225877A600ECFB98 /* SCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCViewController.m; sourceTree = "<group>"; };
+		E8FF5A4622586A090088C1B2 /* SimpleCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8FF5A4922586A090088C1B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E8FF5A4A22586A090088C1B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E8FF5A5022586A090088C1B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8FF5A5222586A090088C1B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E8FF5A5522586A090088C1B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E8FF5A5722586A090088C1B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8FF5A5822586A090088C1B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8FF5A4322586A090088C1B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D126C5FDA277328199720A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				191A603F1782103A77B17274 /* libPods-SimpleCam.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90A037665DA0A7DBC57C8190 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70BCE07029C9C80FA29BB356 /* Pods-SimpleCam.debug.xcconfig */,
+				18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E8D18EE322586BD600ECFB98 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				E8FF5A4922586A090088C1B2 /* AppDelegate.h */,
+				E8FF5A4A22586A090088C1B2 /* AppDelegate.m */,
+				E8FF5A5422586A090088C1B2 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		E8D18EE422586BD600ECFB98 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18EE622586C5C00ECFB98 /* View */,
+				E8D18EE522586C5C00ECFB98 /* ViewController */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		E8D18EE522586C5C00ECFB98 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18EE722586CEC00ECFB98 /* SCCameraViewController.h */,
+				E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E8D18EE622586C5C00ECFB98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E8D18EEA2258775A00ECFB98 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18EEE225877A600ECFB98 /* ViewController */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E8D18EEE225877A600ECFB98 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18EEF225877A600ECFB98 /* SCViewController.h */,
+				E8D18EF0225877A600ECFB98 /* SCViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E8FF5A3D22586A090088C1B2 = {
+			isa = PBXGroup;
+			children = (
+				E8FF5A4822586A090088C1B2 /* SimpleCam */,
+				E8FF5A4722586A090088C1B2 /* Products */,
+				90A037665DA0A7DBC57C8190 /* Pods */,
+				1D126C5FDA277328199720A8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E8FF5A4722586A090088C1B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8FF5A4622586A090088C1B2 /* SimpleCam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8FF5A4822586A090088C1B2 /* SimpleCam */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18EEA2258775A00ECFB98 /* Common */,
+				E8D18EE422586BD600ECFB98 /* Camera */,
+				E8D18EE322586BD600ECFB98 /* Support */,
+				E8FF5A4F22586A090088C1B2 /* Main.storyboard */,
+				E8FF5A5222586A090088C1B2 /* Assets.xcassets */,
+				E8FF5A5722586A090088C1B2 /* Info.plist */,
+				E8FF5A5822586A090088C1B2 /* main.m */,
+			);
+			path = SimpleCam;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8FF5A4522586A090088C1B2 /* SimpleCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8FF5A5C22586A090088C1B2 /* Build configuration list for PBXNativeTarget "SimpleCam" */;
+			buildPhases = (
+				0174E3E19026E14DEDA5A204 /* [CP] Check Pods Manifest.lock */,
+				E8FF5A4222586A090088C1B2 /* Sources */,
+				E8FF5A4322586A090088C1B2 /* Frameworks */,
+				E8FF5A4422586A090088C1B2 /* Resources */,
+				FE44D2353259CBB342B318CB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleCam;
+			productName = SimpleCam;
+			productReference = E8FF5A4622586A090088C1B2 /* SimpleCam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8FF5A3E22586A090088C1B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Lyman Li";
+				TargetAttributes = {
+					E8FF5A4522586A090088C1B2 = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E8FF5A4122586A090088C1B2 /* Build configuration list for PBXProject "SimpleCam" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8FF5A3D22586A090088C1B2;
+			productRefGroup = E8FF5A4722586A090088C1B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8FF5A4522586A090088C1B2 /* SimpleCam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8FF5A4422586A090088C1B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8FF5A5622586A090088C1B2 /* LaunchScreen.storyboard in Resources */,
+				E8FF5A5322586A090088C1B2 /* Assets.xcassets in Resources */,
+				E8FF5A5122586A090088C1B2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0174E3E19026E14DEDA5A204 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SimpleCam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE44D2353259CBB342B318CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam-resources.sh",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_1.png",
+				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_soft_elegance_2.png",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_amatorka.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_miss_etikate.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_1.png",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/lookup_soft_elegance_2.png",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8FF5A4222586A090088C1B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */,
+				E8FF5A5922586A090088C1B2 /* main.m in Sources */,
+				E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */,
+				E8FF5A4B22586A090088C1B2 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E8FF5A4F22586A090088C1B2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8FF5A5022586A090088C1B2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E8FF5A5422586A090088C1B2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8FF5A5522586A090088C1B2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E8FF5A5A22586A090088C1B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E8FF5A5B22586A090088C1B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8FF5A5D22586A090088C1B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70BCE07029C9C80FA29BB356 /* Pods-SimpleCam.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7P79J85545;
+				INFOPLIST_FILE = SimpleCam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lyman.SimpleCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E8FF5A5E22586A090088C1B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7P79J85545;
+				INFOPLIST_FILE = SimpleCam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lyman.SimpleCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8FF5A4122586A090088C1B2 /* Build configuration list for PBXProject "SimpleCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8FF5A5A22586A090088C1B2 /* Debug */,
+				E8FF5A5B22586A090088C1B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8FF5A5C22586A090088C1B2 /* Build configuration list for PBXNativeTarget "SimpleCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8FF5A5D22586A090088C1B2 /* Debug */,
+				E8FF5A5E22586A090088C1B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E8FF5A3E22586A090088C1B2 /* Project object */;
+}
