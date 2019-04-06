@@ -22,6 +22,7 @@
     
     SCCameraManager *cameraManager = [SCCameraManager shareManager];
     [cameraManager addOutputView:self.cameraView];
+    [cameraManager setCameraFilters:self.currentFilters];
     [cameraManager startCapturing];
 }
 
@@ -30,9 +31,11 @@
 #pragma mark - Private
 
 - (void)commonInit {
+    [self setupFilters];
     [self setupCameraView];
     [self setupCapturingButton];
 }
+
 
 #pragma mark - SCCapturingButtonDelegate
 

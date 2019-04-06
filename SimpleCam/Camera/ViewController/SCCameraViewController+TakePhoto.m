@@ -8,6 +8,8 @@
 
 #import "SCCameraViewController+Private.h"
 
+#import "SCPhotoResultViewController.h"
+
 #import "SCCameraViewController+TakePhoto.h"
 
 #pragma clang diagnostic push
@@ -16,9 +18,12 @@
 @implementation SCCameraViewController (TakePhoto)
 
 - (void)takePhoto {
-    [[SCCameraManager shareManager] takePhotoWtihFilters:nil
-                                              completion:^(UIImage *resultImage, NSError *error) {
-        
+    @weakify(self);
+    [[SCCameraManager shareManager] takePhotoWtihFilters:self.currentFilters completion:^(UIImage *resultImage, NSError *error) {
+        @strongify(self);
+        SCPhotoResultViewController *resultVC = [[SCPhotoResultViewController alloc] init];
+        resultVC.resultImage = resultImage;
+        [self.navigationController pushViewController:resultVC animated:NO];
     }];
 }
 

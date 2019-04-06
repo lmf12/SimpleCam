@@ -19,10 +19,16 @@
 
 @property (nonatomic, strong) SCCapturingButton *capturingButton;
 
+@property (nonatomic, strong) GPUImageOutput<GPUImageInput> *currentFilters;
+
 #pragma mark - UI
 
 - (void)setupCameraView;
 - (void)setupCapturingButton;
+
+#pragma mark - Filter
+
+- (void)setupFilters;
 
 #pragma mark - TakePhoto
 

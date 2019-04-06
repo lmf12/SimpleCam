@@ -15,6 +15,10 @@
 		E8D18EFB2258874C00ECFB98 /* SCCameraViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EFA2258874C00ECFB98 /* SCCameraViewController+Private.m */; };
 		E8D18EFE2258893800ECFB98 /* SCCameraViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EFD2258893800ECFB98 /* SCCameraViewController+UI.m */; };
 		E8D18F01225890C900ECFB98 /* SCCameraViewController+TakePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F00225890C900ECFB98 /* SCCameraViewController+TakePhoto.m */; };
+		E8D18F062258927A00ECFB98 /* SCPhotoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F052258927A00ECFB98 /* SCPhotoResultViewController.m */; };
+		E8D18F0D2258A11D00ECFB98 /* SCCameraViewController+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F0C2258A11D00ECFB98 /* SCCameraViewController+Filter.m */; };
+		E8D18F102258A31D00ECFB98 /* SCPhotoResultViewController+Private.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F0F2258A31D00ECFB98 /* SCPhotoResultViewController+Private.m */; };
+		E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */; };
 		E8FF5A4B22586A090088C1B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FF5A4A22586A090088C1B2 /* AppDelegate.m */; };
 		E8FF5A5122586A090088C1B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8FF5A4F22586A090088C1B2 /* Main.storyboard */; };
 		E8FF5A5322586A090088C1B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8FF5A5222586A090088C1B2 /* Assets.xcassets */; };
@@ -40,6 +44,17 @@
 		E8D18EFD2258893800ECFB98 /* SCCameraViewController+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCCameraViewController+UI.m"; sourceTree = "<group>"; };
 		E8D18EFF225890C900ECFB98 /* SCCameraViewController+TakePhoto.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCCameraViewController+TakePhoto.h"; sourceTree = "<group>"; };
 		E8D18F00225890C900ECFB98 /* SCCameraViewController+TakePhoto.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCCameraViewController+TakePhoto.m"; sourceTree = "<group>"; };
+		E8D18F042258927A00ECFB98 /* SCPhotoResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCPhotoResultViewController.h; sourceTree = "<group>"; };
+		E8D18F052258927A00ECFB98 /* SCPhotoResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCPhotoResultViewController.m; sourceTree = "<group>"; };
+		E8D18F072258980E00ECFB98 /* SimpleCam-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpleCam-Prefix.pch"; sourceTree = "<group>"; };
+		E8D18F0922589B9000ECFB98 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXTScope.h; sourceTree = "<group>"; };
+		E8D18F0A22589B9000ECFB98 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		E8D18F0B2258A11D00ECFB98 /* SCCameraViewController+Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCCameraViewController+Filter.h"; sourceTree = "<group>"; };
+		E8D18F0C2258A11D00ECFB98 /* SCCameraViewController+Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCCameraViewController+Filter.m"; sourceTree = "<group>"; };
+		E8D18F0E2258A31D00ECFB98 /* SCPhotoResultViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCPhotoResultViewController+Private.h"; sourceTree = "<group>"; };
+		E8D18F0F2258A31D00ECFB98 /* SCPhotoResultViewController+Private.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCPhotoResultViewController+Private.m"; sourceTree = "<group>"; };
+		E8D18F112258A3AB00ECFB98 /* SCPhotoResultViewController+UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCPhotoResultViewController+UI.h"; sourceTree = "<group>"; };
+		E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCPhotoResultViewController+UI.m"; sourceTree = "<group>"; };
 		E8FF5A4622586A090088C1B2 /* SimpleCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8FF5A4922586A090088C1B2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8FF5A4A22586A090088C1B2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -84,6 +99,7 @@
 			children = (
 				E8FF5A4922586A090088C1B2 /* AppDelegate.h */,
 				E8FF5A4A22586A090088C1B2 /* AppDelegate.m */,
+				E8D18F072258980E00ECFB98 /* SimpleCam-Prefix.pch */,
 				E8FF5A5422586A090088C1B2 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
@@ -110,6 +126,8 @@
 				E8D18EFD2258893800ECFB98 /* SCCameraViewController+UI.m */,
 				E8D18EFF225890C900ECFB98 /* SCCameraViewController+TakePhoto.h */,
 				E8D18F00225890C900ECFB98 /* SCCameraViewController+TakePhoto.m */,
+				E8D18F0B2258A11D00ECFB98 /* SCCameraViewController+Filter.h */,
+				E8D18F0C2258A11D00ECFB98 /* SCCameraViewController+Filter.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -126,6 +144,7 @@
 		E8D18EEA2258775A00ECFB98 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E8D18F0822589B9000ECFB98 /* Define */,
 				E8D18EEE225877A600ECFB98 /* ViewController */,
 			);
 			path = Common;
@@ -147,6 +166,36 @@
 				E8D18EF4225879A200ECFB98 /* SCCameraManager.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E8D18F022258925300ECFB98 /* PhotoResult */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18F032258925300ECFB98 /* ViewController */,
+			);
+			path = PhotoResult;
+			sourceTree = "<group>";
+		};
+		E8D18F032258925300ECFB98 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18F042258927A00ECFB98 /* SCPhotoResultViewController.h */,
+				E8D18F052258927A00ECFB98 /* SCPhotoResultViewController.m */,
+				E8D18F0E2258A31D00ECFB98 /* SCPhotoResultViewController+Private.h */,
+				E8D18F0F2258A31D00ECFB98 /* SCPhotoResultViewController+Private.m */,
+				E8D18F112258A3AB00ECFB98 /* SCPhotoResultViewController+UI.h */,
+				E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E8D18F0822589B9000ECFB98 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				E8D18F0922589B9000ECFB98 /* EXTScope.h */,
+				E8D18F0A22589B9000ECFB98 /* metamacros.h */,
+			);
+			path = Define;
 			sourceTree = "<group>";
 		};
 		E8FF5A3D22586A090088C1B2 = {
@@ -172,6 +221,7 @@
 			children = (
 				E8D18EEA2258775A00ECFB98 /* Common */,
 				E8D18EE422586BD600ECFB98 /* Camera */,
+				E8D18F022258925300ECFB98 /* PhotoResult */,
 				E8D18EE322586BD600ECFB98 /* Support */,
 				E8FF5A4F22586A090088C1B2 /* Main.storyboard */,
 				E8FF5A5222586A090088C1B2 /* Assets.xcassets */,
@@ -305,10 +355,14 @@
 				E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */,
 				E8FF5A5922586A090088C1B2 /* main.m in Sources */,
 				E8D18EFB2258874C00ECFB98 /* SCCameraViewController+Private.m in Sources */,
+				E8D18F102258A31D00ECFB98 /* SCPhotoResultViewController+Private.m in Sources */,
+				E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */,
 				E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */,
 				E8D18EFE2258893800ECFB98 /* SCCameraViewController+UI.m in Sources */,
 				E8FF5A4B22586A090088C1B2 /* AppDelegate.m in Sources */,
 				E8D18F01225890C900ECFB98 /* SCCameraViewController+TakePhoto.m in Sources */,
+				E8D18F062258927A00ECFB98 /* SCPhotoResultViewController.m in Sources */,
+				E8D18F0D2258A11D00ECFB98 /* SCCameraViewController+Filter.m in Sources */,
 				E8D18EF82258823200ECFB98 /* SCCapturingButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +500,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P79J85545;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleCam/Support/SimpleCam-Prefix.pch";
 				INFOPLIST_FILE = SimpleCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -462,6 +518,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P79J85545;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleCam/Support/SimpleCam-Prefix.pch";
 				INFOPLIST_FILE = SimpleCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

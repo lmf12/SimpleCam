@@ -6,8 +6,6 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import <Masonry/Masonry.h>
-
 #import "SCCameraViewController+Private.h"
 
 #import "SCCameraViewController+UI.h"
