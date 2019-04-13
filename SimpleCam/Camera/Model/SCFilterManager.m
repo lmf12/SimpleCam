@@ -14,6 +14,9 @@ static SCFilterManager *_filterManager;
 
 @property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *defaultFilters;
 
+@property (nonatomic, strong) NSDictionary *filterMaterialsInfo;
+@property (nonatomic, strong) NSMutableDictionary *filterClassInfo;
+
 @end
 
 @implementation SCFilterManager
@@ -26,32 +29,46 @@ static SCFilterManager *_filterManager;
     return _filterManager;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _filterClassInfo = [[NSMutableDictionary alloc] init];
+        [self setupFilterMaterialsInfo];
+    }
+    return self;
+}
+
 #pragma mark - Public
 
 - (GPUImageFilter *)filterWithFilterID:(NSString *)filterID {
-    if ([filterID isEqualToString:@"sketch"]) {
-        return [[GPUImageSketchFilter alloc] init];
-    } else {
-        return [[GPUImageFilter alloc] init];
-    }
+    NSString *className = self.filterClassInfo[filterID];
+    
+    Class filterClass = NSClassFromString(className);
+    return [[filterClass alloc] init];
 }
 
 #pragma mark - Private
 
+- (void)setupFilterMaterialsInfo {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FilterMaterials" ofType:@"plist"];
+    NSDictionary *info = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    self.filterMaterialsInfo = [info copy];
+}
+
 - (NSArray<SCFilterMaterialModel *> *)setupDefaultFilters {
     NSMutableArray *mutArr = [[NSMutableArray alloc] init];
     
-    SCFilterMaterialModel *filterMaterialModel = [[SCFilterMaterialModel alloc] init];
-    filterMaterialModel.filterID = @"none";
-    filterMaterialModel.filterName = @"原图";
+    NSArray *defaultArray = self.filterMaterialsInfo[@"Default"];
     
-    [mutArr addObject:filterMaterialModel];
+    for (NSDictionary *dict in defaultArray) {
+        SCFilterMaterialModel *model = [[SCFilterMaterialModel alloc] init];
+        model.filterID = dict[@"filter_id"];
+        model.filterName = dict[@"filter_name"];
     
-    SCFilterMaterialModel *filterMaterialModel1 = [[SCFilterMaterialModel alloc] init];
-    filterMaterialModel1.filterID = @"sketch";
-    filterMaterialModel1.filterName = @"素描";
-    
-    [mutArr addObject:filterMaterialModel1];
+        [mutArr addObject:model];
+        
+        self.filterClassInfo[dict[@"filter_id"]] = dict[@"filter_class"];
+    }
     
     return [mutArr copy];
 }

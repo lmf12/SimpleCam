@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Default</key>
+	<array>
+		<dict>
+			<key>filter_id</key>
+			<string>none</string>
+			<key>filter_name</key>
+			<string>原图</string>
+			<key>filter_class</key>
+			<string>GPUImageFilter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>sketch</string>
+			<key>filter_name</key>
+			<string>素描</string>
+			<key>filter_class</key>
+			<string>GPUImageSketchFilter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>threshold_sketch</string>
+			<key>filter_name</key>
+			<string>阀值素描</string>
+			<key>filter_class</key>
+			<string>GPUImageThresholdSketchFilter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>pixellate</string>
+			<key>filter_name</key>
+			<string>像素化</string>
+			<key>filter_class</key>
+			<string>GPUImagePixellateFilter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>polar_pixellate</string>
+			<key>filter_name</key>
+			<string>同心圆像素化</string>
+			<key>filter_class</key>
+			<string>GPUImagePolarPixellateFilter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
