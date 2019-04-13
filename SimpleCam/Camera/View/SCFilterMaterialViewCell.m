@@ -15,8 +15,10 @@
 
 @interface SCFilterMaterialViewCell ()
 
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) GPUImageView *imageView;
 @property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, strong) GPUImagePicture *picture;
 
 @end
 
@@ -30,15 +32,23 @@
     return self;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    [self.picture removeAllTargets];
+}
+
 #pragma mark - Private
 
 - (void)commonInit {
     [self setupImageView];
     [self setupTitleLabel];
+    
+    self.picture = [[GPUImagePicture alloc] initWithImage:[UIImage imageNamed:@"filter_sample.jpg"]];
 }
 
 - (void)setupImageView {
-    self.imageView = [[UIImageView alloc] init];
+    self.imageView = [[GPUImageView alloc] init];
     [self addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(60, 80));
@@ -62,13 +72,20 @@
 
 - (void)setFilterMaterialModel:(SCFilterMaterialModel *)filterMaterialModel {
     _filterMaterialModel = filterMaterialModel;
-    
-    UIImage *image = [UIImage imageNamed:@"filter_sample.jpg"];
-    GPUImageFilter *filter = [[SCFilterManager shareManager] filterWithFilterID:filterMaterialModel.filterID];
-    self.imageView.image = [SCFilterHelper imageWithFilter:filter
-                                               originImage:image];
-    
+
     self.titleLabel.text = filterMaterialModel.filterName;
+    
+    GPUImageFilter *filter = [[SCFilterManager shareManager] filterWithFilterID:filterMaterialModel.filterID];
+    
+    [self.picture addTarget:filter];
+    [filter addTarget:self.imageView];
+    
+    // 放到下次runloop执行
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.picture processImage];
+    });
+
+    
 }
 
 @end
