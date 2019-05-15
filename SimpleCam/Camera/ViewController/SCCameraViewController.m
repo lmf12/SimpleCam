@@ -88,6 +88,12 @@
     return YES;
 }
 
+#pragma mark - SCCameraTopViewDelegate
+
+- (void)cameraTopViewDidClickRotateButton:(SCCameraTopView *)cameraTopView {
+    [[SCCameraManager shareManager] rotateCamera];
+}
+
 @end
 
 #pragma clang diagnostic pop

@@ -79,6 +79,10 @@ static SCCameraManager *_cameraManager;
     }
 }
 
+- (void)rotateCamera {
+    [self.camera rotateCamera];
+}
+
 #pragma mark - Private
 
 /**

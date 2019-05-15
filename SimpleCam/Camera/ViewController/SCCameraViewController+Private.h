@@ -9,6 +9,7 @@
 #import <GPUImage.h>
 #import "SCCapturingButton.h"
 #import "SCFilterBarView.h"
+#import "SCCameraTopView.h"
 
 #import "SCCameraManager.h"
 #import "SCFilterManager.h"
@@ -25,6 +26,7 @@
 @property (nonatomic, strong) SCCapturingButton *capturingButton;
 @property (nonatomic, strong) SCFilterBarView *filterBarView;
 @property (nonatomic, strong) UIButton *filterButton;
+@property (nonatomic, strong) SCCameraTopView *cameraTopView;
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *currentFilters;
 

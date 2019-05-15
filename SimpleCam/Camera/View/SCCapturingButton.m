@@ -47,8 +47,7 @@
 #pragma mark - Actions
 
 - (void)touchUpInsideAction:(UIButton *)button {
-    if (self.delegate &&
-        [self.delegate respondsToSelector:@selector(capturingButtonDidClicked:)]) {
+    if ([self.delegate respondsToSelector:@selector(capturingButtonDidClicked:)]) {
         [self.delegate capturingButtonDidClicked:self];
     }
 }

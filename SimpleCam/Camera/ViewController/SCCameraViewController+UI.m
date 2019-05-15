@@ -24,6 +24,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self setupCameraView];
     [self setupCapturingButton];
     [self setupFilterButton];
+    [self setupCameraTopView];
 }
 
 - (void)setupCameraView {
@@ -72,6 +73,21 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         make.top.mas_equalTo(self.view.mas_bottom).offset(0);
     }];
     [self.filterBarView layoutIfNeeded];
+}
+
+- (void)setupCameraTopView {
+    self.cameraTopView = [[SCCameraTopView alloc] init];
+    self.cameraTopView.delegate = self;
+    [self.view addSubview:self.cameraTopView];
+    [self.cameraTopView mas_makeConstraints:^(MASConstraintMaker *make) {
+        if (@available(iOS 11.0, *)) {
+            make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop);
+        } else {
+            make.top.mas_equalTo(self.view.mas_top);
+        }
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(60);
+    }];
 }
 
 #pragma mark - Update

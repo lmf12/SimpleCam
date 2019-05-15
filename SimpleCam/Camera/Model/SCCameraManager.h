@@ -44,4 +44,9 @@ typedef void (^TakePhotoResult)(UIImage *resultImage, NSError *error);
  */
 - (void)startCapturing;
 
+/**
+ 切换摄像头
+ */
+- (void)rotateCamera;
+
 @end

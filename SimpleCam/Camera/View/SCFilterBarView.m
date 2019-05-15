@@ -66,7 +66,7 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 #pragma mark - SCFilterMaterialViewDelegate
 
 - (void)filterMaterialView:(SCFilterMaterialView *)filterMaterialView didScrollToIndex:(NSUInteger)index {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(filterBarView:materialDidScrollToIndex:)]) {
+    if ([self.delegate respondsToSelector:@selector(filterBarView:materialDidScrollToIndex:)]) {
         [self.delegate filterBarView:self materialDidScrollToIndex:index];
     }
 }
