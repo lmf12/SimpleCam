@@ -121,6 +121,7 @@ static SCCameraManager *_cameraManager;
     self.camera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
     self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.camera.horizontallyMirrorFrontFacingCamera = YES;
+    [self.camera addAudioInputsAndOutputs];
 }
 
 /**
