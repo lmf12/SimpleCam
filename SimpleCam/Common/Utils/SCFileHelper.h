@@ -21,8 +21,8 @@
 + (NSString *)filePathInTmpWithName:(NSString *)name;
 
 /**
- 返回 tmp 文件夹中的一个随机路径
+ 通过一个后缀，返回 tmp 文件夹中的一个随机路径
  */
-+ (NSString *)randomFilePathInTmp;
++ (NSString *)randomFilePathInTmpWithSuffix:(NSString *)suffix;
 
 @end

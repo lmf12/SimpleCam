@@ -13,6 +13,7 @@
 		E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A8228FB4DF00653DDA /* SCVideoResultViewController+UI.m */; };
 		E87C10AC228FCC6300653DDA /* SCFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10AB228FCC6300653DDA /* SCFileHelper.m */; };
 		E87C10AF228FE0E200653DDA /* SCCameraViewController+RecordVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10AE228FE0E200653DDA /* SCCameraViewController+RecordVideo.m */; };
+		E87C10B2228FEA7B00653DDA /* SCVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10B1228FEA7B00653DDA /* SCVideoModel.m */; };
 		E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */; };
 		E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EF0225877A600ECFB98 /* SCViewController.m */; };
 		E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EF4225879A200ECFB98 /* SCCameraManager.m */; };
@@ -52,6 +53,8 @@
 		E87C10AB228FCC6300653DDA /* SCFileHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFileHelper.m; sourceTree = "<group>"; };
 		E87C10AD228FE0E200653DDA /* SCCameraViewController+RecordVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCCameraViewController+RecordVideo.h"; sourceTree = "<group>"; };
 		E87C10AE228FE0E200653DDA /* SCCameraViewController+RecordVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCCameraViewController+RecordVideo.m"; sourceTree = "<group>"; };
+		E87C10B0228FEA7B00653DDA /* SCVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVideoModel.h; sourceTree = "<group>"; };
+		E87C10B1228FEA7B00653DDA /* SCVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCVideoModel.m; sourceTree = "<group>"; };
 		E8D18EE722586CEC00ECFB98 /* SCCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraViewController.h; sourceTree = "<group>"; };
 		E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraViewController.m; sourceTree = "<group>"; };
 		E8D18EEF225877A600ECFB98 /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				E8D18EF4225879A200ECFB98 /* SCCameraManager.m */,
 				E8E578E72261BB3F0093BB7B /* SCFilterMaterialModel.h */,
 				E8E578E82261BB3F0093BB7B /* SCFilterMaterialModel.m */,
+				E87C10B0228FEA7B00653DDA /* SCVideoModel.h */,
+				E87C10B1228FEA7B00653DDA /* SCVideoModel.m */,
 				E8E578F72261DD590093BB7B /* SCFilterManager.h */,
 				E8E578F82261DD590093BB7B /* SCFilterManager.m */,
 			);
@@ -482,6 +487,7 @@
 				E8E578F92261DD590093BB7B /* SCFilterManager.m in Sources */,
 				E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */,
 				E87C109E228C68DA00653DDA /* SCCameraTopView.m in Sources */,
+				E87C10B2228FEA7B00653DDA /* SCVideoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

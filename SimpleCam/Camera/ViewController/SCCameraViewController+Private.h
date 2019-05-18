@@ -14,6 +14,10 @@
 #import "SCCameraManager.h"
 #import "SCFilterManager.h"
 
+#import "SCVideoModel.h"
+
+#import "SCVideoResultViewController.h"
+
 #import "SCCameraViewController.h"
 
 @interface SCCameraViewController () <
@@ -30,6 +34,7 @@
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
 
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
+@property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *currentFilters;
 

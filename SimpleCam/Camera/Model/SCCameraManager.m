@@ -127,7 +127,7 @@ static SCCameraManager *_cameraManager;
  初始化 MovieWriter
  */
 - (void)setupMovieWriter {
-    NSString *videoPath = [SCFileHelper randomFilePathInTmp];
+    NSString *videoPath = [SCFileHelper randomFilePathInTmpWithSuffix:@".m4v"];
     NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
     CGFloat screenScale = [[UIScreen mainScreen] scale];
     CGSize videoSize = CGSizeMake(self.outputView.frame.size.width * screenScale,

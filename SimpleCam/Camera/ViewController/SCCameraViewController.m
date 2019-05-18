@@ -31,6 +31,7 @@
 #pragma mark - Private
 
 - (void)commonInit {
+    [self setupData];
     [self setupFilters];
     [self setupUI];
     [self setupTap];
@@ -42,6 +43,10 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     tap.delegate = self;
     [self.view addGestureRecognizer:tap];
+}
+
+- (void)setupData {
+    self.videos = [[NSMutableArray alloc] init];
 }
 
 #pragma mark - Action

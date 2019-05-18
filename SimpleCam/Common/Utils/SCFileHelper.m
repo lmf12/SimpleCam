@@ -20,9 +20,9 @@
     return [[self temporaryDirectory] stringByAppendingPathComponent:name];
 }
 
-+ (NSString *)randomFilePathInTmp {
++ (NSString *)randomFilePathInTmpWithSuffix:(NSString *)suffix {
     long random = [[NSDate date] timeIntervalSince1970] * 1000;
-    return [self filePathInTmpWithName:[NSString stringWithFormat:@"%ld", random]];
+    return [[self filePathInTmpWithName:[NSString stringWithFormat:@"%ld", random]] stringByAppendingString:suffix];
 }
 
 @end

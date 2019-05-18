@@ -31,7 +31,18 @@
     @weakify(self);
     [[SCCameraManager shareManager] stopRecordVideoWithCompletion:^(NSString *videoPath) {
         @strongify(self);
-        self.isRecordingVideo = NO;        
+        
+        self.isRecordingVideo = NO;
+        
+        SCVideoModel *videoModel = [[SCVideoModel alloc] init];
+        videoModel.filePath = videoPath;
+        [self.videos addObject:videoModel];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            SCVideoResultViewController *vc = [[SCVideoResultViewController alloc] init];
+            vc.videos = self.videos;
+            [self.navigationController pushViewController:vc animated:NO];
+        });
     }];
 }
 
