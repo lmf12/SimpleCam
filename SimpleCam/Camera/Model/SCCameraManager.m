@@ -6,6 +6,8 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import "SCFileHelper.h"
+
 #import "SCCameraManager.h"
 
 static SCCameraManager *_cameraManager;
@@ -14,7 +16,10 @@ static SCCameraManager *_cameraManager;
 
 @property (nonatomic, strong, readwrite) GPUImageStillCamera *camera;
 @property (nonatomic, weak) GPUImageView *outputView;
-@property (nonatomic, weak) GPUImageOutput<GPUImageInput> *currentFilters;
+@property (nonatomic, weak) GPUImageOutput <GPUImageInput> *currentFilters;  // 预览的滤镜
+@property (nonatomic, strong) GPUImageOutput <GPUImageInput> *movieWriterFilters;  // movieWriter的滤镜
+@property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
+@property (nonatomic, copy) NSString *currentTmpVideoPath;
 
 @end
 
@@ -44,6 +49,26 @@ static SCCameraManager *_cameraManager;
     }];
 }
 
+- (void)recordVideoWithFilters:(GPUImageOutput<GPUImageInput> *)filters {
+    if (filters) {
+        self.movieWriterFilters = filters;
+        [self.camera addTarget:filters];
+    }
+    [self setupMovieWriter];
+    [self.movieWriter startRecording];
+}
+
+- (void)stopRecordVideoWithCompletion:(RecordVideoResult)completion {
+    @weakify(self);
+    [self.movieWriter finishRecordingWithCompletionHandler:^{
+        @strongify(self);
+        [self removeMovieWriter];
+        if (completion) {
+            completion(self.currentTmpVideoPath);
+        }
+    }];
+}
+
 - (void)addOutputView:(GPUImageView *)outputView {
     self.outputView = outputView;
 }
@@ -66,8 +91,10 @@ static SCCameraManager *_cameraManager;
 }
 
 - (void)setCameraFilters:(GPUImageOutput<GPUImageInput> *)filters {
+    NSArray *targets = nil;
     if (self.currentFilters) {
-        [self.currentFilters removeTarget:self.outputView];
+        targets = self.currentFilters.targets;
+        [self.currentFilters removeAllTargets];
         [self.camera removeTarget:self.currentFilters];
     }
     
@@ -75,7 +102,9 @@ static SCCameraManager *_cameraManager;
     
     if (filters) {
         [self.camera addTarget:self.currentFilters];
-        [self.currentFilters addTarget:self.outputView];
+        for (id <GPUImageInput>input in targets) {
+            [self.currentFilters addTarget:input];
+        }
     }
 }
 
@@ -92,6 +121,44 @@ static SCCameraManager *_cameraManager;
     self.camera = [[GPUImageStillCamera alloc] initWithSessionPreset:AVCaptureSessionPreset1280x720 cameraPosition:AVCaptureDevicePositionFront];
     self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.camera.horizontallyMirrorFrontFacingCamera = YES;
+}
+
+/**
+ 初始化 MovieWriter
+ */
+- (void)setupMovieWriter {
+    NSString *videoPath = [SCFileHelper randomFilePathInTmp];
+    NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    CGSize videoSize = CGSizeMake(self.outputView.frame.size.width * screenScale,
+                                  self.outputView.frame.size.height * screenScale);
+    
+    self.movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:videoURL
+                                                                size:videoSize];
+    GPUImageOutput *output = self.movieWriterFilters ? self.movieWriterFilters : self.camera;
+    [output addTarget:self.movieWriter];
+    self.camera.audioEncodingTarget = self.movieWriter;
+    self.movieWriter.shouldPassthroughAudio = YES;
+    
+    self.currentTmpVideoPath = videoPath;
+}
+
+/**
+ 移除 MovieWriter
+ */
+- (void)removeMovieWriter {
+    if (!self.movieWriter) {
+        return;
+    }
+    [self.camera removeTarget:self.movieWriter];
+    [self.movieWriterFilters removeTarget:self.movieWriter];
+    self.camera.audioEncodingTarget = nil;
+    self.movieWriter = nil;
+    
+    if (self.movieWriterFilters != self.currentFilters) {
+        [self.camera removeTarget:self.movieWriterFilters];
+        self.movieWriterFilters = nil;
+    }
 }
 
 @end

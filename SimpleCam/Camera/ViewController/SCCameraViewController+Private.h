@@ -19,6 +19,7 @@
 @interface SCCameraViewController () <
     SCCapturingButtonDelegate,
     SCFilterBarViewDelegate,
+    SCCameraTopViewDelegate,
     UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) GPUImageView *cameraView;
@@ -27,6 +28,8 @@
 @property (nonatomic, strong) SCFilterBarView *filterBarView;
 @property (nonatomic, strong) UIButton *filterButton;
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
+
+@property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *currentFilters;
 
@@ -58,5 +61,11 @@
 #pragma mark - TakePhoto
 
 - (void)takePhoto;
+
+#pragma mark - RecordVideo
+
+- (void)startRecordVideo;
+
+- (void)stopRecordVideo;
 
 @end

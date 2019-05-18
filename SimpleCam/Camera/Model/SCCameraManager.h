@@ -10,6 +10,8 @@
 
 typedef void (^TakePhotoResult)(UIImage *resultImage, NSError *error);
 
+typedef void (^RecordVideoResult)(NSString *videoPath);
+
 @interface SCCameraManager : NSObject
 
 /// 相机
@@ -28,6 +30,20 @@ typedef void (^TakePhotoResult)(UIImage *resultImage, NSError *error);
  */
 - (void)takePhotoWtihFilters:(GPUImageOutput<GPUImageInput> *)filters
                   completion:(TakePhotoResult)completion;
+
+/**
+ 录制
+
+ @param filters 录制视频的滤镜效果
+ */
+- (void)recordVideoWithFilters:(GPUImageOutput<GPUImageInput> *)filters;
+
+/**
+ 结束录制视频
+ 
+ @param completion 完成回调
+ */
+- (void)stopRecordVideoWithCompletion:(RecordVideoResult)completion;
 
 /**
  添加图像输出的控件，不会被持有

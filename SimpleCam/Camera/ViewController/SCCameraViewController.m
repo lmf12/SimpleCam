@@ -66,7 +66,11 @@
 #pragma mark - SCCapturingButtonDelegate
 
 - (void)capturingButtonDidClicked:(SCCapturingButton *)button {
-    [self takePhoto];
+    if (self.isRecordingVideo) {
+        [self stopRecordVideo];
+    } else {
+        [self startRecordVideo];
+    }
 }
 
 #pragma mark - SCFilterBarViewDelegate
