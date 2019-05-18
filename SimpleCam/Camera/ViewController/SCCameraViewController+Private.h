@@ -17,6 +17,7 @@
 #import "SCVideoModel.h"
 
 #import "SCVideoResultViewController.h"
+#import "SCPhotoResultViewController.h"
 
 #import "SCCameraViewController.h"
 
@@ -72,5 +73,17 @@
 - (void)startRecordVideo;
 
 - (void)stopRecordVideo;
+
+#pragma mark - Forward
+
+/**
+ 跳转到图片拍后
+ */
+- (void)forwardToPhotoResultWith:(UIImage *)image;
+
+/**
+ 跳转到视频拍后
+ */
+- (void)forwardToVideoResult;
 
 @end

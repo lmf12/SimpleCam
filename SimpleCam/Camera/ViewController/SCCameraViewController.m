@@ -49,6 +49,19 @@
     self.videos = [[NSMutableArray alloc] init];
 }
 
+- (void)forwardToPhotoResultWith:(UIImage *)image {
+    SCPhotoResultViewController *resultVC = [[SCPhotoResultViewController alloc] init];
+    resultVC.resultImage = image;
+    [self.navigationController pushViewController:resultVC animated:NO];
+}
+
+- (void)forwardToVideoResult {
+    SCVideoResultViewController *vc = [[SCVideoResultViewController alloc] init];
+    vc.videos = self.videos;
+    [self.videos removeAllObjects];
+    [self.navigationController pushViewController:vc animated:NO];
+}
+
 #pragma mark - Action
 
 - (void)filterAction:(id)sender {
