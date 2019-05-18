@@ -25,6 +25,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self setupCapturingButton];
     [self setupFilterButton];
     [self setupCameraTopView];
+    [self setupModeSwitchView];
 }
 
 - (void)setupCameraView {
@@ -87,6 +88,17 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         }
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(60);
+    }];
+}
+
+- (void)setupModeSwitchView {
+    self.modeSwitchView = [[SCCapturingModeSwitchView alloc] init];
+    self.modeSwitchView.delegate = self;
+    [self.view addSubview:self.modeSwitchView];
+    [self.modeSwitchView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.capturingButton);
+        make.top.equalTo(self.capturingButton.mas_bottom).offset(0);
+        make.size.mas_equalTo(CGSizeMake(100, 40));
     }];
 }
 

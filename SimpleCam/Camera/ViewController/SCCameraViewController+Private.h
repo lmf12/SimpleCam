@@ -10,6 +10,7 @@
 #import "SCCapturingButton.h"
 #import "SCFilterBarView.h"
 #import "SCCameraTopView.h"
+#import "SCCapturingModeSwitchView.h"
 
 #import "SCCameraManager.h"
 #import "SCFilterManager.h"
@@ -25,6 +26,7 @@
     SCCapturingButtonDelegate,
     SCFilterBarViewDelegate,
     SCCameraTopViewDelegate,
+    SCCapturingModeSwitchViewDelegate,
     UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) GPUImageView *cameraView;
@@ -33,6 +35,7 @@
 @property (nonatomic, strong) SCFilterBarView *filterBarView;
 @property (nonatomic, strong) UIButton *filterButton;
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
+@property (nonatomic, strong) SCCapturingModeSwitchView *modeSwitchView;
 
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
 @property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;

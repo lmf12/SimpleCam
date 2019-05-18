@@ -84,10 +84,14 @@
 #pragma mark - SCCapturingButtonDelegate
 
 - (void)capturingButtonDidClicked:(SCCapturingButton *)button {
-    if (self.isRecordingVideo) {
-        [self stopRecordVideo];
-    } else {
-        [self startRecordVideo];
+    if (self.modeSwitchView.type == SCCapturingModeSwitchTypeImage) {
+        [self takePhoto];
+    } else if (self.modeSwitchView.type == SCCapturingModeSwitchTypeVideo) {
+        if (self.isRecordingVideo) {
+            [self stopRecordVideo];
+        } else {
+            [self startRecordVideo];
+        }
     }
 }
 
@@ -114,6 +118,12 @@
 
 - (void)cameraTopViewDidClickRotateButton:(SCCameraTopView *)cameraTopView {
     [[SCCameraManager shareManager] rotateCamera];
+}
+
+#pragma mark - SCCapturingModeSwitchViewDelegate
+
+- (void)capturingModeSwitchView:(SCCapturingModeSwitchView *)view
+                didChangeToType:(SCCapturingModeSwitchType)type {
 }
 
 @end
