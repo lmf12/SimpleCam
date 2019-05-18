@@ -31,7 +31,8 @@
 
 - (void)setupConfirmButton {
     self.confirmButton = [[UIButton alloc] init];
-    self.confirmButton.backgroundColor = [UIColor blueColor];
+    [self.confirmButton setImage:[UIImage imageNamed:@"btn_confirm"]
+                        forState:UIControlStateNormal];
     [self.confirmButton addTarget:self action:@selector(confirmAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.confirmButton];
     [self.confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -47,13 +48,14 @@
 
 - (void)setupBackButton {
     self.backButton = [[UIButton alloc] init];
-    self.backButton.backgroundColor = [UIColor blueColor];
+    [self.backButton setImage:[UIImage imageNamed:@"btn_back"]
+                     forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(50, 50));
+        make.size.mas_equalTo(CGSizeMake(35, 35));
         make.centerY.equalTo(self.confirmButton);
-        make.right.equalTo(self.confirmButton.mas_left).offset(-30);
+        make.right.equalTo(self.confirmButton.mas_left).offset(-35);
     }];
 }
 

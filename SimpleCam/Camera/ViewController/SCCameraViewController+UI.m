@@ -54,13 +54,14 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupFilterButton {
     self.filterButton = [[UIButton alloc] init];
-    self.filterButton.backgroundColor = [UIColor redColor];
+    [self.filterButton setImage:[UIImage imageNamed:@"btn_filter"]
+                       forState:UIControlStateNormal];
     [self.filterButton addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.filterButton];
     [self.filterButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(50, 50));
+        make.size.mas_equalTo(CGSizeMake(35, 35));
         make.centerY.equalTo(self.capturingButton);
-        make.right.equalTo(self.capturingButton.mas_left).offset(-30);
+        make.right.equalTo(self.capturingButton.mas_left).offset(-35);
     }];
 }
 

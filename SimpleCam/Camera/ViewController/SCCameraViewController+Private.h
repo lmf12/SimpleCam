@@ -17,6 +17,8 @@
 
 #import "SCVideoModel.h"
 
+#import "UIView+Extention.h"
+
 #import "SCVideoResultViewController.h"
 #import "SCPhotoResultViewController.h"
 

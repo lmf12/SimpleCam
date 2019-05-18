@@ -24,6 +24,7 @@
 		E8D18F062258927A00ECFB98 /* SCPhotoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F052258927A00ECFB98 /* SCPhotoResultViewController.m */; };
 		E8D18F0D2258A11D00ECFB98 /* SCCameraViewController+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F0C2258A11D00ECFB98 /* SCCameraViewController+Filter.m */; };
 		E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */; };
+		E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2922901A6100CDB060 /* UIView+Extention.m */; };
 		E8E578DF2261A8890093BB7B /* SCFilterBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578DE2261A8890093BB7B /* SCFilterBarView.m */; };
 		E8E578E32261B9580093BB7B /* SCFilterMaterialView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E22261B9570093BB7B /* SCFilterMaterialView.m */; };
 		E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E52261BA7B0093BB7B /* SCFilterMaterialViewCell.m */; };
@@ -81,6 +82,8 @@
 		E8D18F0E2258A31D00ECFB98 /* SCPhotoResultViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCPhotoResultViewController+Private.h"; sourceTree = "<group>"; };
 		E8D18F112258A3AB00ECFB98 /* SCPhotoResultViewController+UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCPhotoResultViewController+UI.h"; sourceTree = "<group>"; };
 		E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCPhotoResultViewController+UI.m"; sourceTree = "<group>"; };
+		E8D80C2822901A6100CDB060 /* UIView+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
+		E8D80C2922901A6100CDB060 /* UIView+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
 		E8E578DD2261A8890093BB7B /* SCFilterBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFilterBarView.h; sourceTree = "<group>"; };
 		E8E578DE2261A8890093BB7B /* SCFilterBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFilterBarView.m; sourceTree = "<group>"; };
 		E8E578E02261B5440093BB7B /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -216,6 +219,7 @@
 		E8D18EEA2258775A00ECFB98 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E8D80C2722901A2300CDB060 /* Category */,
 				E8E578ED2261D2EB0093BB7B /* Utils */,
 				E8D18F0822589B9000ECFB98 /* Define */,
 				E8D18EEE225877A600ECFB98 /* ViewController */,
@@ -275,6 +279,15 @@
 				E8E578E02261B5440093BB7B /* Common.h */,
 			);
 			path = Define;
+			sourceTree = "<group>";
+		};
+		E8D80C2722901A2300CDB060 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E8D80C2822901A6100CDB060 /* UIView+Extention.h */,
+				E8D80C2922901A6100CDB060 /* UIView+Extention.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		E8E578ED2261D2EB0093BB7B /* Utils */ = {
@@ -480,6 +493,7 @@
 				E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */,
 				E8E578E92261BB3F0093BB7B /* SCFilterMaterialModel.m in Sources */,
 				E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */,
+				E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */,
 				E87C10AC228FCC6300653DDA /* SCFileHelper.m in Sources */,
 				E8E578F02261D2FB0093BB7B /* SCFilterHelper.m in Sources */,
 				E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */,

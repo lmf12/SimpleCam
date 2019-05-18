@@ -21,6 +21,8 @@
         return;
     }
     self.isRecordingVideo = YES;
+    
+    [self.modeSwitchView setHidden:YES animated:YES completion:NULL];
     [[SCCameraManager shareManager] recordVideoWithFilters:self.currentFilters];
 }
 
@@ -28,6 +30,7 @@
     if (!self.isRecordingVideo) {
         return;
     }
+    [self.modeSwitchView setHidden:NO animated:YES completion:NULL];
     @weakify(self);
     [[SCCameraManager shareManager] stopRecordVideoWithCompletion:^(NSString *videoPath) {
         @strongify(self);

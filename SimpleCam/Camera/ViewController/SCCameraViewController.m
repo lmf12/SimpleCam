@@ -117,7 +117,9 @@
 #pragma mark - SCCameraTopViewDelegate
 
 - (void)cameraTopViewDidClickRotateButton:(SCCameraTopView *)cameraTopView {
-    [[SCCameraManager shareManager] rotateCamera];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[SCCameraManager shareManager] rotateCamera];
+    });
 }
 
 #pragma mark - SCCapturingModeSwitchViewDelegate
