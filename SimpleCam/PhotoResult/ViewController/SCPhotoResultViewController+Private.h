@@ -6,6 +6,8 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import <GPUImage.h>
+
 #import "SCPhotoResultViewController.h"
 
 @interface SCPhotoResultViewController ()

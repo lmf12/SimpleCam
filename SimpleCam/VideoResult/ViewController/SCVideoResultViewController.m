@@ -16,6 +16,8 @@
 
 - (void)dealloc {
     [self stopVideo];
+    
+    [[GPUImageContext sharedImageProcessingContext].framebufferCache purgeAllUnassignedFramebuffers];
 }
 
 - (void)viewDidLoad {

@@ -17,6 +17,10 @@
 
 @implementation SCPhotoResultViewController
 
+- (void)dealloc {
+    [[GPUImageContext sharedImageProcessingContext].framebufferCache purgeAllUnassignedFramebuffers];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

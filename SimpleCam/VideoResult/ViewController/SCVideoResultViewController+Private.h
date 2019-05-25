@@ -8,6 +8,7 @@
 
 #import <Photos/Photos.h>
 #import <AVFoundation/AVFoundation.h>
+#import <GPUImage.h>
 
 #import "SCAssetHelper.h"
 #import "SCFileHelper.h"
