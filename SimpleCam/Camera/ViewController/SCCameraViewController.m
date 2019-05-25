@@ -22,7 +22,6 @@
     
     SCCameraManager *cameraManager = [SCCameraManager shareManager];
     [cameraManager addOutputView:self.cameraView];
-    [cameraManager setCameraFilters:self.currentFilters];
     [cameraManager startCapturing];
 }
 
@@ -32,7 +31,6 @@
 
 - (void)commonInit {
     [self setupData];
-    [self setupFilters];
     [self setupUI];
     [self setupTap];
     
@@ -106,10 +104,8 @@
 #pragma mark - SCFilterBarViewDelegate
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView materialDidScrollToIndex:(NSUInteger)index {
-    SCCameraManager *cameraManager = [SCCameraManager shareManager];
     SCFilterMaterialModel *model = self.defaultFilterMaterials[index];
-    self.currentFilters = [[SCFilterManager shareManager] filterWithFilterID:model.filterID];
-    [cameraManager setCameraFilters:self.currentFilters];
+    [[SCCameraManager shareManager].currentFilterHandler setDefaultFilter:[[SCFilterManager shareManager] filterWithFilterID:model.filterID]];
 }
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView beautifySwitchIsOn:(BOOL)isOn {

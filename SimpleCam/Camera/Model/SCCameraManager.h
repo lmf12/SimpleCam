@@ -6,7 +6,7 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import <GPUImage.h>
+#import "SCFilterHandler.h"
 
 typedef void (^TakePhotoResult)(UIImage *resultImage, NSError *error);
 
@@ -17,6 +17,9 @@ typedef void (^RecordVideoResult)(NSString *videoPath);
 /// 相机
 @property (nonatomic, strong, readonly) GPUImageStillCamera *camera;
 
+/// 滤镜
+@property (nonatomic, strong, readonly) SCFilterHandler *currentFilterHandler;
+
 /**
  获取实例
  */
@@ -24,19 +27,13 @@ typedef void (^RecordVideoResult)(NSString *videoPath);
 
 /**
  拍照
-
- @param filters 拍照添加的滤镜效果
- @param completion 完成回调
  */
-- (void)takePhotoWtihFilters:(GPUImageOutput<GPUImageInput> *)filters
-                  completion:(TakePhotoResult)completion;
+- (void)takePhotoWtihCompletion:(TakePhotoResult)completion;
 
 /**
  录制
-
- @param filters 录制视频的滤镜效果
  */
-- (void)recordVideoWithFilters:(GPUImageOutput<GPUImageInput> *)filters;
+- (void)recordVideo;
 
 /**
  结束录制视频
@@ -49,11 +46,6 @@ typedef void (^RecordVideoResult)(NSString *videoPath);
  添加图像输出的控件，不会被持有
  */
 - (void)addOutputView:(GPUImageView *)outputView;
-
-/**
- 添加相机预览的滤镜，不会被持有
- */
-- (void)setCameraFilters:(GPUImageOutput<GPUImageInput> *)filters;
 
 /**
  开启相机，开启前请确保已经设置 outputView

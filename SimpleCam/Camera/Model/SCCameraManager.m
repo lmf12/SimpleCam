@@ -16,8 +16,7 @@ static SCCameraManager *_cameraManager;
 
 @property (nonatomic, strong, readwrite) GPUImageStillCamera *camera;
 @property (nonatomic, weak) GPUImageView *outputView;
-@property (nonatomic, weak) GPUImageOutput <GPUImageInput> *currentFilters;  // 预览的滤镜
-@property (nonatomic, strong) GPUImageOutput <GPUImageInput> *movieWriterFilters;  // movieWriter的滤镜
+@property (nonatomic, strong, readwrite) SCFilterHandler *currentFilterHandler; 
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
 @property (nonatomic, copy) NSString *currentTmpVideoPath;
 
@@ -33,11 +32,19 @@ static SCCameraManager *_cameraManager;
     return _cameraManager;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [self setupFilterHandler];
+    }
+    return self;
+}
+
 #pragma mark - Public
 
-- (void)takePhotoWtihFilters:(GPUImageOutput<GPUImageInput> *)filters
-                  completion:(TakePhotoResult)completion {
-    [self.camera capturePhotoAsJPEGProcessedUpToFilter:filters withCompletionHandler:^(NSData *processedJPEG, NSError *error) {
+- (void)takePhotoWtihCompletion:(TakePhotoResult)completion {
+    GPUImageFilter *lastFilter = self.currentFilterHandler.lastFilter;
+    [self.camera capturePhotoAsJPEGProcessedUpToFilter:lastFilter withCompletionHandler:^(NSData *processedJPEG, NSError *error) {
         if (error && completion) {
             completion(nil, error);
             return;
@@ -49,11 +56,7 @@ static SCCameraManager *_cameraManager;
     }];
 }
 
-- (void)recordVideoWithFilters:(GPUImageOutput<GPUImageInput> *)filters {
-    if (filters) {
-        self.movieWriterFilters = filters;
-        [self.camera addTarget:filters];
-    }
+- (void)recordVideo {
     [self setupMovieWriter];
     [self.movieWriter startRecording];
 }
@@ -80,34 +83,12 @@ static SCCameraManager *_cameraManager;
     }
     [self setupCamera];
     
-    GPUImageOutput *output = self.camera;
-    if (self.currentFilters) {
-        [self.camera addTarget:self.currentFilters];
-        output = self.currentFilters;
-    }
-    [output addTarget:self.outputView];
+    [self.camera addTarget:self.currentFilterHandler.firstFilter];
+    [self.currentFilterHandler.lastFilter addTarget:self.outputView];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.camera startCameraCapture];
     });
-}
-
-- (void)setCameraFilters:(GPUImageOutput<GPUImageInput> *)filters {
-    NSArray *targets = nil;
-    if (self.currentFilters) {
-        targets = self.currentFilters.targets;
-        [self.currentFilters removeAllTargets];
-        [self.camera removeTarget:self.currentFilters];
-    }
-    
-    self.currentFilters = filters;
-    
-    if (filters) {
-        [self.camera addTarget:self.currentFilters];
-        for (id <GPUImageInput>input in targets) {
-            [self.currentFilters addTarget:input];
-        }
-    }
 }
 
 - (void)rotateCamera {
@@ -124,6 +105,8 @@ static SCCameraManager *_cameraManager;
     self.camera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.camera.horizontallyMirrorFrontFacingCamera = YES;
     [self.camera addAudioInputsAndOutputs];
+    
+    self.currentFilterHandler.source = self.camera;
 }
 
 /**
@@ -138,8 +121,9 @@ static SCCameraManager *_cameraManager;
     
     self.movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:videoURL
                                                                 size:videoSize];
-    GPUImageOutput *output = self.movieWriterFilters ? self.movieWriterFilters : self.camera;
-    [output addTarget:self.movieWriter];
+    
+    GPUImageFilter *lastFilter = self.currentFilterHandler.lastFilter;
+    [lastFilter addTarget:self.movieWriter];
     self.camera.audioEncodingTarget = self.movieWriter;
     self.movieWriter.shouldPassthroughAudio = YES;
     
@@ -153,15 +137,18 @@ static SCCameraManager *_cameraManager;
     if (!self.movieWriter) {
         return;
     }
-    [self.camera removeTarget:self.movieWriter];
-    [self.movieWriterFilters removeTarget:self.movieWriter];
+    [self.currentFilterHandler.lastFilter removeTarget:self.movieWriter];
     self.camera.audioEncodingTarget = nil;
     self.movieWriter = nil;
-    
-    if (self.movieWriterFilters != self.currentFilters) {
-        [self.camera removeTarget:self.movieWriterFilters];
-        self.movieWriterFilters = nil;
-    }
+}
+
+/**
+ 初始化 FilterHandler
+ */
+- (void)setupFilterHandler {
+    self.currentFilterHandler = [[SCFilterHandler alloc] init];
+    [self.currentFilterHandler setBeautifyFilter:nil];
+    [self.currentFilterHandler setDefaultFilter:nil];
 }
 
 @end

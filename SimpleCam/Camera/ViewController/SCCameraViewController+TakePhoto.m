@@ -17,7 +17,8 @@
 
 - (void)takePhoto {
     @weakify(self);
-    [[SCCameraManager shareManager] takePhotoWtihFilters:self.currentFilters completion:^(UIImage *resultImage, NSError *error) {
+    [[SCCameraManager shareManager] takePhotoWtihCompletion:^(UIImage *resultImage,
+                                                              NSError *error) {
         @strongify(self);
         [self forwardToPhotoResultWith:resultImage];
     }];

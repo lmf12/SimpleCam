@@ -14,6 +14,7 @@
 
 #import "SCCameraManager.h"
 #import "SCFilterManager.h"
+#import "SCFilterHandler.h"
 
 #import "SCVideoModel.h"
 #import "GPUImageBeautifyFilter.h"
@@ -44,8 +45,6 @@
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
 @property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;
 
-@property (nonatomic, strong) GPUImageOutput<GPUImageInput> *currentFilters;
-
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
 
 #pragma mark - UI
@@ -66,9 +65,7 @@
 
 #pragma mark - Filter
 
-- (void)setupFilters;
-
-/// 添加美颜滤镜，会做为滤镜链的第一个
+/// 添加美颜滤镜
 - (void)addBeautifyFilter;
 
 /// 移除美颜滤镜
