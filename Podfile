@@ -4,5 +4,6 @@ target 'SimpleCam' do
 
   pod 'GPUImage'
   pod 'Masonry'
+  pod 'RSSwizzle'
 
 end
