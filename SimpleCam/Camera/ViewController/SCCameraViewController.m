@@ -75,6 +75,12 @@
     }
 }
 
+- (void)nextAction:(id)sender {
+    [self forwardToVideoResult];
+    [self refreshNextButton];
+    [self.modeSwitchView setHidden:NO animated:NO completion:NULL];
+}
+
 - (void)tapAction:(UITapGestureRecognizer *)gestureRecognizer {
     [self setFilterBarViewHidden:YES
                         animated:YES

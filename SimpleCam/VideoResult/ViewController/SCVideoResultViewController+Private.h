@@ -15,10 +15,13 @@
 
 @property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
+@property (nonatomic, strong) AVPlayerLayer *lastPlayerLayer; // 为了避免两段切换的时候出现短暂白屏
 
 @property (nonatomic, strong) UIView *playerContainerView;
 @property (nonatomic, strong) UIButton *confirmButton;
 @property (nonatomic, strong) UIButton *backButton;
+
+@property (nonatomic, assign) NSInteger currentVideoIndex;
 
 #pragma mark - Action
 

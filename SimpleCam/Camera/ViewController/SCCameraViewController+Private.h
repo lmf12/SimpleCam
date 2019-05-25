@@ -36,6 +36,7 @@
 @property (nonatomic, strong) SCCapturingButton *capturingButton;
 @property (nonatomic, strong) SCFilterBarView *filterBarView;
 @property (nonatomic, strong) UIButton *filterButton;
+@property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
 @property (nonatomic, strong) SCCapturingModeSwitchView *modeSwitchView;
 
@@ -50,16 +51,13 @@
 
 - (void)setupUI;
 
-/**
- 设置滤镜栏显示或隐藏
- 
- @param hidden 显示或隐藏
- @param animated 是否有动画
- @param completion 完成回调
- */
+/// 设置滤镜栏显示或隐藏
 - (void)setFilterBarViewHidden:(BOOL)hidden
                       animated:(BOOL)animated
                     completion:(void (^)(void))completion;
+
+/// 刷新下一步按钮的显示状态
+- (void)refreshNextButton;
 
 #pragma mark - Action
 

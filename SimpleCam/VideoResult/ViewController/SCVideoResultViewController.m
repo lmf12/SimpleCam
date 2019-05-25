@@ -14,13 +14,17 @@
 
 @implementation SCVideoResultViewController
 
+- (void)dealloc {
+    [self stopVideo];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self commonInit];
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self playVideo];
+        [self playVideoWithIndex:self.currentVideoIndex];
     });
 }
 
@@ -28,26 +32,45 @@
 
 - (void)commonInit {
     [self setupUI];
+    self.currentVideoIndex = 0;
 }
 
-- (void)playVideo {
-    NSString *path = [self.videos firstObject].filePath;
+- (void)playVideoWithIndex:(NSInteger)index {
+    NSString *path = self.videos[index].filePath;
     NSURL *videoURL = [NSURL fileURLWithPath:path];
     self.player = [AVPlayer playerWithURL:videoURL];
     self.playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
     self.playerLayer.frame = self.playerContainerView.bounds;
     [self.playerContainerView.layer addSublayer:self.playerLayer];
+    [self addObserverForPlayerItem:self.player.currentItem];
     [self.player play];
 }
 
 - (void)stopVideo {
+    [self removeObserverForPlayerItem:self.player.currentItem];
     [self.player pause];
-    [self.playerLayer removeFromSuperlayer];
+    [self.lastPlayerLayer removeFromSuperlayer];
+    self.lastPlayerLayer = self.playerLayer;
     self.player = nil;
 }
 
 - (void)backToCamera {
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+/// 添加播放结束监听
+- (void)addObserverForPlayerItem:(AVPlayerItem *)playerItem {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playbackFinished:)
+                                                 name:AVPlayerItemDidPlayToEndTimeNotification
+                                               object:playerItem];
+}
+
+/// 移除播放结束监听
+- (void)removeObserverForPlayerItem:(AVPlayerItem *)playerItem {
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:AVPlayerItemDidPlayToEndTimeNotification
+                                                  object:playerItem];
 }
 
 // 保存视频
@@ -77,6 +100,12 @@
 
 - (void)backAction:(id)sender {
     [self backToCamera];
+}
+
+- (void)playbackFinished:(NSNotification *)notification {
+    [self stopVideo];
+    self.currentVideoIndex = (self.currentVideoIndex + 1) % self.videos.count;
+    [self playVideoWithIndex:self.currentVideoIndex];
 }
 
 #pragma clang diagnostic pop

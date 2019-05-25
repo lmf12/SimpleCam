@@ -30,7 +30,6 @@
     if (!self.isRecordingVideo) {
         return;
     }
-    [self.modeSwitchView setHidden:NO animated:YES completion:NULL];
     @weakify(self);
     [[SCCameraManager shareManager] stopRecordVideoWithCompletion:^(NSString *videoPath) {
         @strongify(self);
@@ -42,7 +41,7 @@
         [self.videos addObject:videoModel];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self forwardToVideoResult];
+            [self refreshNextButton];
         });
     }];
 }
