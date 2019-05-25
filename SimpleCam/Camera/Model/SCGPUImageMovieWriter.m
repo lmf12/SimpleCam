@@ -12,6 +12,8 @@
 
 #import "SCGPUImageMovieWriter.h"
 
+static BOOL allowWriteAudio = NO;
+
 @interface SCGPUImageMovieWriter ()
 {
     GLuint movieFramebuffer, movieRenderbuffer;
@@ -271,6 +273,8 @@
     });
     isRecording = YES;
     //    [assetWriter startSessionAtSourceTime:kCMTimeZero];
+    
+    allowWriteAudio = NO;
 }
 
 - (void)startRecordingInOrientation:(CGAffineTransform)orientationTransform;
@@ -357,6 +361,10 @@
 
 - (void)processAudioBuffer:(CMSampleBufferRef)audioBuffer;
 {
+    if (!allowWriteAudio) {
+        return;
+    }
+    
     if (!isRecording)
     {
         return;
@@ -741,6 +749,8 @@
             {
                 if (![assetWriterPixelBufferInput appendPixelBuffer:pixel_buffer withPresentationTime:frameTime])
                     NSLog(@"Problem appending pixel buffer at time: %@", CFBridgingRelease(CMTimeCopyDescription(kCFAllocatorDefault, frameTime)));
+                
+                allowWriteAudio = YES;
             }
             else
             {
