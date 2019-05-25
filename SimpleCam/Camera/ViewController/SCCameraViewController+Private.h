@@ -16,6 +16,7 @@
 #import "SCFilterManager.h"
 
 #import "SCVideoModel.h"
+#import "GPUImageBeautifyFilter.h"
 
 #import "UIView+Extention.h"
 
@@ -66,6 +67,12 @@
 #pragma mark - Filter
 
 - (void)setupFilters;
+
+/// 添加美颜滤镜，会做为滤镜链的第一个
+- (void)addBeautifyFilter;
+
+/// 移除美颜滤镜
+- (void)removeBeautifyFilter;
 
 #pragma mark - TakePhoto
 

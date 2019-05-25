@@ -15,6 +15,7 @@
 @protocol SCFilterBarViewDelegate <NSObject>
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView materialDidScrollToIndex:(NSUInteger)index;
+- (void)filterBarView:(SCFilterBarView *)filterBarView beautifySwitchIsOn:(BOOL)isOn;
 
 @end
 

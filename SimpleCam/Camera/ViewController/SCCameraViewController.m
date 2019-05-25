@@ -112,6 +112,14 @@
     [cameraManager setCameraFilters:self.currentFilters];
 }
 
+- (void)filterBarView:(SCFilterBarView *)filterBarView beautifySwitchIsOn:(BOOL)isOn {
+    if (isOn) {
+        [self addBeautifyFilter];
+    } else {
+        [self removeBeautifyFilter];
+    }
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

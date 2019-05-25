@@ -15,8 +15,16 @@
 
 @implementation SCCameraViewController (Filter)
 
+#pragma mark - Public
+
 - (void)setupFilters {
     self.currentFilters = [[GPUImageFilter alloc] init];
+}
+
+- (void)addBeautifyFilter {
+}
+
+- (void)removeBeautifyFilter {
 }
 
 @end
