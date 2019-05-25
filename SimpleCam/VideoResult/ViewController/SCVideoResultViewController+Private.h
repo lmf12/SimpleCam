@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "SCAssetHelper.h"
+#import "SCFileHelper.h"
 
 #import "SCVideoResultViewController.h"
 

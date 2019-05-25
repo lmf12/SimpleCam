@@ -13,4 +13,7 @@
 /// 获取视频的第一帧
 + (UIImage *)videoPreviewImageWithURL:(NSURL *)url;
 
+/// 合并视频
++ (void)mergeVideos:(NSArray *)videoPaths toExportPath:(NSString *)exportPath completion:(void (^)(void))completion;
+
 @end

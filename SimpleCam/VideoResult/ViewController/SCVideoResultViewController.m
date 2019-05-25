@@ -92,23 +92,40 @@
     [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
         [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url];
     } completionHandler:^(BOOL success, NSError * _Nullable error) {
-        if (completion) {
-            completion(success);
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (completion) {
+                completion(success);
+            }
+        });
     }];
 }
 
 #pragma mark - Action
 
 - (void)confirmAction:(id)sender {
-    NSString *path = [self.videos firstObject].filePath;
-    @weakify(self);
-    [self saveVideo:path completion:^(BOOL success) {
-        @strongify(self);
-        if (success) {
-            NSLog(@"保存成功");
+    void (^saveBlock)(NSString *) = ^ (NSString *path) {
+        @weakify(self);
+        [self saveVideo:path completion:^(BOOL success) {
+            @strongify(self);
+            if (success) {
+                [self backToCamera];
+            }
+        }];
+    };
+    
+    if (self.videos.count == 1) {
+        NSString *path = [self.videos firstObject].filePath;
+        saveBlock(path);
+    } else {
+        NSMutableArray *videoPaths = [[NSMutableArray alloc] init];
+        for (SCVideoModel *model in self.videos) {
+            [videoPaths addObject:model.filePath];
         }
-    }];
+        NSString *exportPath = [SCFileHelper randomFilePathInTmpWithSuffix:@".m4v"];
+        [SCAssetHelper mergeVideos:videoPaths toExportPath:exportPath completion:^{
+            saveBlock(exportPath);
+        }];
+    }
 }
 
 - (void)backAction:(id)sender {
