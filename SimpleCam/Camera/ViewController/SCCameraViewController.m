@@ -95,8 +95,10 @@
     } else if (self.modeSwitchView.type == SCCapturingModeSwitchTypeVideo) {
         if (self.isRecordingVideo) {
             [self stopRecordVideo];
+            button.capturingState = SCCapturingButtonStateNormal;
         } else {
             [self startRecordVideo];
+            button.capturingState = SCCapturingButtonStateRecording;
         }
     }
 }
