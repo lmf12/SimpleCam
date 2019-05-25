@@ -25,6 +25,7 @@
 		E8D18F0D2258A11D00ECFB98 /* SCCameraViewController+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F0C2258A11D00ECFB98 /* SCCameraViewController+Filter.m */; };
 		E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */; };
 		E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2922901A6100CDB060 /* UIView+Extention.m */; };
+		E8D80C2D22990D3700CDB060 /* SCAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2C22990D3700CDB060 /* SCAssetHelper.m */; };
 		E8E578DF2261A8890093BB7B /* SCFilterBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578DE2261A8890093BB7B /* SCFilterBarView.m */; };
 		E8E578E32261B9580093BB7B /* SCFilterMaterialView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E22261B9570093BB7B /* SCFilterMaterialView.m */; };
 		E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E52261BA7B0093BB7B /* SCFilterMaterialViewCell.m */; };
@@ -84,6 +85,8 @@
 		E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCPhotoResultViewController+UI.m"; sourceTree = "<group>"; };
 		E8D80C2822901A6100CDB060 /* UIView+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
 		E8D80C2922901A6100CDB060 /* UIView+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
+		E8D80C2B22990D3700CDB060 /* SCAssetHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAssetHelper.h; sourceTree = "<group>"; };
+		E8D80C2C22990D3700CDB060 /* SCAssetHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAssetHelper.m; sourceTree = "<group>"; };
 		E8E578DD2261A8890093BB7B /* SCFilterBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFilterBarView.h; sourceTree = "<group>"; };
 		E8E578DE2261A8890093BB7B /* SCFilterBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFilterBarView.m; sourceTree = "<group>"; };
 		E8E578E02261B5440093BB7B /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				E8E578EF2261D2FB0093BB7B /* SCFilterHelper.m */,
 				E87C10AA228FCC6300653DDA /* SCFileHelper.h */,
 				E87C10AB228FCC6300653DDA /* SCFileHelper.m */,
+				E8D80C2B22990D3700CDB060 /* SCAssetHelper.h */,
+				E8D80C2C22990D3700CDB060 /* SCAssetHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 				E8D18F01225890C900ECFB98 /* SCCameraViewController+TakePhoto.m in Sources */,
 				E8D18F062258927A00ECFB98 /* SCPhotoResultViewController.m in Sources */,
 				E8D18F0D2258A11D00ECFB98 /* SCCameraViewController+Filter.m in Sources */,
+				E8D80C2D22990D3700CDB060 /* SCAssetHelper.m in Sources */,
 				E8D18EF82258823200ECFB98 /* SCCapturingButton.m in Sources */,
 				E8E578F92261DD590093BB7B /* SCFilterManager.m in Sources */,
 				E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */,

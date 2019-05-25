@@ -87,7 +87,9 @@ static SCCameraManager *_cameraManager;
     }
     [output addTarget:self.outputView];
     
-    [self.camera startCameraCapture];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.camera startCameraCapture];
+    });
 }
 
 - (void)setCameraFilters:(GPUImageOutput<GPUImageInput> *)filters {

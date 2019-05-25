@@ -22,6 +22,7 @@
     [super viewDidLoad];
     
     [self commonInit];
+    [self showPreview];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [self playVideoWithIndex:self.currentVideoIndex];
@@ -35,6 +36,18 @@
     self.currentVideoIndex = 0;
 }
 
+/// 显示视频预览
+- (void)showPreview {
+    NSURL *url = [NSURL fileURLWithPath:self.videos.firstObject.filePath];
+    UIImage *previewImage = [SCAssetHelper videoPreviewImageWithURL:url];
+    
+    self.lastPlayerLayer = [[CALayer alloc] init];
+    self.lastPlayerLayer.frame = self.playerContainerView.bounds;
+    [self.playerContainerView.layer addSublayer:self.lastPlayerLayer];
+    self.lastPlayerLayer.contents = (__bridge id)(previewImage.CGImage);
+}
+
+/// 播放视频
 - (void)playVideoWithIndex:(NSInteger)index {
     NSString *path = self.videos[index].filePath;
     NSURL *videoURL = [NSURL fileURLWithPath:path];
