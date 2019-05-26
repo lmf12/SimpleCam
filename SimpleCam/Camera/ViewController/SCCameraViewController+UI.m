@@ -77,7 +77,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupNextButton {
     self.nextButton = [[UIButton alloc] init];
-    self.nextButton.hidden = YES;
+    self.nextButton.alpha = 0;
     [self.nextButton setImage:[UIImage imageNamed:@"btn_next"]
                      forState:UIControlStateNormal];
     [self.nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -180,7 +180,9 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 }
 
 - (void)refreshNextButton {
-    self.nextButton.hidden = self.videos.count == 0;
+    [self.nextButton setHidden:self.videos.count == 0 || self.isRecordingVideo
+                      animated:YES
+                    completion:NULL];
 }
 
 @end

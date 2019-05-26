@@ -24,6 +24,8 @@
     
     [self.modeSwitchView setHidden:YES animated:YES completion:NULL];
     [[SCCameraManager shareManager] recordVideo];
+    
+    [self refreshNextButton];
 }
 
 - (void)stopRecordVideo {
