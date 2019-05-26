@@ -10,7 +10,8 @@
 
 @interface SCCameraTopView ()
 
-@property (nonatomic, strong) UIButton *rotateButton;  // 切换前后置按钮
+@property (nonatomic, strong, readwrite) UIButton *rotateButton;
+@property (nonatomic, strong, readwrite) UIButton *flashButton; 
 
 @property (nonatomic, assign) BOOL isRotating;  // 正在旋转中
 
@@ -30,6 +31,7 @@
 
 - (void)commonInit {
     [self setupRotateButton];
+    [self setupFlashButton];
 }
 
 - (void)setupRotateButton {
@@ -45,6 +47,21 @@
                 forControlEvents:UIControlEventTouchUpInside];
     [self.rotateButton setImage:[UIImage imageNamed:@"btn_rotato"]
                        forState:UIControlStateNormal];
+}
+
+- (void)setupFlashButton {
+    self.flashButton = [[UIButton alloc] init];
+    [self addSubview:self.flashButton];
+    [self.flashButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.left.equalTo(self).offset(20);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    [self.flashButton addTarget:self
+                         action:@selector(flashAction:)
+                forControlEvents:UIControlEventTouchUpInside];
+    [self.flashButton setImage:[UIImage imageNamed:@"btn_flash_off"]
+                      forState:UIControlStateNormal];
 }
 
 #pragma mark - Action
@@ -64,6 +81,12 @@
     
     if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickRotateButton:)]) {
         [self.delegate cameraTopViewDidClickRotateButton:self];
+    }
+}
+
+- (void)flashAction:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickFlashButton:)]) {
+        [self.delegate cameraTopViewDidClickFlashButton:self];
     }
 }
 

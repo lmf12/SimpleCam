@@ -185,6 +185,29 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
                     completion:NULL];
 }
 
+- (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode {
+    switch (mode) {
+        case SCCameraFlashModeOff:
+            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_off"]
+                                            forState:UIControlStateNormal];
+            break;
+        case SCCameraFlashModeOn:
+            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_on"]
+                                            forState:UIControlStateNormal];
+            break;
+        case SCCameraFlashModeAuto:
+            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_auto"]
+                                            forState:UIControlStateNormal];
+            break;
+        case SCCameraFlashModeTorch:
+            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_torch"]
+                                            forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
+}
+
 @end
 
 #pragma clang diagnostic pop

@@ -25,6 +25,18 @@
     [cameraManager startCapturing];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [[SCCameraManager shareManager] updateFlash];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[SCCameraManager shareManager] closeFlashIfNeed];
+}
+
 #pragma mark - Public
 
 #pragma mark - Private
@@ -132,6 +144,13 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [[SCCameraManager shareManager] rotateCamera];
     });
+}
+
+- (void)cameraTopViewDidClickFlashButton:(SCCameraTopView *)cameraTopView {
+    SCCameraFlashMode mode = [SCCameraManager shareManager].flashMode;
+    mode = (mode + 1) % 4;
+    [SCCameraManager shareManager].flashMode = mode;
+    [self updateFlashButtonWithFlashMode:mode];
 }
 
 #pragma mark - SCCapturingModeSwitchViewDelegate

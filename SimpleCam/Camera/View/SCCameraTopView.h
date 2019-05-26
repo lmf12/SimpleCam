@@ -13,10 +13,14 @@
 @protocol SCCameraTopViewDelegate <NSObject>
 
 - (void)cameraTopViewDidClickRotateButton:(SCCameraTopView *)cameraTopView;
+- (void)cameraTopViewDidClickFlashButton:(SCCameraTopView *)cameraTopView;
 
 @end
 
 @interface SCCameraTopView : UIView
+
+@property (nonatomic, strong, readonly) UIButton *rotateButton;  // 切换前后置按钮
+@property (nonatomic, strong, readonly) UIButton *flashButton;  // 闪光灯按钮
 
 @property (nonatomic, weak) id <SCCameraTopViewDelegate> delegate;
 

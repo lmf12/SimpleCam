@@ -59,6 +59,9 @@
 /// 刷新下一步按钮的显示状态
 - (void)refreshNextButton;
 
+/// 刷新闪光灯按钮
+- (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode;
+
 #pragma mark - Action
 
 - (void)filterAction:(id)sender;

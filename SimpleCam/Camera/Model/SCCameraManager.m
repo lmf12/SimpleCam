@@ -93,6 +93,30 @@ static SCCameraManager *_cameraManager;
 
 - (void)rotateCamera {
     [self.camera rotateCamera];
+    // 切换摄像头，同步一下闪光灯
+    [self syncFlashState];
+}
+
+- (void)closeFlashIfNeed {
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasFlash] && device.torchMode == AVCaptureTorchModeOn) {
+        [device lockForConfiguration:nil];
+        device.torchMode = AVCaptureTorchModeOff;
+        device.flashMode = AVCaptureFlashModeOff;
+        [device unlockForConfiguration];
+    }
+}
+
+- (void)updateFlash {
+    [self syncFlashState];
+}
+
+#pragma mark - Custom Accessor
+
+- (void)setFlashMode:(SCCameraFlashMode)flashMode {
+    _flashMode = flashMode;
+    
+    [self syncFlashState];
 }
 
 #pragma mark - Private
@@ -149,6 +173,42 @@ static SCCameraManager *_cameraManager;
     self.currentFilterHandler = [[SCFilterHandler alloc] init];
     [self.currentFilterHandler setBeautifyFilter:nil];
     [self.currentFilterHandler setDefaultFilter:nil];
+}
+
+/**
+ 将 flashMode 的值同步到设备
+ */
+- (void)syncFlashState {
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (![device hasFlash] || self.camera.cameraPosition == AVCaptureDevicePositionFront) {
+        [self closeFlashIfNeed];
+        return;
+    }
+    
+    [device lockForConfiguration:nil];
+    
+    switch (self.flashMode) {
+        case SCCameraFlashModeOff:
+            device.torchMode = AVCaptureTorchModeOff;
+            device.flashMode = AVCaptureFlashModeOff;
+            break;
+        case SCCameraFlashModeOn:
+            device.torchMode = AVCaptureTorchModeOff;
+            device.flashMode = AVCaptureFlashModeOn;
+            break;
+        case SCCameraFlashModeAuto:
+            device.torchMode = AVCaptureTorchModeOff;
+            device.flashMode = AVCaptureFlashModeAuto;
+            break;
+        case SCCameraFlashModeTorch:
+            device.torchMode = AVCaptureTorchModeOn;
+            device.flashMode = AVCaptureFlashModeOff;
+            break;
+        default:
+            break;
+    }
+    
+    [device unlockForConfiguration];
 }
 
 @end

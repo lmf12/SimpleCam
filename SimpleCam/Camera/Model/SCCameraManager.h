@@ -12,6 +12,21 @@ typedef void (^TakePhotoResult)(UIImage *resultImage, NSError *error);
 
 typedef void (^RecordVideoResult)(NSString *videoPath);
 
+/**
+ 闪光灯模式
+
+ - SCCameraFlashModeOff: 关闭
+ - SCCameraFlashModeOn: 打开
+ - SCCameraFlashModeAuto: 自动
+ - SCCameraFlashModeTorch: 长亮
+ */
+typedef NS_ENUM(NSUInteger, SCCameraFlashMode) {
+    SCCameraFlashModeOff,
+    SCCameraFlashModeOn,
+    SCCameraFlashModeAuto,
+    SCCameraFlashModeTorch
+};
+
 @interface SCCameraManager : NSObject
 
 /// 相机
@@ -19,6 +34,9 @@ typedef void (^RecordVideoResult)(NSString *videoPath);
 
 /// 滤镜
 @property (nonatomic, strong, readonly) SCFilterHandler *currentFilterHandler;
+
+/// 闪光灯模式，后置摄像头才有效
+@property (nonatomic, assign) SCCameraFlashMode flashMode;
 
 /**
  获取实例
@@ -56,5 +74,15 @@ typedef void (^RecordVideoResult)(NSString *videoPath);
  切换摄像头
  */
 - (void)rotateCamera;
+
+/**
+ 如果是常亮，则会关闭闪光灯，但不会修改 flashMode
+ */
+- (void)closeFlashIfNeed;
+
+/**
+ 刷新闪光灯
+ */
+- (void)updateFlash;
 
 @end
