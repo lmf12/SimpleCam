@@ -53,10 +53,19 @@
                      forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
+    
+    UIView *layoutGuide = [[UIView alloc] init];
+    layoutGuide.userInteractionEnabled = NO;
+    [self.view addSubview:layoutGuide];
+    [layoutGuide mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.confirmButton.mas_left);
+    }];
+    
     [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(35, 35));
         make.centerY.equalTo(self.confirmButton);
-        make.right.equalTo(self.confirmButton.mas_left).offset(-35);
+        make.centerX.equalTo(layoutGuide);
     }];
 }
 

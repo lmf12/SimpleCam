@@ -98,7 +98,7 @@ static SCCameraManager *_cameraManager;
 }
 
 - (void)closeFlashIfNeed {
-    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *device = self.camera.inputCamera;
     if ([device hasFlash] && device.torchMode == AVCaptureTorchModeOn) {
         [device lockForConfiguration:nil];
         device.torchMode = AVCaptureTorchModeOff;
@@ -117,6 +117,33 @@ static SCCameraManager *_cameraManager;
     _flashMode = flashMode;
     
     [self syncFlashState];
+}
+
+- (void)setFocusPoint:(CGPoint)focusPoint {
+    _focusPoint = focusPoint;
+    
+    AVCaptureDevice *device = self.camera.inputCamera;
+    
+    // 坐标转换
+    CGPoint currentPoint = CGPointMake(focusPoint.y / self.outputView.bounds.size.height, 1 - focusPoint.x / self.outputView.bounds.size.width);
+    if (self.camera.cameraPosition == AVCaptureDevicePositionFront) {
+        currentPoint = CGPointMake(currentPoint.x, 1 - currentPoint.y);
+    }
+    
+    [device lockForConfiguration:nil];
+    
+    if ([device isFocusPointOfInterestSupported] &&
+        [device isFocusModeSupported:AVCaptureFocusModeAutoFocus]) {
+        [device setFocusPointOfInterest:currentPoint];
+        [device setFocusMode:AVCaptureFocusModeAutoFocus];
+    }
+    if ([device isExposurePointOfInterestSupported] &&
+        [device isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+        [device setExposurePointOfInterest:currentPoint];
+        [device setExposureMode:AVCaptureExposureModeAutoExpose];
+    }
+ 
+    [device unlockForConfiguration];
 }
 
 #pragma mark - Private
@@ -179,7 +206,7 @@ static SCCameraManager *_cameraManager;
  将 flashMode 的值同步到设备
  */
 - (void)syncFlashState {
-    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice *device = self.camera.inputCamera;
     if (![device hasFlash] || self.camera.cameraPosition == AVCaptureDevicePositionFront) {
         [self closeFlashIfNeed];
         return;

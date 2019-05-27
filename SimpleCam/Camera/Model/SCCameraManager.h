@@ -38,6 +38,9 @@ typedef NS_ENUM(NSUInteger, SCCameraFlashMode) {
 /// 闪光灯模式，后置摄像头才有效
 @property (nonatomic, assign) SCCameraFlashMode flashMode;
 
+/// 对焦点
+@property (nonatomic, assign) CGPoint focusPoint;
+
 /**
  获取实例
  */

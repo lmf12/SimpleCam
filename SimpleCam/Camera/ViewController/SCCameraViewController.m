@@ -97,6 +97,17 @@
                       completion:NULL];
 }
 
+- (void)cameraViewTapAction:(UITapGestureRecognizer *)tap {
+    if (self.filterBarView.showing) {
+        [self tapAction:nil];
+        return;
+    }
+    
+    CGPoint location = [tap locationInView:self.cameraView];
+    [[SCCameraManager shareManager] setFocusPoint:location];
+    [self showFocusViewAtLocation:location];
+}
+
 #pragma mark - SCCapturingButtonDelegate
 
 - (void)capturingButtonDidClicked:(SCCapturingButton *)button {

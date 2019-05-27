@@ -27,6 +27,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self setupNextButton];
     [self setupCameraTopView];
     [self setupModeSwitchView];
+    [self setupCameraFocusView];
 }
 
 - (void)setupCameraView {
@@ -36,6 +37,8 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         make.left.top.right.equalTo(self.view);
         make.height.mas_equalTo(self.view.mas_height);
     }];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cameraViewTapAction:)];
+    [self.cameraView addGestureRecognizer:tap];
 }
 
 - (void)setupCapturingButton {
@@ -136,6 +139,20 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     }];
 }
 
+- (void)setupCameraFocusView {
+    self.cameraFocusView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    self.cameraFocusView.alpha = 0;
+    [self.cameraView addSubview:self.cameraFocusView];
+    
+    CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+    layer.frame = self.cameraFocusView.bounds;
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:self.cameraFocusView.bounds];
+    layer.strokeColor = [UIColor whiteColor].CGColor;
+    layer.fillColor = [UIColor clearColor].CGColor;
+    layer.path = path.CGPath;
+    [self.cameraFocusView.layer addSublayer:layer];
+}
+
 #pragma mark - Update
 
 - (void)setFilterBarViewHidden:(BOOL)hidden
@@ -206,6 +223,19 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         default:
             break;
     }
+}
+
+- (void)showFocusViewAtLocation:(CGPoint)location {
+    self.cameraFocusView.center = location;
+    self.cameraFocusView.transform = CGAffineTransformMakeScale(1.6, 1.6);
+    [self.cameraFocusView setHidden:NO animated:YES completion:NULL];
+    [UIView animateWithDuration:0.15 animations:^{
+        self.cameraFocusView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        [UIView animateKeyframesWithDuration:0.2 delay:0.8 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
+            self.cameraFocusView.alpha = 0;
+        } completion:NULL];
+    }];
 }
 
 @end

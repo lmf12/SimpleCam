@@ -41,6 +41,7 @@
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
 @property (nonatomic, strong) SCCapturingModeSwitchView *modeSwitchView;
+@property (nonatomic, strong) UIView *cameraFocusView;  // 聚焦框
 
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
 @property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;
@@ -61,6 +62,9 @@
 
 /// 刷新闪光灯按钮
 - (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode;
+
+/// 显示聚焦框
+- (void)showFocusViewAtLocation:(CGPoint)location;
 
 #pragma mark - Action
 
