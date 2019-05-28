@@ -57,6 +57,7 @@
 
 - (void)setupData {
     self.videos = [[NSMutableArray alloc] init];
+    self.currentVideoScale = 1.0f;
 }
 
 - (void)forwardToPhotoResultWith:(UIImage *)image {
@@ -108,6 +109,17 @@
     [self showFocusViewAtLocation:location];
 }
 
+- (void)cameraViewPinchAction:(UIPinchGestureRecognizer *)pinch {
+    SCCameraManager *manager = [SCCameraManager shareManager];
+    CGFloat scale = pinch.scale * self.currentVideoScale;
+    scale = [manager availableVideoScaleWithScale:scale];
+    [manager setVideoScale:scale];
+    
+    if (pinch.state == UIGestureRecognizerStateEnded) {
+        self.currentVideoScale = scale;
+    }
+}
+
 #pragma mark - SCCapturingButtonDelegate
 
 - (void)capturingButtonDidClicked:(SCCapturingButton *)button {
@@ -154,6 +166,7 @@
 - (void)cameraTopViewDidClickRotateButton:(SCCameraTopView *)cameraTopView {
     dispatch_async(dispatch_get_main_queue(), ^{
         [[SCCameraManager shareManager] rotateCamera];
+        self.currentVideoScale = 1.0f;  // 切换摄像头，重置缩放比例
     });
 }
 

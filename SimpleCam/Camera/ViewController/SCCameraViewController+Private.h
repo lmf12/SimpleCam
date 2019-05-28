@@ -46,6 +46,8 @@
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
 @property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;
 
+@property (nonatomic, assign) CGFloat currentVideoScale;  // 当前预览屏的缩放倍数，默认1
+
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
 
 #pragma mark - UI

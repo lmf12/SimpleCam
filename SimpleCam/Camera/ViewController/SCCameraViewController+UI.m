@@ -39,6 +39,9 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     }];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cameraViewTapAction:)];
     [self.cameraView addGestureRecognizer:tap];
+    
+    UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(cameraViewPinchAction:)];
+    [self.cameraView addGestureRecognizer:pinch];
 }
 
 - (void)setupCapturingButton {

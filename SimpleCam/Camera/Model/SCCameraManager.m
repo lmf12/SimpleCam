@@ -10,6 +10,9 @@
 
 #import "SCCameraManager.h"
 
+static CGFloat const kMaxVideoScale = 6.0f;
+static CGFloat const kMinVideoScale = 1.0f;
+
 static SCCameraManager *_cameraManager;
 
 @interface SCCameraManager ()
@@ -35,7 +38,7 @@ static SCCameraManager *_cameraManager;
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setupFilterHandler];
+        [self commonInit];
     }
     return self;
 }
@@ -111,7 +114,27 @@ static SCCameraManager *_cameraManager;
     [self syncFlashState];
 }
 
+- (CGFloat)availableVideoScaleWithScale:(CGFloat)scale {
+    AVCaptureDevice *device = self.camera.inputCamera;
+    
+    CGFloat maxScale = kMaxVideoScale;
+    CGFloat minScale = kMinVideoScale;
+    if (@available(iOS 11.0, *)) {
+        maxScale = device.maxAvailableVideoZoomFactor;
+    }
+    
+    scale = MAX(scale, minScale);
+    scale = MIN(scale, maxScale);
+    
+    return scale;
+}
+
 #pragma mark - Custom Accessor
+
+- (void)commonInit {
+    [self setupFilterHandler];
+    _videoScale = 1;
+}
 
 - (void)setFlashMode:(SCCameraFlashMode)flashMode {
     _flashMode = flashMode;
@@ -143,6 +166,17 @@ static SCCameraManager *_cameraManager;
         [device setExposureMode:AVCaptureExposureModeAutoExpose];
     }
  
+    [device unlockForConfiguration];
+}
+
+- (void)setVideoScale:(CGFloat)videoScale {
+    _videoScale = videoScale;
+    
+    videoScale = [self availableVideoScaleWithScale:videoScale];
+    
+    AVCaptureDevice *device = self.camera.inputCamera;
+    [device lockForConfiguration:nil];
+    device.videoZoomFactor = videoScale;
     [device unlockForConfiguration];
 }
 

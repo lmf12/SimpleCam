@@ -41,6 +41,9 @@ typedef NS_ENUM(NSUInteger, SCCameraFlashMode) {
 /// 对焦点
 @property (nonatomic, assign) CGPoint focusPoint;
 
+/// 通过调整焦距来实现视图放大缩小效果，最小是1
+@property (nonatomic, assign) CGFloat videoScale;
+
 /**
  获取实例
  */
@@ -87,5 +90,10 @@ typedef NS_ENUM(NSUInteger, SCCameraFlashMode) {
  刷新闪光灯
  */
 - (void)updateFlash;
+
+/**
+ 将缩放倍数转化到可用的范围
+ */
+- (CGFloat)availableVideoScaleWithScale:(CGFloat)scale;
 
 @end
