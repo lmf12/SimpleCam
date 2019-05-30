@@ -51,6 +51,7 @@
     self.backButton = [[UIButton alloc] init];
     [self.backButton setImage:[UIImage imageNamed:@"btn_back"]
                      forState:UIControlStateNormal];
+    [self.backButton setDefaultShadow];
     [self.backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     

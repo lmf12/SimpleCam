@@ -63,6 +63,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     self.filterButton = [[UIButton alloc] init];
     [self.filterButton setImage:[UIImage imageNamed:@"btn_filter"]
                        forState:UIControlStateNormal];
+    [self.filterButton setDefaultShadow];
     [self.filterButton addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.filterButton];
     
@@ -83,6 +84,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupNextButton {
     self.nextButton = [[UIButton alloc] init];
+    [self.nextButton setDefaultShadow];
     self.nextButton.alpha = 0;
     [self.nextButton setImage:[UIImage imageNamed:@"btn_next"]
                      forState:UIControlStateNormal];
@@ -118,6 +120,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupCameraTopView {
     self.cameraTopView = [[SCCameraTopView alloc] init];
+    [self.cameraTopView setDefaultShadow];
     self.cameraTopView.delegate = self;
     [self.view addSubview:self.cameraTopView];
     [self.cameraTopView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,6 +136,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupModeSwitchView {
     self.modeSwitchView = [[SCCapturingModeSwitchView alloc] init];
+    [self.modeSwitchView setDefaultShadow];
     self.modeSwitchView.delegate = self;
     [self.view addSubview:self.modeSwitchView];
     [self.modeSwitchView mas_makeConstraints:^(MASConstraintMaker *make) {

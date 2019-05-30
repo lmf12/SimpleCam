@@ -6,8 +6,6 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import "UIView+Extention.h"
-
 #import "SCCapturingButton.h"
 
 @interface SCCapturingButton ()

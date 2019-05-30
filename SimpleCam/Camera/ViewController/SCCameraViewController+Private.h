@@ -19,8 +19,6 @@
 #import "SCVideoModel.h"
 #import "GPUImageBeautifyFilter.h"
 
-#import "UIView+Extention.h"
-
 #import "SCVideoResultViewController.h"
 #import "SCPhotoResultViewController.h"
 

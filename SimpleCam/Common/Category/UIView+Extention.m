@@ -37,4 +37,18 @@
     }];
 }
 
+- (void)setShadowWithColor:(UIColor *)color alpah:(CGFloat)alpha radius:(CGFloat)radius offset:(CGSize)offset {
+    self.layer.shadowColor = color.CGColor;
+    self.layer.shadowOpacity = alpha;
+    self.layer.shadowRadius = radius;
+    self.layer.shadowOffset = offset;
+}
+
+- (void)setDefaultShadow {
+    [self setShadowWithColor:RGBA(74, 74, 74, 1)
+                       alpah:0.4
+                      radius:2.0
+                      offset:CGSizeMake(0, 0)];
+}
+
 @end
