@@ -25,8 +25,23 @@
 - (void)setupContentImageView {
     self.contentImageView = [[UIImageView alloc] init];
     [self.view addSubview:self.contentImageView];
+    
+    SCCameraRatio ratio = [SCCameraManager shareManager].ratio;
+    CGFloat cameraHeight = [self cameraViewHeightWithRatio:ratio];
+    BOOL isIPhoneX = [UIDevice is_iPhoneX_Series];
     [self.contentImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        if (ratio == SCCameraRatioFull) {
+            make.top.mas_equalTo(self.view);
+        } else {
+            CGFloat topOffset = isIPhoneX || ratio == SCCameraRatio1v1 ? 60 : 0;
+            if (@available(iOS 11.0, *)) {
+                make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(topOffset);
+            } else {
+                make.top.mas_equalTo(self.view.mas_top).offset(topOffset);
+            }
+        }
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(cameraHeight);
     }];
 }
 
@@ -68,6 +83,30 @@
         make.centerY.equalTo(self.confirmButton);
         make.centerX.equalTo(layoutGuide);
     }];
+}
+
+#pragma mark - Private
+/// 通过比例，获取相机预览界面的高度
+- (CGFloat)cameraViewHeightWithRatio:(SCCameraRatio)ratio {
+    CGFloat videoWidth = SCREEN_WIDTH;
+    CGFloat height = 0;
+    switch (ratio) {
+        case SCCameraRatio1v1:
+            height = videoWidth;
+            break;
+        case SCCameraRatio4v3:
+            height = videoWidth / 3.0 * 4.0;
+            break;
+        case SCCameraRatio16v9:
+            height = videoWidth / 9.0 * 16.0;
+            break;
+        case SCCameraRatioFull:
+            height = SCREEN_HEIGHT;
+            break;
+        default:
+            break;
+    }
+    return height;
 }
 
 @end

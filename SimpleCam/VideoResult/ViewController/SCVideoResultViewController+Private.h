@@ -12,6 +12,7 @@
 
 #import "SCAssetHelper.h"
 #import "SCFileHelper.h"
+#import "SCCameraManager.h"
 
 #import "SCVideoResultViewController.h"
 

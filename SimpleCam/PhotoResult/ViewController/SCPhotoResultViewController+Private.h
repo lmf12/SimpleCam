@@ -8,6 +8,7 @@
 
 #import <GPUImage.h>
 
+#import "SCCameraManager.h"
 #import "SCPhotoResultViewController.h"
 
 @interface SCPhotoResultViewController ()
