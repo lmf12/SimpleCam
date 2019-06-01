@@ -21,13 +21,16 @@
 /// 滤镜链最后一个滤镜
 - (GPUImageFilter *)lastFilter;
 
+/// 设置裁剪比例，用于设置特殊的相机比例
+- (void)setCropRect:(CGRect)rect;
+
 /// 往末尾添加一个滤镜
 - (void)addFilter:(GPUImageFilter *)filter;
 
 /// 设置美颜滤镜
 - (void)setBeautifyFilter:(GPUImageFilter *)filter;
 
-/// 设置自带滤镜
-- (void)setDefaultFilter:(GPUImageFilter *)filter;
+/// 设置效果滤镜
+- (void)setEffectFilter:(GPUImageFilter *)filter;
 
 @end

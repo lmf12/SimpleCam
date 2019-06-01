@@ -12,3 +12,4 @@
 #import "Common.h"
 
 #import "UIView+Extention.h"
+#import "UIDevice+Extention.h"

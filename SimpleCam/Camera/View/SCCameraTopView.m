@@ -11,7 +11,8 @@
 @interface SCCameraTopView ()
 
 @property (nonatomic, strong, readwrite) UIButton *rotateButton;
-@property (nonatomic, strong, readwrite) UIButton *flashButton; 
+@property (nonatomic, strong, readwrite) UIButton *flashButton;
+@property (nonatomic, strong, readwrite) UIButton *ratioButton;
 
 @property (nonatomic, assign) BOOL isRotating;  // 正在旋转中
 
@@ -32,6 +33,7 @@
 - (void)commonInit {
     [self setupRotateButton];
     [self setupFlashButton];
+    [self setupRatioButton];
 }
 
 - (void)setupRotateButton {
@@ -64,6 +66,21 @@
                       forState:UIControlStateNormal];
 }
 
+- (void)setupRatioButton {
+    self.ratioButton = [[UIButton alloc] init];
+    [self addSubview:self.ratioButton];
+    [self.ratioButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.centerX.equalTo(self);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    [self.ratioButton addTarget:self
+                         action:@selector(ratioAction:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [self.ratioButton setImage:[UIImage imageNamed:@"btn_flash_off"]
+                      forState:UIControlStateNormal];
+}
+
 #pragma mark - Action
 
 - (void)rotateAction:(UIButton *)button {
@@ -87,6 +104,12 @@
 - (void)flashAction:(UIButton *)button {
     if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickFlashButton:)]) {
         [self.delegate cameraTopViewDidClickFlashButton:self];
+    }
+}
+
+- (void)ratioAction:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickRatioButton:)]) {
+        [self.delegate cameraTopViewDidClickRatioButton:self];
     }
 }
 

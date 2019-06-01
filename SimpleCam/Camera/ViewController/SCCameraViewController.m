@@ -140,7 +140,7 @@
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView materialDidScrollToIndex:(NSUInteger)index {
     SCFilterMaterialModel *model = self.defaultFilterMaterials[index];
-    [[SCCameraManager shareManager].currentFilterHandler setDefaultFilter:[[SCFilterManager shareManager] filterWithFilterID:model.filterID]];
+    [[SCCameraManager shareManager].currentFilterHandler setEffectFilter:[[SCFilterManager shareManager] filterWithFilterID:model.filterID]];
 }
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView beautifySwitchIsOn:(BOOL)isOn {
@@ -175,6 +175,14 @@
     mode = (mode + 1) % 4;
     [SCCameraManager shareManager].flashMode = mode;
     [self updateFlashButtonWithFlashMode:mode];
+}
+
+- (void)cameraTopViewDidClickRatioButton:(SCCameraTopView *)cameraTopView {
+    SCCameraManager *manager =[SCCameraManager shareManager];
+    SCCameraRatio ratio = manager.ratio;
+    NSInteger ratioCount = [UIDevice is_iPhoneX_Series] ? 4 : 3;
+    SCCameraRatio nextRatio = (ratio + 1) % ratioCount;
+    manager.ratio = nextRatio;
 }
 
 #pragma mark - SCCapturingModeSwitchViewDelegate

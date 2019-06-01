@@ -23,6 +23,8 @@ static SCCameraManager *_cameraManager;
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
 @property (nonatomic, copy) NSString *currentTmpVideoPath;
 
+@property (nonatomic, assign) CGSize videoSize;
+
 @end
 
 @implementation SCCameraManager
@@ -133,7 +135,10 @@ static SCCameraManager *_cameraManager;
 
 - (void)commonInit {
     [self setupFilterHandler];
-    _videoScale = 1;
+    self.videoScale = 1;
+    self.flashMode = SCCameraFlashModeOff;
+    self.ratio = SCCameraRatio16v9;
+    self.videoSize = [self videoSizeWithRatio:self.ratio];
 }
 
 - (void)setFlashMode:(SCCameraFlashMode)flashMode {
@@ -180,6 +185,35 @@ static SCCameraManager *_cameraManager;
     [device unlockForConfiguration];
 }
 
+- (void)setRatio:(SCCameraRatio)ratio {
+    _ratio = ratio;
+    
+    CGRect rect = CGRectMake(0, 0, 1, 1);
+    if (ratio == SCCameraRatio1v1) {
+        self.camera.captureSessionPreset = AVCaptureSessionPreset640x480;
+        CGFloat space = (4 - 3) / 4.0; // 竖直方向应该裁剪掉的空间
+        rect = CGRectMake(0, space / 2, 1, 1 - space);
+    } else if (ratio == SCCameraRatio4v3) {
+        self.camera.captureSessionPreset = AVCaptureSessionPreset640x480;
+    } else if (ratio == SCCameraRatio16v9) {
+        self.camera.captureSessionPreset = AVCaptureSessionPreset1280x720;
+    } else if (ratio == SCCameraRatioFull) {
+        self.camera.captureSessionPreset = AVCaptureSessionPreset1280x720;
+        CGFloat currentRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
+        if (currentRatio > 16.0 / 9.0) { // 需要在水平方向裁剪
+            CGFloat resultWidth = 16.0 / currentRatio;
+            CGFloat space = (9.0 - resultWidth) / 9.0;
+            rect = CGRectMake(space / 2, 0, 1 - space, 1);
+        } else { // 需要在竖直方向裁剪
+            CGFloat resultHeight = 9.0 * currentRatio;
+            CGFloat space = (16.0 - resultHeight) / 16.0;
+            rect = CGRectMake(0, space / 2, 1, 1 - space);
+        }
+    }
+    [self.currentFilterHandler setCropRect:rect];
+    self.videoSize = [self videoSizeWithRatio:ratio];
+}
+
 #pragma mark - Private
 
 /**
@@ -200,9 +234,7 @@ static SCCameraManager *_cameraManager;
 - (void)setupMovieWriter {
     NSString *videoPath = [SCFileHelper randomFilePathInTmpWithSuffix:@".m4v"];
     NSURL *videoURL = [NSURL fileURLWithPath:videoPath];
-    CGFloat screenScale = [[UIScreen mainScreen] scale];
-    CGSize videoSize = CGSizeMake(self.outputView.frame.size.width * screenScale,
-                                  self.outputView.frame.size.height * screenScale);
+    CGSize videoSize = self.videoSize;
     
     self.movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:videoURL
                                                                 size:videoSize];
@@ -232,8 +264,9 @@ static SCCameraManager *_cameraManager;
  */
 - (void)setupFilterHandler {
     self.currentFilterHandler = [[SCFilterHandler alloc] init];
+    // 按顺序添加滤镜
     [self.currentFilterHandler setBeautifyFilter:nil];
-    [self.currentFilterHandler setDefaultFilter:nil];
+    [self.currentFilterHandler setEffectFilter:nil];
 }
 
 /**
@@ -270,6 +303,28 @@ static SCCameraManager *_cameraManager;
     }
     
     [device unlockForConfiguration];
+}
+
+- (CGSize)videoSizeWithRatio:(SCCameraRatio)ratio {
+    CGFloat videoWidth = SCREEN_WIDTH * SCREEN_SCALE;
+    CGFloat videoHeight = 0;
+    switch (ratio) {
+        case SCCameraRatio1v1:
+            videoHeight = videoWidth;
+            break;
+        case SCCameraRatio4v3:
+            videoHeight = videoWidth / 3.0 * 4.0;
+            break;
+        case SCCameraRatio16v9:
+            videoHeight = videoWidth / 9.0 * 16.0;
+            break;
+        case SCCameraRatioFull:
+            videoHeight = SCREEN_HEIGHT * SCREEN_SCALE;
+            break;
+        default:
+            break;
+    }
+    return CGSizeMake(videoWidth, videoHeight);
 }
 
 @end

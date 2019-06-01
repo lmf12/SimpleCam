@@ -12,8 +12,10 @@
 
 @property (nonatomic, strong) NSMutableArray<GPUImageFilter *> *filters;
 
+@property (nonatomic, strong) GPUImageCropFilter *currentCropFilter;
+
 @property (nonatomic, weak) GPUImageFilter *currentBeautifyFilter;
-@property (nonatomic, weak) GPUImageFilter *currentDefaultFilter;
+@property (nonatomic, weak) GPUImageFilter *currentEffectFilter;
 
 @end
 
@@ -22,7 +24,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.filters = [[NSMutableArray alloc] init];
+        [self commonInit];
     }
     return self;
 }
@@ -35,6 +37,10 @@
 
 - (GPUImageFilter *)lastFilter {
     return self.filters.lastObject;
+}
+
+- (void)setCropRect:(CGRect)rect {
+    self.currentCropFilter.cropRegion = rect;
 }
 
 - (void)addFilter:(GPUImageFilter *)filter {
@@ -66,23 +72,35 @@
     self.currentBeautifyFilter = filter;
 }
 
-- (void)setDefaultFilter:(GPUImageFilter *)filter {
+- (void)setEffectFilter:(GPUImageFilter *)filter {
     if (!filter) {
         filter = [[GPUImageFilter alloc] init];
     }
-    if (!self.currentDefaultFilter) {
+    if (!self.currentEffectFilter) {
         [self addFilter:filter];
     } else {
-        NSInteger index = [self.filters indexOfObject:self.currentDefaultFilter];
+        NSInteger index = [self.filters indexOfObject:self.currentEffectFilter];
         GPUImageOutput *source = index == 0 ? self.source : self.filters[index - 1];
-        for (id <GPUImageInput> input in self.currentDefaultFilter.targets) {
+        for (id <GPUImageInput> input in self.currentEffectFilter.targets) {
             [filter addTarget:input];
         }
-        [source removeTarget:self.currentDefaultFilter];
+        [source removeTarget:self.currentEffectFilter];
         [source addTarget:filter];
         self.filters[index] = filter;
     }
-    self.currentDefaultFilter = filter;
+    self.currentEffectFilter = filter;
+}
+
+#pragma mark - Private
+
+- (void)commonInit {
+    self.filters = [[NSMutableArray alloc] init];
+    [self addCropFilter];
+}
+
+- (void)addCropFilter {
+    self.currentCropFilter = [[GPUImageCropFilter alloc] init];
+    [self addFilter:self.currentCropFilter];
 }
 
 @end

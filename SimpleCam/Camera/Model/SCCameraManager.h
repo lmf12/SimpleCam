@@ -27,6 +27,21 @@ typedef NS_ENUM(NSUInteger, SCCameraFlashMode) {
     SCCameraFlashModeTorch
 };
 
+/**
+ 相机比例
+
+ - SCCameraRatio1v1:  1 : 1
+ - SCCameraRatio4v3: 4 : 3
+ - SCCameraRatio16v9: 16 : 9
+ - SCCameraRatioFull: 全屏 (iPhoneX 才有)
+ */
+typedef NS_ENUM(NSUInteger, SCCameraRatio) {
+    SCCameraRatio1v1,
+    SCCameraRatio4v3,
+    SCCameraRatio16v9,
+    SCCameraRatioFull
+};
+
 @interface SCCameraManager : NSObject
 
 /// 相机
@@ -35,8 +50,11 @@ typedef NS_ENUM(NSUInteger, SCCameraFlashMode) {
 /// 滤镜
 @property (nonatomic, strong, readonly) SCFilterHandler *currentFilterHandler;
 
-/// 闪光灯模式，后置摄像头才有效
+/// 闪光灯模式，后置摄像头才有效，默认 SCCameraFlashModeOff
 @property (nonatomic, assign) SCCameraFlashMode flashMode;
+
+/// 相机比例，默认 SCCameraRatio16v9
+@property (nonatomic, assign) SCCameraRatio ratio;
 
 /// 对焦点
 @property (nonatomic, assign) CGPoint focusPoint;
