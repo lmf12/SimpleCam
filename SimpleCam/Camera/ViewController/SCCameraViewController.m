@@ -178,11 +178,19 @@
 }
 
 - (void)cameraTopViewDidClickRatioButton:(SCCameraTopView *)cameraTopView {
+    if (self.isChangingRatio) {
+        return;
+    }
+    self.isChangingRatio = YES;
+    
     SCCameraManager *manager =[SCCameraManager shareManager];
     SCCameraRatio ratio = manager.ratio;
     NSInteger ratioCount = [UIDevice is_iPhoneX_Series] ? 4 : 3;
     SCCameraRatio nextRatio = (ratio + 1) % ratioCount;
-    manager.ratio = nextRatio;
+    
+    [self changeViewToRatio:nextRatio animated:YES completion:^{
+        manager.ratio = nextRatio;
+    }];
 }
 
 #pragma mark - SCCapturingModeSwitchViewDelegate

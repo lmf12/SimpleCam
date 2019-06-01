@@ -11,6 +11,7 @@
 #import "SCFilterBarView.h"
 #import "SCCameraTopView.h"
 #import "SCCapturingModeSwitchView.h"
+#import "SCVisualEffectView.h"
 
 #import "SCCameraManager.h"
 #import "SCFilterManager.h"
@@ -40,8 +41,11 @@
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
 @property (nonatomic, strong) SCCapturingModeSwitchView *modeSwitchView;
 @property (nonatomic, strong) UIView *cameraFocusView;  // 聚焦框
+@property (nonatomic, strong) SCVisualEffectView *ratioBlurView;  // 切换比例的时候的模糊蒙层
 
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
+@property (nonatomic, assign) BOOL isChangingRatio;  // 是否正在改变比例
+
 @property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;
 
 @property (nonatomic, assign) CGFloat currentVideoScale;  // 当前预览屏的缩放倍数，默认1
@@ -65,6 +69,11 @@
 
 /// 显示聚焦框
 - (void)showFocusViewAtLocation:(CGPoint)location;
+
+/// 修改控件的比例
+- (void)changeViewToRatio:(SCCameraRatio)ratio
+                 animated:(BOOL)animated
+               completion:(void (^)(void))completion;
 
 #pragma mark - Action
 

@@ -28,15 +28,13 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self setupCameraTopView];
     [self setupModeSwitchView];
     [self setupCameraFocusView];
+    [self setupRatioBlurView];
 }
 
 - (void)setupCameraView {
     self.cameraView = [[GPUImageView alloc] init];
     [self.view addSubview:self.cameraView];
-    [self.cameraView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.right.equalTo(self.view);
-        make.height.mas_equalTo(self.view.mas_height);
-    }];
+    [self refreshCameraViewWithRatio:[SCCameraManager shareManager].ratio];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cameraViewTapAction:)];
     [self.cameraView addGestureRecognizer:tap];
     
@@ -160,6 +158,16 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.cameraFocusView.layer addSublayer:layer];
 }
 
+- (void)setupRatioBlurView {
+    self.ratioBlurView = [[SCVisualEffectView alloc] init];
+    self.ratioBlurView.blurRadius = 50;
+    self.ratioBlurView.hidden = YES;
+    [self.view insertSubview:self.ratioBlurView aboveSubview:self.cameraView];
+    [self.ratioBlurView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.cameraView);
+    }];
+}
+
 #pragma mark - Update
 
 - (void)setFilterBarViewHidden:(BOOL)hidden
@@ -242,6 +250,90 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         [UIView animateKeyframesWithDuration:0.2 delay:0.8 options:UIViewKeyframeAnimationOptionCalculationModeLinear animations:^{
             self.cameraFocusView.alpha = 0;
         } completion:NULL];
+    }];
+}
+
+- (void)changeViewToRatio:(SCCameraRatio)ratio
+                 animated:(BOOL)animated
+               completion:(void (^)(void))completion {
+    SCCameraManager *manager = [SCCameraManager shareManager];
+    if (manager.ratio == ratio) {
+        if (completion) {
+            completion();
+            return;
+        }
+        return;
+    }
+    
+    void (^block)(void) = ^ {
+        [self refreshCameraViewWithRatio:ratio];
+    };
+    
+    if (!animated) {
+        block();
+        if (completion) {
+            completion();
+        }
+        return;
+    }
+    
+    self.ratioBlurView.hidden = NO;
+    [UIView animateWithDuration:0.2 animations:^{
+        block();
+        [self.view layoutIfNeeded];
+    } completion:^(BOOL finished) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.ratioBlurView.hidden = YES;
+            self.isChangingRatio = NO;
+        });
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
+
+#pragma mark - Private
+/// 通过比例，获取相机预览界面的高度
+- (CGFloat)cameraViewHeightWithRatio:(SCCameraRatio)ratio {
+    CGFloat videoWidth = SCREEN_WIDTH;
+    CGFloat height = 0;
+    switch (ratio) {
+        case SCCameraRatio1v1:
+            height = videoWidth;
+            break;
+        case SCCameraRatio4v3:
+            height = videoWidth / 3.0 * 4.0;
+            break;
+        case SCCameraRatio16v9:
+            height = videoWidth / 9.0 * 16.0;
+            break;
+        case SCCameraRatioFull:
+            height = SCREEN_HEIGHT;
+            break;
+        default:
+            break;
+    }
+    return height;
+}
+
+/// 通过比例，对相机预览控件重新布局
+- (void)refreshCameraViewWithRatio:(SCCameraRatio)ratio {
+    CGFloat cameraHeight = [self cameraViewHeightWithRatio:ratio];
+    BOOL isIPhoneX = [UIDevice is_iPhoneX_Series];
+    [self.cameraView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        if (ratio == SCCameraRatioFull) {
+            make.top.mas_equalTo(self.view);
+        } else {
+            CGFloat topOffset = isIPhoneX || ratio == SCCameraRatio1v1 ? 60 : 0;
+            if (@available(iOS 11.0, *)) {
+                make.top.mas_equalTo(self.view.mas_safeAreaLayoutGuideTop).offset(topOffset);
+            } else {
+                make.top.mas_equalTo(self.view.mas_top).offset(topOffset);
+            }
+        }
+        make.left.right.equalTo(self.view);
+        make.height.mas_equalTo(cameraHeight);
     }];
 }
 
