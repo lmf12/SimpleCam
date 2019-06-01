@@ -44,6 +44,10 @@ static NSString * const kSCFilterMaterialViewReuseIdentifier = @"SCFilterMateria
     [self selectIndex:[NSIndexPath indexPathForRow:index inSection:0]];
 }
 
+- (void)scrollToTop {
+    [self.collectionView setContentOffset:CGPointMake(0, 0)];
+}
+
 #pragma mark - Private
 
 - (void)commonInit {

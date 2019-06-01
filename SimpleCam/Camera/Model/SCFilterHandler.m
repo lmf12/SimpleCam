@@ -6,6 +6,8 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import "SCGPUImageBaseFilter.h"
+
 #import "SCFilterHandler.h"
 
 @interface SCFilterHandler ()
@@ -17,9 +19,15 @@
 @property (nonatomic, weak) GPUImageFilter *currentBeautifyFilter;
 @property (nonatomic, weak) GPUImageFilter *currentEffectFilter;
 
+@property (nonatomic, strong) CADisplayLink *displayLink;  // 用来刷新时间
+
 @end
 
 @implementation SCFilterHandler
+
+- (void)dealloc {
+    [self endDisplayLink];
+}
 
 - (instancetype)init {
     self = [super init];
@@ -89,6 +97,11 @@
         self.filters[index] = filter;
     }
     self.currentEffectFilter = filter;
+    
+    // 记录应用的时间
+    if ([filter isKindOfClass:[SCGPUImageBaseFilter class]]) {
+        ((SCGPUImageBaseFilter *)filter).beginTime = self.displayLink.timestamp;
+    }
 }
 
 #pragma mark - Private
@@ -96,11 +109,32 @@
 - (void)commonInit {
     self.filters = [[NSMutableArray alloc] init];
     [self addCropFilter];
+    [self setupDisplayLink];
 }
 
 - (void)addCropFilter {
     self.currentCropFilter = [[GPUImageCropFilter alloc] init];
     [self addFilter:self.currentCropFilter];
+}
+
+- (void)setupDisplayLink {
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self
+                                                   selector:@selector(displayAction)];
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+
+- (void)endDisplayLink {
+    [self.displayLink invalidate];
+    self.displayLink = nil;
+}
+
+#pragma mark - Action
+
+- (void)displayAction {
+    if ([self.currentEffectFilter isKindOfClass:[SCGPUImageBaseFilter class]]) {
+        SCGPUImageBaseFilter *filter = (SCGPUImageBaseFilter *)self.currentEffectFilter;
+        filter.time = self.displayLink.timestamp - filter.beginTime;
+    }
 }
 
 @end

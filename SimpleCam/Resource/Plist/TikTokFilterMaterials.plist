@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Default</key>
+	<array>
+		<dict>
+			<key>filter_id</key>
+			<string>scale</string>
+			<key>filter_name</key>
+			<string>缩放</string>
+			<key>filter_class</key>
+			<string>SCGPUImageScaleFilter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

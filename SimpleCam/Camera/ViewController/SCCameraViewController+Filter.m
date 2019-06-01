@@ -26,6 +26,15 @@
     [[SCCameraManager shareManager].currentFilterHandler setBeautifyFilter:nil];
 }
 
+- (NSArray<SCFilterMaterialModel *> *)filtersWithCategoryIndex:(NSInteger)index {
+    if (index == 0) {
+        return self.defaultFilterMaterials;
+    } else if (index == 1) {
+        return self.tikTokFilterMaterials;
+    }
+    return nil;
+}
+
 @end
 
 #pragma clang diagnostic pop

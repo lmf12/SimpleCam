@@ -45,8 +45,6 @@
     [self setupData];
     [self setupUI];
     [self setupTap];
-    
-    self.defaultFilterMaterials = [[SCFilterManager shareManager] defaultFilters];
 }
 
 - (void)setupTap {
@@ -71,6 +69,22 @@
     vc.videos = self.videos;
     [self.videos removeAllObjects];
     [self.navigationController pushViewController:vc animated:NO];
+}
+
+#pragma mark - Custom Accessor
+
+- (NSArray<SCFilterMaterialModel *> *)defaultFilterMaterials {
+    if (!_defaultFilterMaterials) {
+        _defaultFilterMaterials = [[SCFilterManager shareManager] defaultFilters];
+    }
+    return _defaultFilterMaterials;
+}
+
+- (NSArray<SCFilterMaterialModel *> *)tikTokFilterMaterials {
+    if (!_tikTokFilterMaterials) {
+        _tikTokFilterMaterials = [[SCFilterManager shareManager] tiktokFilters];
+    }
+    return _tikTokFilterMaterials;
 }
 
 #pragma mark - Action
@@ -138,8 +152,18 @@
 
 #pragma mark - SCFilterBarViewDelegate
 
+- (void)filterBarView:(SCFilterBarView *)filterBarView categoryDidScrollToIndex:(NSUInteger)index {
+    if (index == 0 && !self.filterBarView.defaultFilterMaterials) {
+        self.filterBarView.defaultFilterMaterials = self.defaultFilterMaterials;
+    } else if (index == 1 && !self.filterBarView.tikTokFilterMaterials) {
+        self.filterBarView.tikTokFilterMaterials = self.tikTokFilterMaterials;
+    }
+}
+
 - (void)filterBarView:(SCFilterBarView *)filterBarView materialDidScrollToIndex:(NSUInteger)index {
-    SCFilterMaterialModel *model = self.defaultFilterMaterials[index];
+    NSArray<SCFilterMaterialModel *> *models = [self filtersWithCategoryIndex:self.filterBarView.currentCategoryIndex];
+    
+    SCFilterMaterialModel *model = models[index];
     [[SCCameraManager shareManager].currentFilterHandler setEffectFilter:[[SCFilterManager shareManager] filterWithFilterID:model.filterID]];
 }
 

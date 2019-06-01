@@ -7,14 +7,16 @@
 //
 
 #import "SCFilterBarView.h"
+#import "SCFilterCategoryView.h"
 
 #import "SCFilterMaterialView.h"
 
 static CGFloat const kFilterMaterialViewHeight = 100.0f;
 
-@interface SCFilterBarView () <SCFilterMaterialViewDelegate>
+@interface SCFilterBarView () <SCFilterMaterialViewDelegate, SCFilterCategoryViewDelegate>
 
 @property (nonatomic, strong) SCFilterMaterialView *filterMaterialView;
+@property (nonatomic, strong) SCFilterCategoryView *filterCategoryView;
 @property (nonatomic, strong) UISwitch *beautifySwitch;
 
 @end
@@ -42,8 +44,26 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 - (void)commonInit {
     self.backgroundColor = RGBA(0, 0, 0, 0.5);
     
+    [self setupFilterCategoryView];
     [self setupFilterMaterialView];
     [self setupBeautifySwitch];
+}
+
+- (void)setupFilterCategoryView {
+    self.filterCategoryView = [[SCFilterCategoryView alloc] init];
+    self.filterCategoryView.delegate = self;
+    self.filterCategoryView.itemNormalColor = [UIColor whiteColor];
+    self.filterCategoryView.itemSelectColor = ThemeColor;
+    self.filterCategoryView.itemList = @[@"内置", @"抖音"];
+    self.filterCategoryView.itemFont = [UIFont systemFontOfSize:14];
+    self.filterCategoryView.itemWidth = 65;
+    self.filterCategoryView.bottomLineWidth = 30;
+    [self addSubview:self.filterCategoryView];
+    [self.filterCategoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self);
+        make.top.equalTo(self);
+        make.height.mas_equalTo(35);
+    }];
 }
 
 - (void)setupFilterMaterialView {
@@ -59,7 +79,7 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 
 - (void)setupBeautifySwitch {
     self.beautifySwitch = [[UISwitch alloc] init];
-    self.beautifySwitch.onTintColor = RGBA(129, 171, 119, 1);
+    self.beautifySwitch.onTintColor = ThemeColor;
     self.beautifySwitch.transform = CGAffineTransformMakeScale(0.7, 0.7);
     [self.beautifySwitch addTarget:self
                             action:@selector(beautifySwitchValueChanged:)
@@ -81,6 +101,12 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
     }];
 }
 
+#pragma mark - Public
+
+- (NSInteger)currentCategoryIndex {
+    return self.filterCategoryView.currentIndex;
+}
+
 #pragma mark - Action
 
 - (void)beautifySwitchValueChanged:(id)sender {
@@ -94,7 +120,17 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 - (void)setDefaultFilterMaterials:(NSArray<SCFilterMaterialModel *> *)defaultFilterMaterials {
     _defaultFilterMaterials = [defaultFilterMaterials copy];
     
-    self.filterMaterialView.itemList = defaultFilterMaterials;
+    if (self.filterCategoryView.currentIndex == 0) {
+        self.filterMaterialView.itemList = defaultFilterMaterials;
+    }
+}
+
+- (void)setTikTokFilterMaterials:(NSArray<SCFilterMaterialModel *> *)tikTokFilterMaterials {
+    _tikTokFilterMaterials = [tikTokFilterMaterials copy];
+    
+    if (self.filterCategoryView.currentIndex == 1) {
+        self.filterMaterialView.itemList = tikTokFilterMaterials;
+    }
 }
 
 #pragma mark - SCFilterMaterialViewDelegate
@@ -102,6 +138,22 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 - (void)filterMaterialView:(SCFilterMaterialView *)filterMaterialView didScrollToIndex:(NSUInteger)index {
     if ([self.delegate respondsToSelector:@selector(filterBarView:materialDidScrollToIndex:)]) {
         [self.delegate filterBarView:self materialDidScrollToIndex:index];
+    }
+}
+
+#pragma mark - SCFilterCategoryViewDelegate
+
+- (void)filterCategoryView:(SCFilterCategoryView *)filterCategoryView didScrollToIndex:(NSUInteger)index {
+    NSInteger currentIndex = filterCategoryView.currentIndex;
+    if (currentIndex == 0) {
+        self.filterMaterialView.itemList = self.defaultFilterMaterials;
+    } else if (currentIndex == 1) {
+        self.filterMaterialView.itemList = self.tikTokFilterMaterials;
+    }
+    [self.filterMaterialView scrollToTop];
+    
+    if ([self.delegate respondsToSelector:@selector(filterBarView:categoryDidScrollToIndex:)]) {
+        [self.delegate filterBarView:self categoryDidScrollToIndex:index];
     }
 }
 

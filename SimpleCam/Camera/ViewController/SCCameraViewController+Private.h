@@ -51,6 +51,7 @@
 @property (nonatomic, assign) CGFloat currentVideoScale;  // 当前预览屏的缩放倍数，默认1
 
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
+@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *tikTokFilterMaterials;
 
 #pragma mark - UI
 
@@ -86,6 +87,9 @@
 
 /// 移除美颜滤镜
 - (void)removeBeautifyFilter;
+
+/// 根据分类索引，获取滤镜列表
+- (NSArray<SCFilterMaterialModel *> *)filtersWithCategoryIndex:(NSInteger)index;
 
 #pragma mark - TakePhoto
 

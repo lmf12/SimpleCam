@@ -16,6 +16,8 @@
 
 /// GPUImage 自带滤镜列表
 @property (nonatomic, strong, readonly) NSArray<SCFilterMaterialModel *> *defaultFilters;
+/// 抖音滤镜列表
+@property (nonatomic, strong, readonly) NSArray<SCFilterMaterialModel *> *tiktokFilters;
 
 /**
  获取实例
