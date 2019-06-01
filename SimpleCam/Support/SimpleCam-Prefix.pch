@@ -10,6 +10,7 @@
 
 #import "EXTScope.h"
 #import "Common.h"
+#import "Toast.h"
 
 #import "UIView+Extention.h"
 #import "UIDevice+Extention.h"

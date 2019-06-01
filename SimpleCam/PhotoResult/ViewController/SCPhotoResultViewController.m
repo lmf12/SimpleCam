@@ -60,6 +60,7 @@
         if (success) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self backToCamera];
+                [self.view.window makeToast:@"保存成功"];
             });
         }
     }];

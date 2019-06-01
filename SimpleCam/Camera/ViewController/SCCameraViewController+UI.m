@@ -21,6 +21,8 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 #pragma mark - Setup
 
 - (void)setupUI {
+    [self setupToast];
+    
     [self setupCameraView];
     [self setupCapturingButton];
     [self setupFilterButton];
@@ -166,6 +168,11 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.ratioBlurView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.cameraView);
     }];
+}
+
+- (void)setupToast {
+    [CSToastManager setDefaultPosition:CSToastPositionCenter];
+    [CSToastManager setDefaultDuration:1];
 }
 
 #pragma mark - Update

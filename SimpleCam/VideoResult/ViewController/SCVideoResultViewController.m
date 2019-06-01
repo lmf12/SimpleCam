@@ -105,12 +105,15 @@
 #pragma mark - Action
 
 - (void)confirmAction:(id)sender {
+    [self.view makeToastActivity:CSToastPositionCenter];
     void (^saveBlock)(NSString *) = ^ (NSString *path) {
         @weakify(self);
         [self saveVideo:path completion:^(BOOL success) {
             @strongify(self);
             if (success) {
                 [self backToCamera];
+                [self.view hideToastActivity];
+                [self.view.window makeToast:@"保存成功"];
             }
         }];
     };
