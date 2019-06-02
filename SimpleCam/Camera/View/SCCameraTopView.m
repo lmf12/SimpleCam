@@ -77,7 +77,7 @@
     [self.ratioButton addTarget:self
                          action:@selector(ratioAction:)
                forControlEvents:UIControlEventTouchUpInside];
-    [self.ratioButton setImage:[UIImage imageNamed:@"btn_flash_off"]
+    [self.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_9v16"]
                       forState:UIControlStateNormal];
 }
 

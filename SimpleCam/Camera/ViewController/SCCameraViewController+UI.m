@@ -254,6 +254,29 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     }
 }
 
+- (void)updateRatioButtonWithRatio:(SCCameraRatio)ratio {
+    switch (ratio) {
+        case SCCameraRatio1v1:
+            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_1v1"]
+                                            forState:UIControlStateNormal];
+            break;
+        case SCCameraRatio4v3:
+            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_3v4"]
+                                            forState:UIControlStateNormal];
+            break;
+        case SCCameraRatio16v9:
+            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_9v16"]
+                                            forState:UIControlStateNormal];
+            break;
+        case SCCameraRatioFull:
+            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_full"]
+                                            forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
+}
+
 - (void)showFocusViewAtLocation:(CGPoint)location {
     self.cameraFocusView.center = location;
     self.cameraFocusView.transform = CGAffineTransformMakeScale(1.6, 1.6);

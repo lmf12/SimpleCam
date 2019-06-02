@@ -218,6 +218,8 @@
     [self changeViewToRatio:nextRatio animated:YES completion:^{
         manager.ratio = nextRatio;
     }];
+    
+    [self updateRatioButtonWithRatio:nextRatio];
 }
 
 #pragma mark - SCCapturingModeSwitchViewDelegate

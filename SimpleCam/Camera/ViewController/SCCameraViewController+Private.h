@@ -71,6 +71,9 @@
 /// 刷新闪光灯按钮
 - (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode;
 
+/// 刷新比例按钮
+- (void)updateRatioButtonWithRatio:(SCCameraRatio)ratio;
+
 /// 显示聚焦框
 - (void)showFocusViewAtLocation:(CGPoint)location;
 
