@@ -38,4 +38,7 @@
 
 - (void)setupUI;
 
+/// 刷新黑暗模式或正常模式
+- (void)updateDarkOrNormalMode;
+
 @end

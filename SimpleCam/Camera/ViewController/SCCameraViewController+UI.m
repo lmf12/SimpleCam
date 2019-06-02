@@ -61,9 +61,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupFilterButton {
     self.filterButton = [[UIButton alloc] init];
-    [self.filterButton setImage:[UIImage imageNamed:@"btn_filter"]
-                       forState:UIControlStateNormal];
-    [self.filterButton setDefaultShadow];
+    [self.filterButton setEnableDarkWithImageName:@"btn_filter"];
     [self.filterButton addTarget:self action:@selector(filterAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.filterButton];
     
@@ -84,10 +82,8 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupNextButton {
     self.nextButton = [[UIButton alloc] init];
-    [self.nextButton setDefaultShadow];
     self.nextButton.alpha = 0;
-    [self.nextButton setImage:[UIImage imageNamed:@"btn_next"]
-                     forState:UIControlStateNormal];
+    [self.nextButton setEnableDarkWithImageName:@"btn_next"];
     [self.nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.nextButton];
     
@@ -120,7 +116,6 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupCameraTopView {
     self.cameraTopView = [[SCCameraTopView alloc] init];
-    [self.cameraTopView setDefaultShadow];
     self.cameraTopView.delegate = self;
     [self.view addSubview:self.cameraTopView];
     [self.cameraTopView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -136,7 +131,6 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 - (void)setupModeSwitchView {
     self.modeSwitchView = [[SCCapturingModeSwitchView alloc] init];
-    [self.modeSwitchView setDefaultShadow];
     self.modeSwitchView.delegate = self;
     [self.view addSubview:self.modeSwitchView];
     [self.modeSwitchView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -234,20 +228,16 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 - (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode {
     switch (mode) {
         case SCCameraFlashModeOff:
-            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_off"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.flashButton setEnableDarkWithImageName:@"btn_flash_off"];
             break;
         case SCCameraFlashModeOn:
-            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_on"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.flashButton setEnableDarkWithImageName:@"btn_flash_on"];
             break;
         case SCCameraFlashModeAuto:
-            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_auto"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.flashButton setEnableDarkWithImageName:@"btn_flash_auto"];
             break;
         case SCCameraFlashModeTorch:
-            [self.cameraTopView.flashButton setImage:[UIImage imageNamed:@"btn_flash_torch"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.flashButton setEnableDarkWithImageName:@"btn_flash_torch"];
             break;
         default:
             break;
@@ -257,24 +247,34 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 - (void)updateRatioButtonWithRatio:(SCCameraRatio)ratio {
     switch (ratio) {
         case SCCameraRatio1v1:
-            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_1v1"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.ratioButton setEnableDarkWithImageName:@"btn_ratio_1v1"];
             break;
         case SCCameraRatio4v3:
-            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_3v4"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.ratioButton setEnableDarkWithImageName:@"btn_ratio_3v4"];
             break;
         case SCCameraRatio16v9:
-            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_9v16"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.ratioButton setEnableDarkWithImageName:@"btn_ratio_9v16"];
             break;
         case SCCameraRatioFull:
-            [self.cameraTopView.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_full"]
-                                            forState:UIControlStateNormal];
+            [self.cameraTopView.ratioButton setEnableDarkWithImageName:@"btn_ratio_full"];
             break;
         default:
             break;
     }
+}
+
+- (void)updateDarkOrNormalModeWithRatio:(SCCameraRatio)ratio {
+    BOOL isIphoneX = [UIDevice is_iPhoneX_Series];
+    BOOL isTopBarDark = ratio == SCCameraRatio1v1 ||
+                        (isIphoneX && ratio != SCCameraRatioFull);
+    [self.cameraTopView.flashButton setIsDarkMode:isTopBarDark];
+    [self.cameraTopView.ratioButton setIsDarkMode:isTopBarDark];
+    [self.cameraTopView.rotateButton setIsDarkMode:isTopBarDark];
+    
+    BOOL isBottomBarDark = ratio == SCCameraRatio1v1 || ratio == SCCameraRatio4v3;
+    [self.filterButton setIsDarkMode:isBottomBarDark];
+    [self.nextButton setIsDarkMode:isBottomBarDark];
+    [self.modeSwitchView setIsDarkMode:isBottomBarDark];
 }
 
 - (void)showFocusViewAtLocation:(CGPoint)location {

@@ -74,6 +74,9 @@
 /// 刷新比例按钮
 - (void)updateRatioButtonWithRatio:(SCCameraRatio)ratio;
 
+/// 刷新黑暗模式或正常模式
+- (void)updateDarkOrNormalModeWithRatio:(SCCameraRatio)ratio;
+
 /// 显示聚焦框
 - (void)showFocusViewAtLocation:(CGPoint)location;
 

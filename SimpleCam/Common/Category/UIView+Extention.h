@@ -25,4 +25,9 @@
  */
 - (void)setDefaultShadow;
 
+/**
+ 清除阴影
+ */
+- (void)clearShadow;
+
 @end

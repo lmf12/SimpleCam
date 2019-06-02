@@ -6,8 +6,6 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import "SCCameraManager.h"
-
 #import "SCCameraViewController+Private.h"
 #import "SCCameraViewController+RecordVideo.h"
 

@@ -17,6 +17,7 @@
 		E87C10B52290009A00653DDA /* SCCapturingModeSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10B42290009A00653DDA /* SCCapturingModeSwitchView.m */; };
 		E89949ED22A25C8C00FC85C0 /* UIDevice+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */; };
 		E89949F122A27E5700FC85C0 /* SCVisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F022A27E5700FC85C0 /* SCVisualEffectView.m */; };
+		E8B95C1F22A402FB00F51025 /* UIButton+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B95C1E22A402FB00F51025 /* UIButton+Extention.m */; };
 		E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */; };
 		E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EF0225877A600ECFB98 /* SCViewController.m */; };
 		E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EF4225879A200ECFB98 /* SCCameraManager.m */; };
@@ -80,6 +81,8 @@
 		E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Extention.m"; sourceTree = "<group>"; };
 		E89949EF22A27E5700FC85C0 /* SCVisualEffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVisualEffectView.h; sourceTree = "<group>"; };
 		E89949F022A27E5700FC85C0 /* SCVisualEffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCVisualEffectView.m; sourceTree = "<group>"; };
+		E8B95C1D22A402FB00F51025 /* UIButton+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extention.h"; sourceTree = "<group>"; };
+		E8B95C1E22A402FB00F51025 /* UIButton+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extention.m"; sourceTree = "<group>"; };
 		E8D18EE722586CEC00ECFB98 /* SCCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraViewController.h; sourceTree = "<group>"; };
 		E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraViewController.m; sourceTree = "<group>"; };
 		E8D18EEF225877A600ECFB98 /* SCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCViewController.h; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 				E8D80C2922901A6100CDB060 /* UIView+Extention.m */,
 				E89949EB22A25C8C00FC85C0 /* UIDevice+Extention.h */,
 				E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */,
+				E8B95C1D22A402FB00F51025 /* UIButton+Extention.h */,
+				E8B95C1E22A402FB00F51025 /* UIButton+Extention.m */,
 				E8D80C3122992E7000CDB060 /* GPUImageMovieWriter+BugFix.h */,
 				E8D80C3222992E7000CDB060 /* GPUImageMovieWriter+BugFix.m */,
 			);
@@ -630,6 +635,7 @@
 				E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */,
 				E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */,
 				E87C10AC228FCC6300653DDA /* SCFileHelper.m in Sources */,
+				E8B95C1F22A402FB00F51025 /* UIButton+Extention.m in Sources */,
 				E8E578F02261D2FB0093BB7B /* SCFilterHelper.m in Sources */,
 				E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */,
 				E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */,

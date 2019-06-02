@@ -23,6 +23,8 @@
     SCCameraManager *cameraManager = [SCCameraManager shareManager];
     [cameraManager addOutputView:self.cameraView];
     [cameraManager startCapturing];
+    
+     [self updateDarkOrNormalModeWithRatio:cameraManager.ratio];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -220,6 +222,7 @@
     }];
     
     [self updateRatioButtonWithRatio:nextRatio];
+    [self updateDarkOrNormalModeWithRatio:nextRatio];
 }
 
 #pragma mark - SCCapturingModeSwitchViewDelegate

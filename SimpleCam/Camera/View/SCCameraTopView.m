@@ -47,8 +47,7 @@
     [self.rotateButton addTarget:self
                           action:@selector(rotateAction:)
                 forControlEvents:UIControlEventTouchUpInside];
-    [self.rotateButton setImage:[UIImage imageNamed:@"btn_rotato"]
-                       forState:UIControlStateNormal];
+    [self.rotateButton setEnableDarkWithImageName:@"btn_rotato"];
 }
 
 - (void)setupFlashButton {
@@ -62,8 +61,7 @@
     [self.flashButton addTarget:self
                          action:@selector(flashAction:)
                 forControlEvents:UIControlEventTouchUpInside];
-    [self.flashButton setImage:[UIImage imageNamed:@"btn_flash_off"]
-                      forState:UIControlStateNormal];
+    [self.flashButton setEnableDarkWithImageName:@"btn_flash_off"];
 }
 
 - (void)setupRatioButton {
@@ -77,8 +75,7 @@
     [self.ratioButton addTarget:self
                          action:@selector(ratioAction:)
                forControlEvents:UIControlEventTouchUpInside];
-    [self.ratioButton setImage:[UIImage imageNamed:@"btn_ratio_9v16"]
-                      forState:UIControlStateNormal];
+    [self.ratioButton setEnableDarkWithImageName:@"btn_ratio_9v16"];
 }
 
 #pragma mark - Action

@@ -20,6 +20,8 @@
     [self setupContentImageView];
     [self setupConfirmButton];
     [self setupBackButton];
+    
+    [self updateDarkOrNormalMode];
 }
 
 - (void)setupContentImageView {
@@ -64,9 +66,7 @@
 
 - (void)setupBackButton {
     self.backButton = [[UIButton alloc] init];
-    [self.backButton setImage:[UIImage imageNamed:@"btn_back"]
-                     forState:UIControlStateNormal];
-    [self.backButton setDefaultShadow];
+    [self.backButton setEnableDarkWithImageName:@"btn_back"];
     [self.backButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.backButton];
     
@@ -83,6 +83,13 @@
         make.centerY.equalTo(self.confirmButton);
         make.centerX.equalTo(layoutGuide);
     }];
+}
+
+- (void)updateDarkOrNormalMode {
+    SCCameraRatio ratio = [SCCameraManager shareManager].ratio;
+    BOOL isBottomBarDark = ratio == SCCameraRatio1v1 || ratio == SCCameraRatio4v3;
+
+    [self.backButton setIsDarkMode:isBottomBarDark];
 }
 
 #pragma mark - Private

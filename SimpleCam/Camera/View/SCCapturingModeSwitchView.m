@@ -27,11 +27,20 @@
     return self;
 }
 
+#pragma maek - Custom Accessor
+
+- (void)setIsDarkMode:(BOOL)isDarkMode {
+    _isDarkMode = isDarkMode;
+    
+    [self updateDarkMode];
+}
+
 #pragma mark - Private
 
 - (void)commonInit {
     [self setupImageLabel];
     [self setupVideoLabel];
+    [self updateDarkMode];
 }
 
 - (void)setupImageLabel {
@@ -82,12 +91,32 @@
         selectedLabel = self.videoLabel;
         normalLabel = self.imageLabel;
     }
-    selectedLabel.textColor =  [UIColor whiteColor];
     selectedLabel.font = [UIFont boldSystemFontOfSize:12];
-    normalLabel.textColor = RGBA(255, 255, 255, 0.6);
     normalLabel.font = [UIFont systemFontOfSize:12];
     
-    [self. delegate capturingModeSwitchView:self didChangeToType:self.type];
+    [self updateDarkMode];
+    
+    [self.delegate capturingModeSwitchView:self didChangeToType:self.type];
+}
+
+- (void)updateDarkMode {
+    UILabel *selectedLabel = nil;
+    UILabel *normalLabel = nil;
+    if (self.type == SCCapturingModeSwitchTypeImage) {
+        selectedLabel = self.imageLabel;
+        normalLabel = self.videoLabel;
+    } else {
+        selectedLabel = self.videoLabel;
+        normalLabel = self.imageLabel;
+    }
+    selectedLabel.textColor = self.isDarkMode ? [UIColor blackColor] : [UIColor whiteColor];
+    normalLabel.textColor = self.isDarkMode ? RGBA(0, 0, 0, 0.6) : RGBA(255, 255, 255, 0.6);
+    
+    if (self.isDarkMode) {
+        [self clearShadow];
+    } else {
+        [self setDefaultShadow];
+    }
 }
 
 #pragma mark - Action

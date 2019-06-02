@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, SCCapturingModeSwitchType) {
 
 @property (nonatomic, assign, readonly) SCCapturingModeSwitchType type;
 
+@property (nonatomic, assign) BOOL isDarkMode;
+
 @property (nonatomic, weak) id <SCCapturingModeSwitchViewDelegate> delegate;
 
 @end

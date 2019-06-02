@@ -53,7 +53,7 @@
     self.recordStopView.userInteractionEnabled = NO;
     self.recordStopView.alpha = 0;
     self.recordStopView.layer.cornerRadius = 5;
-    self.recordStopView.backgroundColor = [UIColor whiteColor];
+    self.recordStopView.backgroundColor = ThemeColor;
     [self addSubview:self.recordStopView];
     [self.recordStopView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);

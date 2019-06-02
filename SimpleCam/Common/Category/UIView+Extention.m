@@ -51,4 +51,11 @@
                       offset:CGSizeMake(0, 0)];
 }
 
+- (void)clearShadow {
+    [self setShadowWithColor:[UIColor clearColor]
+                       alpah:0
+                      radius:0
+                      offset:CGSizeZero];
+}
+
 @end
