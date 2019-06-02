@@ -6,7 +6,7 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import <GPUImage.h>
+#import "SCGPUImageBaseFilter.h"
 
 #import "SCFilterHelper.h"
 #import "SCFilterManager.h"
@@ -77,15 +77,21 @@
     
     GPUImageFilter *filter = [[SCFilterManager shareManager] filterWithFilterID:filterMaterialModel.filterID];
     
+    if ([filter isKindOfClass:[SCGPUImageBaseFilter class]]) {
+        ((SCGPUImageBaseFilter *)filter).time = 0.2f;
+    }
+    
     [self.picture addTarget:filter];
     [filter addTarget:self.imageView];
     
-    // 放到下次runloop执行
-    dispatch_async(dispatch_get_main_queue(), ^{
+    // 还没被添加到界面上，放到下次runloop再执行渲染
+    if (!self.superview) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.picture processImage];
+        });
+    } else {
         [self.picture processImage];
-    });
-
-    
+    }
 }
 
 @end
