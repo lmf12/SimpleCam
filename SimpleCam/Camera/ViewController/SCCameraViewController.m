@@ -94,6 +94,8 @@
                         animated:YES
                       completion:NULL];
     
+    [self refreshUIWhenFilterBarShowOrHide];
+    
     // 第一次展开的时候，添加数据
     if (!self.filterBarView.defaultFilterMaterials) {
         self.filterBarView.defaultFilterMaterials = self.defaultFilterMaterials;
@@ -102,14 +104,15 @@
 
 - (void)nextAction:(id)sender {
     [self forwardToVideoResult];
-    [self refreshNextButton];
-    [self.modeSwitchView setHidden:NO animated:NO completion:NULL];
+    [self refreshUIWhenRecordVideo];
 }
 
 - (void)tapAction:(UITapGestureRecognizer *)gestureRecognizer {
     [self setFilterBarViewHidden:YES
                         animated:YES
                       completion:NULL];
+    
+    [self refreshUIWhenFilterBarShowOrHide];
 }
 
 - (void)cameraViewTapAction:(UITapGestureRecognizer *)tap {

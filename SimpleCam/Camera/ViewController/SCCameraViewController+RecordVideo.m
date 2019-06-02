@@ -22,10 +22,9 @@
     }
     self.isRecordingVideo = YES;
     
-    [self.modeSwitchView setHidden:YES animated:YES completion:NULL];
     [[SCCameraManager shareManager] recordVideo];
     
-    [self refreshNextButton];
+    [self refreshUIWhenRecordVideo];
 }
 
 - (void)stopRecordVideo {
@@ -43,7 +42,7 @@
         [self.videos addObject:videoModel];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self refreshNextButton];
+            [self refreshUIWhenRecordVideo];
         });
     }];
 }

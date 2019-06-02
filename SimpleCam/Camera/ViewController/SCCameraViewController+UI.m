@@ -199,29 +199,36 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         }];
     };
     
+    self.filterBarView.showing = !hidden;
+    
     if (animated) {
         [UIView animateWithDuration:0.25f animations:^{
             updateBlock();
             [self.view layoutIfNeeded];
         } completion:^(BOOL finished) {
-            self.filterBarView.showing = !hidden;
             if (completion) {
                 completion();
             }
         }];
     } else {
         updateBlock();
-        self.filterBarView.showing = !hidden;
         if (completion) {
             completion();
         }
     }
 }
 
-- (void)refreshNextButton {
-    [self.nextButton setHidden:self.videos.count == 0 || self.isRecordingVideo
-                      animated:YES
-                    completion:NULL];
+- (void)refreshUIWhenRecordVideo {
+    [self refreshTopView];
+    [self refreshNextButton];
+    [self refreshModeSwitchView];
+}
+
+- (void)refreshUIWhenFilterBarShowOrHide {
+    [self refreshCapturingButton];
+    [self refreshModeSwitchView];
+    [self refreshFilterButton];
+    [self refreshNextButton];
 }
 
 - (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode {
@@ -301,6 +308,49 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 
 
 #pragma mark - Private
+
+/// 刷新下一步按钮
+- (void)refreshNextButton {
+    BOOL hidden = self.videos.count == 0 ||
+                  self.isRecordingVideo ||
+                  self.filterBarView.showing;;
+    [self.nextButton setHidden:hidden
+                      animated:YES
+                    completion:NULL];
+}
+
+/// 刷新顶部栏
+- (void)refreshTopView {
+    BOOL hidden = self.videos.count > 0 || self.isRecordingVideo;
+    [self.cameraTopView setHidden:hidden
+                         animated:YES
+                       completion:NULL];
+}
+
+/// 刷新模式切换控件
+- (void)refreshModeSwitchView {
+    BOOL hidden = self.videos.count > 0 ||
+                  self.isRecordingVideo ||
+                  self.filterBarView.showing;
+    [self.modeSwitchView setHidden:hidden
+                          animated:YES
+                        completion:NULL];
+}
+
+/// 刷新拍照按钮
+- (void)refreshCapturingButton {
+    [self.capturingButton setHidden:self.filterBarView.showing
+                           animated:YES
+                         completion:NULL];
+}
+
+/// 刷新滤镜按钮
+- (void)refreshFilterButton {
+    [self.filterButton setHidden:self.filterBarView.showing
+                        animated:YES
+                      completion:NULL];
+}
+
 /// 通过比例，获取相机预览界面的高度
 - (CGFloat)cameraViewHeightWithRatio:(SCCameraRatio)ratio {
     CGFloat videoWidth = SCREEN_WIDTH;

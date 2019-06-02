@@ -62,8 +62,11 @@
                       animated:(BOOL)animated
                     completion:(void (^)(void))completion;
 
-/// 刷新下一步按钮的显示状态
-- (void)refreshNextButton;
+/// 在录制视频的时候，刷新UI
+- (void)refreshUIWhenRecordVideo;
+
+/// 在滤镜栏显示或隐藏的时候，刷新UI
+- (void)refreshUIWhenFilterBarShowOrHide;
 
 /// 刷新闪光灯按钮
 - (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode;
