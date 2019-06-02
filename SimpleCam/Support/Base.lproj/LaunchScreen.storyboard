@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,17 +19,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SimpleCam" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLq-oQ-gXw">
-                                <rect key="frame" x="128" y="329.5" width="120" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_launch" translatesAutoresizingMaskIntoConstraints="NO" id="r0L-mf-PbP">
+                                <rect key="frame" x="137.5" y="190.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="SMP-wO-f90"/>
+                                    <constraint firstAttribute="width" constant="100" id="tw2-ST-zSY"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="ax3-uT-0Ic"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简单是终极的复杂" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLq-oQ-gXw">
+                                <rect key="frame" x="122" y="505.5" width="131" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="©2019 Lyman Li" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyt-tj-T9s">
+                                <rect key="frame" x="142.5" y="627.5" width="91.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—— 达·芬奇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTY-d6-WGw">
+                                <rect key="frame" x="148" y="535.5" width="79" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="nyt-tj-T9s" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="7CX-GP-GVB"/>
                             <constraint firstItem="WLq-oQ-gXw" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="8vQ-gn-CFp"/>
-                            <constraint firstItem="WLq-oQ-gXw" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="css-mp-dle"/>
+                            <constraint firstItem="sTY-d6-WGw" firstAttribute="centerX" secondItem="WLq-oQ-gXw" secondAttribute="centerX" id="NCM-dT-Epa"/>
+                            <constraint firstItem="r0L-mf-PbP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.7" id="dka-su-1OE"/>
+                            <constraint firstItem="r0L-mf-PbP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fJc-kW-8tz"/>
+                            <constraint firstItem="WLq-oQ-gXw" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="1.5" id="oPB-2A-JRw"/>
+                            <constraint firstItem="sTY-d6-WGw" firstAttribute="top" secondItem="WLq-oQ-gXw" secondAttribute="bottom" constant="10" id="pvO-i1-p9S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nyt-tj-T9s" secondAttribute="bottom" constant="25" id="wVB-mL-xxj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,4 +65,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_launch" width="100" height="100"/>
+    </resources>
 </document>
