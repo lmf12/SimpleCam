@@ -16,6 +16,7 @@
 @implementation SCCameraViewController
 
 - (void)dealloc {
+    [self removeObserver];
     [self endVideoTimer];
 }
 
@@ -51,6 +52,7 @@
     [self setupData];
     [self setupUI];
     [self setupTap];
+    [self addObserver];
 }
 
 - (void)setupTap {
@@ -151,10 +153,8 @@
     } else if (self.modeSwitchView.type == SCCapturingModeSwitchTypeVideo) {
         if (self.isRecordingVideo) {
             [self stopRecordVideo];
-            button.capturingState = SCCapturingButtonStateNormal;
         } else {
             [self startRecordVideo];
-            button.capturingState = SCCapturingButtonStateRecording;
         }
     }
 }

@@ -20,6 +20,7 @@
     if (self.isRecordingVideo) {
         return;
     }
+    self.capturingButton.capturingState = SCCapturingButtonStateRecording;
     self.isRecordingVideo = YES;
     
     [[SCCameraManager shareManager] recordVideo];
@@ -32,6 +33,7 @@
     if (!self.isRecordingVideo) {
         return;
     }
+    self.capturingButton.capturingState = SCCapturingButtonStateNormal;
     @weakify(self);
     [[SCCameraManager shareManager] stopRecordVideoWithCompletion:^(NSString *videoPath) {
         @strongify(self);

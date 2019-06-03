@@ -118,6 +118,18 @@
 
 - (void)endVideoTimer;
 
+#pragma mark - Notification
+
+/**
+ 添加监听
+ */
+- (void)addObserver;
+
+/**
+ 移除监听
+ */
+- (void)removeObserver;
+
 #pragma mark - Forward
 
 /**
