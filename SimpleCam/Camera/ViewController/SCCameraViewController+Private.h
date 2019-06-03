@@ -12,6 +12,7 @@
 #import "SCCameraTopView.h"
 #import "SCCapturingModeSwitchView.h"
 #import "SCVisualEffectView.h"
+#import "SCCameraVideoTimeLabel.h"
 
 #import "SCCameraManager.h"
 #import "SCFilterManager.h"
@@ -40,6 +41,7 @@
 @property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, strong) SCCameraTopView *cameraTopView;
 @property (nonatomic, strong) SCCapturingModeSwitchView *modeSwitchView;
+@property (nonatomic, strong) SCCameraVideoTimeLabel *videoTimeLabel;
 @property (nonatomic, strong) UIView *cameraFocusView;  // 聚焦框
 @property (nonatomic, strong) SCVisualEffectView *ratioBlurView;  // 切换比例的时候的模糊蒙层
 
@@ -49,6 +51,8 @@
 @property (nonatomic, strong) NSMutableArray <SCVideoModel *>*videos;
 
 @property (nonatomic, assign) CGFloat currentVideoScale;  // 当前预览屏的缩放倍数，默认1
+
+@property (nonatomic, strong) NSTimer *videoTimer;  // 用于刷新录制中视频的时间
 
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *tikTokFilterMaterials;
@@ -109,6 +113,10 @@
 - (void)startRecordVideo;
 
 - (void)stopRecordVideo;
+
+- (void)startVideoTimer;
+
+- (void)endVideoTimer;
 
 #pragma mark - Forward
 

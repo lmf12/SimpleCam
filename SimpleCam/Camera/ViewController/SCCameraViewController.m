@@ -15,6 +15,10 @@
 
 @implementation SCCameraViewController
 
+- (void)dealloc {
+    [self endVideoTimer];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

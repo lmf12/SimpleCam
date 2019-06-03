@@ -14,6 +14,8 @@
 
 @implementation SCCameraViewController (RecordVideo)
 
+#pragma mark - Public
+
 - (void)startRecordVideo {
     if (self.isRecordingVideo) {
         return;
@@ -21,6 +23,7 @@
     self.isRecordingVideo = YES;
     
     [[SCCameraManager shareManager] recordVideo];
+    [self startVideoTimer];
     
     [self refreshUIWhenRecordVideo];
 }
@@ -35,14 +38,38 @@
         
         self.isRecordingVideo = NO;
         
+        AVURLAsset *asset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:videoPath]];
         SCVideoModel *videoModel = [[SCVideoModel alloc] init];
         videoModel.filePath = videoPath;
+        videoModel.asset = asset;
         [self.videos addObject:videoModel];
         
+        [self endVideoTimer];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self refreshUIWhenRecordVideo];
         });
     }];
+}
+
+- (void)startVideoTimer {
+    self.videoTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(videoTimerAction) userInfo:nil repeats:YES];
+    [self.videoTimer fire];
+}
+
+- (void)endVideoTimer {
+    [self.videoTimer invalidate];
+    self.videoTimer = nil;
+}
+
+#pragma mark - Action
+
+- (void)videoTimerAction {
+    CMTime savedTime = kCMTimeZero;
+    for (SCVideoModel *model in self.videos) {
+        savedTime = CMTimeAdd(savedTime, model.asset.duration);
+    }
+    NSInteger timestamp = round(CMTimeGetSeconds(savedTime) + [SCCameraManager shareManager].currentDuration);
+    self.videoTimeLabel.timestamp = timestamp;
 }
 
 @end

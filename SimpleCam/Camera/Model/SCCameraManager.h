@@ -114,4 +114,9 @@ typedef NS_ENUM(NSUInteger, SCCameraRatio) {
  */
 - (CGFloat)availableVideoScaleWithScale:(CGFloat)scale;
 
+/**
+ 正在录制中的视频的时长
+ */
+- (NSTimeInterval)currentDuration;
+
 @end

@@ -31,6 +31,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self setupModeSwitchView];
     [self setupCameraFocusView];
     [self setupRatioBlurView];
+    [self setupVideoTimeLabel];
 }
 
 - (void)setupCameraView {
@@ -164,6 +165,15 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     }];
 }
 
+- (void)setupVideoTimeLabel {
+    self.videoTimeLabel = [[SCCameraVideoTimeLabel alloc] init];
+    self.videoTimeLabel.alpha = 0;
+    [self.view addSubview:self.videoTimeLabel];
+    [self.videoTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.modeSwitchView);
+    }];
+}
+
 - (void)setupToast {
     [CSToastManager setDefaultPosition:CSToastPositionCenter];
     [CSToastManager setDefaultDuration:1];
@@ -216,6 +226,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self refreshTopView];
     [self refreshNextButton];
     [self refreshModeSwitchView];
+    [self refreshVideoTimeLabel];
 }
 
 - (void)refreshUIWhenFilterBarShowOrHide {
@@ -223,6 +234,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self refreshModeSwitchView];
     [self refreshFilterButton];
     [self refreshNextButton];
+    [self refreshVideoTimeLabel];
 }
 
 - (void)updateFlashButtonWithFlashMode:(SCCameraFlashMode)mode {
@@ -275,6 +287,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.filterButton setIsDarkMode:isBottomBarDark];
     [self.nextButton setIsDarkMode:isBottomBarDark];
     [self.modeSwitchView setIsDarkMode:isBottomBarDark];
+    [self.videoTimeLabel setIsDarkMode:isBottomBarDark];
 }
 
 - (void)showFocusViewAtLocation:(CGPoint)location {
@@ -372,6 +385,16 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.filterButton setHidden:self.filterBarView.showing
                         animated:YES
                       completion:NULL];
+}
+
+/// 刷新视频时间控件
+- (void)refreshVideoTimeLabel {
+    BOOL hidden = (self.videos.count == 0 &&
+                  !self.isRecordingVideo) ||
+                  self.filterBarView.showing;
+    [self.videoTimeLabel setHidden:hidden
+                          animated:YES
+                        completion:NULL];
 }
 
 /// 通过比例，获取相机预览界面的高度

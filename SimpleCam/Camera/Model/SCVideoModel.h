@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface SCVideoModel : NSObject
 
 @property (nonatomic, copy) NSString *filePath;
+@property (nonatomic, strong) AVURLAsset *asset;
 
 @end

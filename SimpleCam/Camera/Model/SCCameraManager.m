@@ -91,9 +91,7 @@ static SCCameraManager *_cameraManager;
     [self.camera addTarget:self.currentFilterHandler.firstFilter];
     [self.currentFilterHandler.lastFilter addTarget:self.outputView];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.camera startCameraCapture];
-    });
+    [self.camera startCameraCapture];
 }
 
 - (void)rotateCamera {
@@ -129,6 +127,11 @@ static SCCameraManager *_cameraManager;
     scale = MIN(scale, maxScale);
     
     return scale;
+}
+
+- (NSTimeInterval)currentDuration {
+    NSTimeInterval time = CMTimeGetSeconds(self.movieWriter.duration);
+    return time;
 }
 
 #pragma mark - Custom Accessor
