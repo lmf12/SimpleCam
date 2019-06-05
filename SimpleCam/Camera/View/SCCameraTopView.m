@@ -13,6 +13,7 @@
 @property (nonatomic, strong, readwrite) UIButton *rotateButton;
 @property (nonatomic, strong, readwrite) UIButton *flashButton;
 @property (nonatomic, strong, readwrite) UIButton *ratioButton;
+@property (nonatomic, strong, readwrite) UIButton *closeButton;
 
 @property (nonatomic, assign) BOOL isRotating;  // 正在旋转中
 
@@ -34,6 +35,7 @@
     [self setupRotateButton];
     [self setupFlashButton];
     [self setupRatioButton];
+    [self setupCloseButton];
 }
 
 - (void)setupRotateButton {
@@ -78,6 +80,21 @@
     [self.ratioButton setEnableDarkWithImageName:@"btn_ratio_9v16"];
 }
 
+- (void)setupCloseButton {
+    self.closeButton = [[UIButton alloc] init];
+    self.closeButton.alpha = 0;
+    [self addSubview:self.closeButton];
+    [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.left.equalTo(self).offset(20);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    [self.closeButton addTarget:self
+                         action:@selector(closeAction:)
+               forControlEvents:UIControlEventTouchUpInside];
+    [self.closeButton setEnableDarkWithImageName:@"btn_close"];
+}
+
 #pragma mark - Action
 
 - (void)rotateAction:(UIButton *)button {
@@ -107,6 +124,12 @@
 - (void)ratioAction:(UIButton *)button {
     if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickRatioButton:)]) {
         [self.delegate cameraTopViewDidClickRatioButton:self];
+    }
+}
+
+- (void)closeAction:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickCloseButton:)]) {
+        [self.delegate cameraTopViewDidClickCloseButton:self];
     }
 }
 

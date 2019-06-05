@@ -229,6 +229,11 @@
     [self updateDarkOrNormalModeWithRatio:nextRatio];
 }
 
+- (void)cameraTopViewDidClickCloseButton:(SCCameraTopView *)cameraTopView {
+    [self.videos removeAllObjects];
+    [self refreshUIWhenRecordVideo];
+}
+
 #pragma mark - SCCapturingModeSwitchViewDelegate
 
 - (void)capturingModeSwitchView:(SCCapturingModeSwitchView *)view

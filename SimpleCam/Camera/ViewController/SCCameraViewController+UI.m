@@ -223,7 +223,10 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 }
 
 - (void)refreshUIWhenRecordVideo {
-    [self refreshTopView];
+    [self refreshCloseButton];
+    [self refreshFlashButton];
+    [self refreshRatioButton];
+    [self refreshRotateButton];
     [self refreshNextButton];
     [self refreshModeSwitchView];
     [self refreshVideoTimeLabel];
@@ -282,6 +285,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.cameraTopView.flashButton setIsDarkMode:isTopBarDark];
     [self.cameraTopView.ratioButton setIsDarkMode:isTopBarDark];
     [self.cameraTopView.rotateButton setIsDarkMode:isTopBarDark];
+    [self.cameraTopView.closeButton setIsDarkMode:isTopBarDark];
     
     BOOL isBottomBarDark = ratio == SCCameraRatio1v1 || ratio == SCCameraRatio4v3;
     [self.filterButton setIsDarkMode:isBottomBarDark];
@@ -349,18 +353,42 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 - (void)refreshNextButton {
     BOOL hidden = self.videos.count == 0 ||
                   self.isRecordingVideo ||
-                  self.filterBarView.showing;;
+                  self.filterBarView.showing;
     [self.nextButton setHidden:hidden
                       animated:YES
                     completion:NULL];
 }
 
-/// 刷新顶部栏
-- (void)refreshTopView {
+/// 刷新闪光灯按钮
+- (void)refreshFlashButton {
     BOOL hidden = self.videos.count > 0 || self.isRecordingVideo;
-    [self.cameraTopView setHidden:hidden
-                         animated:YES
-                       completion:NULL];
+    [self.cameraTopView.flashButton setHidden:hidden
+                                     animated:YES
+                                   completion:NULL];
+}
+
+/// 刷新比例按钮
+- (void)refreshRatioButton {
+    BOOL hidden = self.videos.count > 0 || self.isRecordingVideo;
+    [self.cameraTopView.ratioButton setHidden:hidden
+                                     animated:YES
+                                   completion:NULL];
+}
+
+/// 刷新旋转按钮
+- (void)refreshRotateButton {
+    BOOL hidden = self.videos.count > 0 || self.isRecordingVideo;
+    [self.cameraTopView.rotateButton setHidden:hidden
+                                      animated:YES
+                                    completion:NULL];
+}
+
+/// 刷新关闭按钮
+- (void)refreshCloseButton {
+    BOOL hidden = self.videos.count == 0 || self.isRecordingVideo;
+    [self.cameraTopView.closeButton setHidden:hidden
+                                     animated:YES
+                                   completion:NULL];
 }
 
 /// 刷新模式切换控件
