@@ -106,6 +106,11 @@ NSString *const kGPUImageBeautifyFragmentShaderString = SHADER_STRING
     return self;
 }
 
+- (void)setIntensity:(CGFloat)intensity {
+    _intensity = intensity;
+    combinationFilter.intensity = intensity;
+}
+
 #pragma mark -
 #pragma mark GPUImageInput protocol
 

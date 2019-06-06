@@ -184,6 +184,10 @@
     }
 }
 
+- (void)filterBarView:(SCFilterBarView *)filterBarView beautifySliderChangeToValue:(CGFloat)value {
+    [SCCameraManager shareManager].currentFilterHandler.beautifyFilterDegree = value;
+}
+
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer

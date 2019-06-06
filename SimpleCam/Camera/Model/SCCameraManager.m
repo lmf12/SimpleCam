@@ -267,8 +267,7 @@ static SCCameraManager *_cameraManager;
  */
 - (void)setupFilterHandler {
     self.currentFilterHandler = [[SCFilterHandler alloc] init];
-    // 按顺序添加滤镜
-    [self.currentFilterHandler setBeautifyFilter:nil];
+    // 添加效果滤镜
     [self.currentFilterHandler setEffectFilter:nil];
 }
 

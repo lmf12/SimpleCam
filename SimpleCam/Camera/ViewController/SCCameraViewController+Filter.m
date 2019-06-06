@@ -18,12 +18,11 @@
 #pragma mark - Public
 
 - (void)addBeautifyFilter {
-    GPUImageFilter *beautifyFilter = (GPUImageFilter *)[[GPUImageBeautifyFilter alloc] init];
-    [[SCCameraManager shareManager].currentFilterHandler setBeautifyFilter:beautifyFilter];
+    [SCCameraManager shareManager].currentFilterHandler.beautifyFilterEnable = YES;
 }
 
 - (void)removeBeautifyFilter {
-    [[SCCameraManager shareManager].currentFilterHandler setBeautifyFilter:nil];
+    [SCCameraManager shareManager].currentFilterHandler.beautifyFilterEnable = NO;
 }
 
 - (NSArray<SCFilterMaterialModel *> *)filtersWithCategoryIndex:(NSInteger)index {

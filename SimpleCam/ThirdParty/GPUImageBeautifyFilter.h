@@ -17,4 +17,7 @@
     GPUImageHSBFilter *hsbFilter;
 }
 
+/// 设置效果程度
+@property (nonatomic, assign) CGFloat intensity;
+
 @end

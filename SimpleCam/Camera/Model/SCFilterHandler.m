@@ -6,6 +6,7 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import "GPUImageBeautifyFilter.h"
 #import "SCGPUImageBaseFilter.h"
 
 #import "SCFilterHandler.h"
@@ -18,6 +19,8 @@
 
 @property (nonatomic, weak) GPUImageFilter *currentBeautifyFilter;
 @property (nonatomic, weak) GPUImageFilter *currentEffectFilter;
+
+@property (nonatomic, strong) GPUImageBeautifyFilter *defaultBeautifyFilter;
 
 @property (nonatomic, strong) CADisplayLink *displayLink;  // 用来刷新时间
 
@@ -61,25 +64,6 @@
     [self.filters addObject:filter];
 }
 
-- (void)setBeautifyFilter:(GPUImageFilter *)filter {
-    if (!filter) {
-        filter = [[GPUImageFilter alloc] init];
-    }
-    if (!self.currentBeautifyFilter) {
-        [self addFilter:filter];
-    } else {
-        NSInteger index = [self.filters indexOfObject:self.currentBeautifyFilter];
-        GPUImageOutput *source = index == 0 ? self.source : self.filters[index - 1];
-        for (id <GPUImageInput> input in self.currentBeautifyFilter.targets) {
-            [filter addTarget:input];
-        }
-        [source removeTarget:self.currentBeautifyFilter];
-        [source addTarget:filter];
-        self.filters[index] = filter;
-    }
-    self.currentBeautifyFilter = filter;
-}
-
 - (void)setEffectFilter:(GPUImageFilter *)filter {
     if (!filter) {
         filter = [[GPUImageFilter alloc] init];
@@ -93,6 +77,7 @@
             [filter addTarget:input];
         }
         [source removeTarget:self.currentEffectFilter];
+        [self.currentEffectFilter removeAllTargets];
         [source addTarget:filter];
         self.filters[index] = filter;
     }
@@ -104,11 +89,36 @@
     }
 }
 
+#pragma mark - Custom Accessor
+
+- (void)setBeautifyFilterEnable:(BOOL)beautifyFilterEnable {
+    _beautifyFilterEnable = beautifyFilterEnable;
+    
+    [self setBeautifyFilter:beautifyFilterEnable ? (GPUImageFilter *)self.defaultBeautifyFilter : nil];
+}
+
+- (void)setBeautifyFilterDegree:(CGFloat)beautifyFilterDegree {
+    if (!self.beautifyFilterEnable) {
+        return;
+    }
+    _beautifyFilterDegree = beautifyFilterDegree;
+    self.defaultBeautifyFilter.intensity = beautifyFilterDegree;
+}
+
+- (GPUImageBeautifyFilter *)defaultBeautifyFilter {
+    if (!_defaultBeautifyFilter) {
+        _defaultBeautifyFilter = [[GPUImageBeautifyFilter alloc] init];
+    }
+    return _defaultBeautifyFilter;
+}
+
 #pragma mark - Private
 
 - (void)commonInit {
+    _beautifyFilterDegree = 0.5f;
     self.filters = [[NSMutableArray alloc] init];
     [self addCropFilter];
+    [self addBeautifyFilter];
     [self setupDisplayLink];
 }
 
@@ -116,6 +126,31 @@
     self.currentCropFilter = [[GPUImageCropFilter alloc] init];
     [self addFilter:self.currentCropFilter];
 }
+
+- (void)addBeautifyFilter {
+    [self setBeautifyFilter:nil];
+}
+
+- (void)setBeautifyFilter:(GPUImageFilter *)filter {
+    if (!filter) {
+        filter = [[GPUImageFilter alloc] init];
+    }
+    if (!self.currentBeautifyFilter) {
+        [self addFilter:filter];
+    } else {
+        NSInteger index = [self.filters indexOfObject:self.currentBeautifyFilter];
+        GPUImageOutput *source = index == 0 ? self.source : self.filters[index - 1];
+        for (id <GPUImageInput> input in self.currentBeautifyFilter.targets) {
+            [filter addTarget:input];
+        }
+        [source removeTarget:self.currentBeautifyFilter];
+        [self.currentBeautifyFilter removeAllTargets];
+        [source addTarget:filter];
+        self.filters[index] = filter;
+    }
+    self.currentBeautifyFilter = filter;
+}
+
 
 - (void)setupDisplayLink {
     self.displayLink = [CADisplayLink displayLinkWithTarget:self
