@@ -23,7 +23,4 @@
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *itemList;
 @property (nonatomic, weak) id <SCFilterMaterialViewDelegate> delegate;
 
-/// 回到顶部
-- (void)scrollToTop;
-
 @end

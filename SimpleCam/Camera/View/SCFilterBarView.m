@@ -178,7 +178,6 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
     } else if (currentIndex == 1) {
         self.filterMaterialView.itemList = self.tikTokFilterMaterials;
     }
-    [self.filterMaterialView scrollToTop];
     
     if ([self.delegate respondsToSelector:@selector(filterBarView:categoryDidScrollToIndex:)]) {
         [self.delegate filterBarView:self categoryDidScrollToIndex:index];
