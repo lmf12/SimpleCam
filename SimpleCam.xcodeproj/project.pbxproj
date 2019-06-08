@@ -371,6 +371,7 @@
 		E8AFD98622AC1E6C00787BDA /* startshape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AFD82222AC1E6C00787BDA /* startshape.cpp */; };
 		E8AFD98722AC1E6C00787BDA /* stasm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AFD82422AC1E6C00787BDA /* stasm.cpp */; };
 		E8AFD98822AC1E6C00787BDA /* stasm_lib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8AFD82722AC1E6C00787BDA /* stasm_lib.cpp */; };
+		E8AFD98B22AC203600787BDA /* SCFaceDetectorManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8AFD98A22AC203600787BDA /* SCFaceDetectorManager.mm */; };
 		E8B95C1F22A402FB00F51025 /* UIButton+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B95C1E22A402FB00F51025 /* UIButton+Extention.m */; };
 		E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EE822586CEC00ECFB98 /* SCCameraViewController.m */; };
 		E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18EF0225877A600ECFB98 /* SCViewController.m */; };
@@ -818,6 +819,8 @@
 		E8AFD82722AC1E6C00787BDA /* stasm_lib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stasm_lib.cpp; sourceTree = "<group>"; };
 		E8AFD82822AC1E6C00787BDA /* stasm_lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stasm_lib.h; sourceTree = "<group>"; };
 		E8AFD82922AC1E6C00787BDA /* stasm_lib_ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stasm_lib_ext.h; sourceTree = "<group>"; };
+		E8AFD98922AC203600787BDA /* SCFaceDetectorManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFaceDetectorManager.h; sourceTree = "<group>"; };
+		E8AFD98A22AC203600787BDA /* SCFaceDetectorManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SCFaceDetectorManager.mm; sourceTree = "<group>"; };
 		E8B95C1D22A402FB00F51025 /* UIButton+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extention.h"; sourceTree = "<group>"; };
 		E8B95C1E22A402FB00F51025 /* UIButton+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extention.m"; sourceTree = "<group>"; };
 		E8D18EE722586CEC00ECFB98 /* SCCameraViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraViewController.h; sourceTree = "<group>"; };
@@ -1588,6 +1591,8 @@
 				E8D80C2C22990D3700CDB060 /* SCAssetHelper.m */,
 				E89949F522A53BE600FC85C0 /* SCTimeHelper.h */,
 				E89949F622A53BE600FC85C0 /* SCTimeHelper.m */,
+				E8AFD98922AC203600787BDA /* SCFaceDetectorManager.h */,
+				E8AFD98A22AC203600787BDA /* SCFaceDetectorManager.mm */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2141,6 +2146,7 @@
 				E8AFD83F22AC1E6C00787BDA /* err.cpp in Sources */,
 				E8AFD84622AC1E6C00787BDA /* misc.cpp in Sources */,
 				E8B95C1F22A402FB00F51025 /* UIButton+Extention.m in Sources */,
+				E8AFD98B22AC203600787BDA /* SCFaceDetectorManager.mm in Sources */,
 				E8E578F02261D2FB0093BB7B /* SCFilterHelper.m in Sources */,
 				E8AFD98522AC1E6C00787BDA /* shapemod.cpp in Sources */,
 				E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */,
