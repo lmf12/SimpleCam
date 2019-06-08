@@ -6,6 +6,8 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#ifdef __OBJC__
+
 #import <Masonry/Masonry.h>
 
 #import "EXTScope.h"
@@ -15,3 +17,5 @@
 #import "UIView+Extention.h"
 #import "UIDevice+Extention.h"
 #import "UIButton+Extention.h"
+
+#endif
