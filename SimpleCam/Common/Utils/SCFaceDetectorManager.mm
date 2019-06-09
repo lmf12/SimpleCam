@@ -16,7 +16,8 @@
 
 @implementation SCFaceDetectorManager
 
-+ (void)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer isMirror:(BOOL)isMirror {
++ (float *)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer
+                      isMirror:(BOOL)isMirror {
     cv::Mat cvImage = [self grayMatWithSampleBuffer:sampleBuffer];
     int resultWidth = 150;
     int resultHeight = resultWidth * 1.0 / cvImage.rows * cvImage.cols;
@@ -27,7 +28,8 @@
     // 是否找到人脸
     int foundface;
     // stasm_NLANDMARKS 表示人脸关键点数，乘 2 表示要分别存储 x， y
-    float landmarks[2 * stasm_NLANDMARKS];
+    int len = 2 * stasm_NLANDMARKS;
+    float *landmarks = (float *)malloc(len * sizeof(float));
     
     // 获取宽高
     int imgCols = cvImage.cols;
@@ -54,8 +56,22 @@
     
     // 识别到人脸
     if (foundface) {
-        
+        // 转换坐标
+        for (int index = 0; index < len; ++index) {
+            if (index % 2 == 0) {
+                landmarks[index] = landmarks[index] / imgCols * 2 - 1;
+            } else {
+                landmarks[index] = landmarks[index] / imgRows * 2 - 1;
+            }
+        }
+        return landmarks;
+    } else {
+        return 0;
     }
+}
+
++ (int)facePointCount {
+    return stasm_NLANDMARKS;
 }
 
 #pragma mark - Private

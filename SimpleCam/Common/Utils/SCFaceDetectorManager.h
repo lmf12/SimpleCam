@@ -12,6 +12,10 @@
 @interface SCFaceDetectorManager : NSObject
 
 /// 获取人脸点，前置是镜像
-+ (void)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer isMirror:(BOOL)isMirror;
++ (float *)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer
+                      isMirror:(BOOL)isMirror;
+
+/// 人脸点个数
++ (int)facePointCount;
 
 @end

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 191A603F1782103A77B17274 /* libPods-SimpleCam.a */; };
+		E833C7F322ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */; };
 		E87C109E228C68DA00653DDA /* SCCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C109D228C68DA00653DDA /* SCCameraTopView.m */; };
 		E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A2228FB46E00653DDA /* SCVideoResultViewController.m */; };
 		E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A8228FB4DF00653DDA /* SCVideoResultViewController+UI.m */; };
@@ -416,6 +417,8 @@
 		18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.release.xcconfig"; sourceTree = "<group>"; };
 		191A603F1782103A77B17274 /* libPods-SimpleCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BCE07029C9C80FA29BB356 /* Pods-SimpleCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.debug.xcconfig"; sourceTree = "<group>"; };
+		E833C7F122ACB2500065E557 /* SCGPUImageFaceFeatureFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageFaceFeatureFilter.h; sourceTree = "<group>"; };
+		E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageFaceFeatureFilter.m; sourceTree = "<group>"; };
 		E87C109C228C68DA00653DDA /* SCCameraTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraTopView.h; sourceTree = "<group>"; };
 		E87C109D228C68DA00653DDA /* SCCameraTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraTopView.m; sourceTree = "<group>"; };
 		E87C10A1228FB46E00653DDA /* SCVideoResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVideoResultViewController.h; sourceTree = "<group>"; };
@@ -927,6 +930,15 @@
 				18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E833C7F022ACB2060065E557 /* Face */ = {
+			isa = PBXGroup;
+			children = (
+				E833C7F122ACB2500065E557 /* SCGPUImageFaceFeatureFilter.h */,
+				E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */,
+			);
+			path = Face;
 			sourceTree = "<group>";
 		};
 		E87C109F228FB42500653DDA /* VideoResult */ = {
@@ -1548,6 +1560,7 @@
 			children = (
 				E8D80C5522A38C5D00CDB060 /* Base */,
 				E8D80C5822A38C5D00CDB060 /* TikTok */,
+				E833C7F022ACB2060065E557 /* Face */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -2118,6 +2131,7 @@
 				E8D80C6B22A3A1B100CDB060 /* SCGPUImageVertigoFilter.m in Sources */,
 				E8D80C6222A38F2600CDB060 /* SCGPUImageShakeFilter.m in Sources */,
 				E89949F122A27E5700FC85C0 /* SCVisualEffectView.m in Sources */,
+				E833C7F322ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m in Sources */,
 				E8E578E32261B9580093BB7B /* SCFilterMaterialView.m in Sources */,
 				E8D80C4022A2ADA700CDB060 /* SCFilterCategoryView.m in Sources */,
 				E8E578DF2261A8890093BB7B /* SCFilterBarView.m in Sources */,

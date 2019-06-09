@@ -21,6 +21,9 @@
 /// 滤镜链源头
 @property (nonatomic, weak) GPUImageOutput *source;
 
+/// 人脸点
+@property (nonatomic, assign) GLfloat *facesPoints;
+
 /// 滤镜链第一个滤镜
 - (GPUImageFilter *)firstFilter;
 
