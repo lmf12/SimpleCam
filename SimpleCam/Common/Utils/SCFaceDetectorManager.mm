@@ -16,9 +16,12 @@
 
 @implementation SCFaceDetectorManager
 
-+ (void)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer {
++ (void)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer isMirror:(BOOL)isMirror {
     cv::Mat cvImage = [self grayMatWithSampleBuffer:sampleBuffer];
-    cvImage = [self resizeMat:cvImage toWidth:500];
+    int resultWidth = 150;
+    int resultHeight = resultWidth * 1.0 / cvImage.rows * cvImage.cols;
+    cvImage = [self resizeMat:cvImage toWidth:resultHeight]; // 此时还没旋转，所以传入高度
+    cvImage = [self correctMat:cvImage isMirror:isMirror];
     const char *imgData = (const char *)cvImage.data;
     
     // 是否找到人脸
@@ -91,6 +94,16 @@
     cv::Size reSize = cv::Size(reCols, reRows);
     resize(mat, mat, reSize);
     
+    return mat;
+}
+
+// 矫正图像
++ (cv::Mat)correctMat:(cv::Mat)mat isMirror:(BOOL)isMirror {
+    if (!isMirror) {
+        cv::flip(mat, mat, 0);  // > 0: 沿 y 轴翻转, 0: 沿 x 轴翻转, <0: x、y 轴同时翻转
+    }
+    // transpose 会旋转 90 度的同时，进行镜像变换，所以后置的时候反而需要先镜像一次
+    cv::transpose(mat, mat);
     return mat;
 }
 

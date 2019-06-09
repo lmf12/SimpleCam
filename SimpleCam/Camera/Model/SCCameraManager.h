@@ -119,4 +119,9 @@ typedef NS_ENUM(NSUInteger, SCCameraRatio) {
  */
 - (NSTimeInterval)currentDuration;
 
+/**
+ 当前是否前置
+ */
+- (BOOL)isPositionFront;
+
 @end
