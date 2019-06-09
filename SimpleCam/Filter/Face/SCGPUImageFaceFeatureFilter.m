@@ -106,7 +106,7 @@ NSString *const kGPUImageFaceFeatureFragmentShaderString = SHADER_STRING
         glUniform1i(self.isPointUniform, 1);    // 表示是绘制点
         glUniform1f(self.pointSizeUniform, self.sizeOfFBO.width * 0.006);  // 设置点的大小
         glVertexAttribPointer(filterPositionAttribute, 2, GL_FLOAT, 0, 0, self.facesPoints);
-        glDrawArrays(GL_POINTS, 0, [SCFaceDetectorManager facePointCount] * 2);
+        glDrawArrays(GL_POINTS, 0, [SCFaceDetectorManager facePointCount]);
     }
     
     [firstInputFramebuffer unlock];

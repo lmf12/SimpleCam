@@ -232,6 +232,7 @@ static SCCameraManager *_cameraManager;
     self.camera.horizontallyMirrorFrontFacingCamera = YES;
     [self.camera addAudioInputsAndOutputs];
     self.camera.delegate = self;
+    self.camera.frameRate = 20;
     
     self.currentFilterHandler.source = self.camera;
 }
