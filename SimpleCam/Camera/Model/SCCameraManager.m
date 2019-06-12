@@ -9,6 +9,9 @@
 #import "SCFileHelper.h"
 #import "SCFaceDetectorManager.h"
 
+#import "MGFacepp.h"
+#import "MGFaceLicenseHandle.h"
+
 #import "SCCameraManager.h"
 
 static CGFloat const kMaxVideoScale = 6.0f;
@@ -25,6 +28,8 @@ static SCCameraManager *_cameraManager;
 @property (nonatomic, copy) NSString *currentTmpVideoPath;
 
 @property (nonatomic, assign) CGSize videoSize;
+
+@property (nonatomic, strong) MGFacepp *markManager;
 
 @end
 
@@ -47,6 +52,21 @@ static SCCameraManager *_cameraManager;
 }
 
 #pragma mark - Public
+
+- (void)licenseFacepp {
+    @weakify(self);
+    [MGFaceLicenseHandle licenseForNetwokrFinish:^(bool License, NSDate *sdkDate) {
+        @strongify(self);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (License) {
+                [[UIApplication sharedApplication].keyWindow makeToast:@"Face++ 授权成功！"];
+                [self setupFacepp];
+            } else {
+                [[UIApplication sharedApplication].keyWindow makeToast:@"Face++ 授权失败！"];
+            }
+        });
+    }];
+}
 
 - (void)takePhotoWtihCompletion:(TakePhotoResult)completion {
     GPUImageFilter *lastFilter = self.currentFilterHandler.lastFilter;
@@ -232,9 +252,23 @@ static SCCameraManager *_cameraManager;
     self.camera.horizontallyMirrorFrontFacingCamera = YES;
     [self.camera addAudioInputsAndOutputs];
     self.camera.delegate = self;
-    self.camera.frameRate = 20;
+    self.camera.frameRate = 30;
     
     self.currentFilterHandler.source = self.camera;
+}
+
+/**
+ 初始化 Face++
+ */
+- (void)setupFacepp {
+    NSString *modelPath = [[NSBundle mainBundle] pathForResource:KMGFACEMODELNAME
+                                                          ofType:@""];
+    NSData *modelData = [NSData dataWithContentsOfFile:modelPath];
+    self.markManager = [[MGFacepp alloc] initWithModel:modelData
+                                         faceppSetting:^(MGFaceppConfig *config) {
+                                             config.detectionMode = MGFppDetectionModeTrackingRobust;
+                                             config.pixelFormatType = PixelFormatTypeNV21;
+                                         }];
 }
 
 /**
@@ -338,9 +372,20 @@ static SCCameraManager *_cameraManager;
 #pragma mark - GPUImageVideoCameraDelegate
 
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer {
-    float *facePoints = [SCFaceDetectorManager detectWithSampleBuffer:sampleBuffer
-                                                             isMirror:[self isPositionFront]];
-    self.currentFilterHandler.facesPoints = facePoints;
+//    float *facePoints = [SCFaceDetectorManager detectWithSampleBuffer:sampleBuffer
+//                                                             isMirror:[self isPositionFront]];
+//    self.currentFilterHandler.facesPoints = facePoints;
+    
+    if (self.markManager) {
+        MGImageData *imageData = [[MGImageData alloc] initWithSampleBuffer:sampleBuffer];
+        [self.markManager beginDetectionFrame];
+        NSArray *faceArray = [self.markManager detectWithImageData:imageData];
+        for (MGFaceInfo *faceInfo in faceArray) {
+            [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:106];
+            NSLog(@"landmark - %@", faceInfo.points);
+        }
+        [self.markManager endDetectionFrame];
+    }
 }
 
 @end

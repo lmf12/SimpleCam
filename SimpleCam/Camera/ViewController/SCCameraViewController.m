@@ -26,6 +26,7 @@
     [self commonInit];
     
     SCCameraManager *cameraManager = [SCCameraManager shareManager];
+    [cameraManager licenseFacepp];
     [cameraManager addOutputView:self.cameraView];
     [cameraManager startCapturing];
     

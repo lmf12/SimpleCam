@@ -68,6 +68,11 @@ typedef NS_ENUM(NSUInteger, SCCameraRatio) {
 + (SCCameraManager *)shareManager;
 
 /**
+ Face++ 联网授权，成功后会进行初始化
+ */
+- (void)licenseFacepp;
+
+/**
  拍照
  */
 - (void)takePhotoWtihCompletion:(TakePhotoResult)completion;
