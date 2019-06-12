@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 191A603F1782103A77B17274 /* libPods-SimpleCam.a */; };
 		E833C7F322ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */; };
+		E84EA79122B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */; };
+		E84EA79222B14C5A00A07DBE /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78422B14C5A00A07DBE /* libMGFacepp-0.5.2.a */; };
+		E84EA79322B14C5A00A07DBE /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = E84EA78522B14C5A00A07DBE /* megviifacepp_0_5_2_model */; };
+		E84EA79422B14C5A00A07DBE /* MGFaceLicenseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = E84EA78F22B14C5A00A07DBE /* MGFaceLicenseHandle.m */; };
 		E87C109E228C68DA00653DDA /* SCCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C109D228C68DA00653DDA /* SCCameraTopView.m */; };
 		E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A2228FB46E00653DDA /* SCVideoResultViewController.m */; };
 		E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A8228FB4DF00653DDA /* SCVideoResultViewController+UI.m */; };
@@ -419,6 +423,21 @@
 		70BCE07029C9C80FA29BB356 /* Pods-SimpleCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.debug.xcconfig"; sourceTree = "<group>"; };
 		E833C7F122ACB2500065E557 /* SCGPUImageFaceFeatureFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageFaceFeatureFilter.h; sourceTree = "<group>"; };
 		E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageFaceFeatureFilter.m; sourceTree = "<group>"; };
+		E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGLicMgrSDK-0.3.1.a"; sourceTree = "<group>"; };
+		E84EA78122B14C5A00A07DBE /* MGLicenseCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseCommon.h; sourceTree = "<group>"; };
+		E84EA78222B14C5A00A07DBE /* MGLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLicenseManager.h; sourceTree = "<group>"; };
+		E84EA78422B14C5A00A07DBE /* libMGFacepp-0.5.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGFacepp-0.5.2.a"; sourceTree = "<group>"; };
+		E84EA78522B14C5A00A07DBE /* megviifacepp_0_5_2_model */ = {isa = PBXFileReference; lastKnownFileType = file; path = megviifacepp_0_5_2_model; sourceTree = "<group>"; };
+		E84EA78622B14C5A00A07DBE /* MGAlgorithmInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGAlgorithmInfo.h; sourceTree = "<group>"; };
+		E84EA78722B14C5A00A07DBE /* MGDetectRectInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGDetectRectInfo.h; sourceTree = "<group>"; };
+		E84EA78822B14C5A00A07DBE /* MGFaceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceInfo.h; sourceTree = "<group>"; };
+		E84EA78922B14C5A00A07DBE /* MGFacepp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFacepp.h; sourceTree = "<group>"; };
+		E84EA78A22B14C5A00A07DBE /* MGFaceppCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppCommon.h; sourceTree = "<group>"; };
+		E84EA78B22B14C5A00A07DBE /* MGFaceppConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceppConfig.h; sourceTree = "<group>"; };
+		E84EA78C22B14C5A00A07DBE /* MGImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGImageData.h; sourceTree = "<group>"; };
+		E84EA78E22B14C5A00A07DBE /* MGFaceLicenseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceLicenseHandle.h; sourceTree = "<group>"; };
+		E84EA78F22B14C5A00A07DBE /* MGFaceLicenseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceLicenseHandle.m; sourceTree = "<group>"; };
+		E84EA79022B14C5A00A07DBE /* MGNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNetAccount.h; sourceTree = "<group>"; };
 		E87C109C228C68DA00653DDA /* SCCameraTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraTopView.h; sourceTree = "<group>"; };
 		E87C109D228C68DA00653DDA /* SCCameraTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraTopView.m; sourceTree = "<group>"; };
 		E87C10A1228FB46E00653DDA /* SCVideoResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVideoResultViewController.h; sourceTree = "<group>"; };
@@ -909,6 +928,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */,
+				E84EA79122B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a in Frameworks */,
+				E84EA79222B14C5A00A07DBE /* libMGFacepp-0.5.2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +960,52 @@
 				E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */,
 			);
 			path = Face;
+			sourceTree = "<group>";
+		};
+		E84EA77E22B14C5A00A07DBE /* Facepp */ = {
+			isa = PBXGroup;
+			children = (
+				E84EA77F22B14C5A00A07DBE /* MegviiLicMgr-iOS-SDK */,
+				E84EA78322B14C5A00A07DBE /* MGFaceppSDK */,
+				E84EA78D22B14C5A00A07DBE /* MGLicenseManagerHelper */,
+			);
+			path = Facepp;
+			sourceTree = "<group>";
+		};
+		E84EA77F22B14C5A00A07DBE /* MegviiLicMgr-iOS-SDK */ = {
+			isa = PBXGroup;
+			children = (
+				E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */,
+				E84EA78122B14C5A00A07DBE /* MGLicenseCommon.h */,
+				E84EA78222B14C5A00A07DBE /* MGLicenseManager.h */,
+			);
+			path = "MegviiLicMgr-iOS-SDK";
+			sourceTree = "<group>";
+		};
+		E84EA78322B14C5A00A07DBE /* MGFaceppSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E84EA78422B14C5A00A07DBE /* libMGFacepp-0.5.2.a */,
+				E84EA78522B14C5A00A07DBE /* megviifacepp_0_5_2_model */,
+				E84EA78622B14C5A00A07DBE /* MGAlgorithmInfo.h */,
+				E84EA78722B14C5A00A07DBE /* MGDetectRectInfo.h */,
+				E84EA78822B14C5A00A07DBE /* MGFaceInfo.h */,
+				E84EA78922B14C5A00A07DBE /* MGFacepp.h */,
+				E84EA78A22B14C5A00A07DBE /* MGFaceppCommon.h */,
+				E84EA78B22B14C5A00A07DBE /* MGFaceppConfig.h */,
+				E84EA78C22B14C5A00A07DBE /* MGImageData.h */,
+			);
+			path = MGFaceppSDK;
+			sourceTree = "<group>";
+		};
+		E84EA78D22B14C5A00A07DBE /* MGLicenseManagerHelper */ = {
+			isa = PBXGroup;
+			children = (
+				E84EA78E22B14C5A00A07DBE /* MGFaceLicenseHandle.h */,
+				E84EA78F22B14C5A00A07DBE /* MGFaceLicenseHandle.m */,
+				E84EA79022B14C5A00A07DBE /* MGNetAccount.h */,
+			);
+			path = MGLicenseManagerHelper;
 			sourceTree = "<group>";
 		};
 		E87C109F228FB42500653DDA /* VideoResult */ = {
@@ -1550,6 +1617,8 @@
 			children = (
 				E89E7B6222B3CC5A00C0C647 /* LFGPUImageBeautyFilter.h */,
 				E89E7B6322B3CC5A00C0C647 /* LFGPUImageBeautyFilter.m */,
+				E84EA77E22B14C5A00A07DBE /* Facepp */,
+				E8AFD6A922AC1E6B00787BDA /* GPUImageBeautifyFilter */,
 				E8AFD6AC22AC1E6B00787BDA /* Stasm */,
 			);
 			path = ThirdParty;
@@ -2017,6 +2086,7 @@
 				E8FF5A5122586A090088C1B2 /* Main.storyboard in Resources */,
 				E8AFD8D422AC1E6C00787BDA /* yaw00_lev1_p60_hat.mh in Resources */,
 				E8AFD96A22AC1E6C00787BDA /* yaw00_lev3_p56_classic.mh in Resources */,
+				E84EA79322B14C5A00A07DBE /* megviifacepp_0_5_2_model in Resources */,
 				E8AFD83722AC1E6C00787BDA /* haarcascade_profileface.xml in Resources */,
 				E8AFD85622AC1E6C00787BDA /* yaw00_lev0_p11_classic.mh in Resources */,
 				E8AFD8FC22AC1E6C00787BDA /* yaw00_lev2_p23_hat.mh in Resources */,
@@ -2146,6 +2216,7 @@
 				E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */,
 				E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */,
 				E8FF5A5922586A090088C1B2 /* main.m in Sources */,
+				E84EA79422B14C5A00A07DBE /* MGFaceLicenseHandle.m in Sources */,
 				E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */,
 				E8AFD84722AC1E6C00787BDA /* facedet.cpp in Sources */,
 				E89949F722A53BE600FC85C0 /* SCTimeHelper.m in Sources */,
@@ -2334,6 +2405,13 @@
 				INFOPLIST_FILE = SimpleCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Face++/MGFaceppSDK",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Face++/MegviiLicMgr-iOS-SDK",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MegviiLicMgr-iOS-SDK",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MGFaceppSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyman.SimpleCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2352,6 +2430,13 @@
 				INFOPLIST_FILE = SimpleCam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Face++/MGFaceppSDK",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Face++/MegviiLicMgr-iOS-SDK",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MegviiLicMgr-iOS-SDK",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MGFaceppSDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyman.SimpleCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
