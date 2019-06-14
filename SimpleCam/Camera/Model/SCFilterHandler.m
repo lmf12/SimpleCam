@@ -6,7 +6,7 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import "GPUImageBeautifyFilter.h"
+#import "LFGPUImageBeautyFilter.h"
 #import "SCGPUImageBaseFilter.h"
 
 #import "SCFilterHandler.h"
@@ -20,7 +20,7 @@
 @property (nonatomic, weak) GPUImageFilter *currentBeautifyFilter;
 @property (nonatomic, weak) GPUImageFilter *currentEffectFilter;
 
-@property (nonatomic, strong) GPUImageBeautifyFilter *defaultBeautifyFilter;
+@property (nonatomic, strong) LFGPUImageBeautyFilter *defaultBeautifyFilter;
 
 @property (nonatomic, strong) CADisplayLink *displayLink;  // 用来刷新时间
 
@@ -102,12 +102,12 @@
         return;
     }
     _beautifyFilterDegree = beautifyFilterDegree;
-    self.defaultBeautifyFilter.intensity = beautifyFilterDegree;
+    self.defaultBeautifyFilter.beautyLevel = beautifyFilterDegree;
 }
 
-- (GPUImageBeautifyFilter *)defaultBeautifyFilter {
+- (LFGPUImageBeautyFilter *)defaultBeautifyFilter {
     if (!_defaultBeautifyFilter) {
-        _defaultBeautifyFilter = [[GPUImageBeautifyFilter alloc] init];
+        _defaultBeautifyFilter = [[LFGPUImageBeautyFilter alloc] init];
     }
     return _defaultBeautifyFilter;
 }

@@ -19,7 +19,7 @@
 #import "SCFilterHandler.h"
 
 #import "SCVideoModel.h"
-#import "GPUImageBeautifyFilter.h"
+#import "LFGPUImageBeautyFilter.h"
 
 #import "SCVideoResultViewController.h"
 #import "SCPhotoResultViewController.h"
