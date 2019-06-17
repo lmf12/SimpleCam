@@ -4,7 +4,7 @@
 
 # 界面预览
 
-![](https://raw.githubusercontent.com/lmf12/SimpleCam/master/Images/image-ui.jpg)
+<div align=left><img src="https://raw.githubusercontent.com/lmf12/SimpleCam/master/Images/image-ui.jpg" width="600" height="355"/></div>
 
 # 如何运行
 
