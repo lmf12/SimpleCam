@@ -24,6 +24,7 @@ static SCFaceDetectorManager *_faceDetectorManager;
 @interface SCFaceDetectorManager ()
 
 @property (nonatomic, strong) MGFacepp *markManager;
+@property (nonatomic, assign) NSInteger faceCountForFacepp;  // Face++ 支持多人脸，记录当前帧的人脸个数
 
 @end
 
@@ -79,7 +80,7 @@ static SCFaceDetectorManager *_faceDetectorManager;
     if (self.faceDetectMode == SCFaceDetectModeOpenCV) {
         return stasm_NLANDMARKS;
     } else {
-        return kFaceppPointCount;
+        return (int)(kFaceppPointCount * self.faceCountForFacepp);
     }
 }
 
@@ -172,17 +173,22 @@ static SCFaceDetectorManager *_faceDetectorManager;
     [self.markManager beginDetectionFrame];
     NSArray *faceArray = [self.markManager detectWithImageData:imageData];
     
-    int len = 2 * kFaceppPointCount;
+    // 保存人脸个数
+    self.faceCountForFacepp = [faceArray count];
+    
+    int singleFaceLen = 2 * kFaceppPointCount;
+    int len = singleFaceLen * (int)self.faceCountForFacepp;
     float *landmarks = (float *)malloc(len * sizeof(float));
     
     for (MGFaceInfo *faceInfo in faceArray) {
+        NSInteger faceIndex = [faceArray indexOfObject:faceInfo];
         [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:kFaceppPointCount];
         [faceInfo.points enumerateObjectsUsingBlock:^(NSValue *value, NSUInteger idx, BOOL *stop) {
             float x = value.CGPointValue.y / self.sampleBufferSize.width;
             x = (isMirror ? x : (1 - x))  * 2 - 1;
             float y = value.CGPointValue.x / self.sampleBufferSize.height * 2 - 1;
-            landmarks[idx * 2] = x;
-            landmarks[idx * 2 + 1] = y;
+            landmarks[singleFaceLen * faceIndex + idx * 2] = x;
+            landmarks[singleFaceLen * faceIndex + idx * 2 + 1] = y;
         }];
     }
     [self.markManager endDetectionFrame];
