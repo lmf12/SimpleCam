@@ -13,6 +13,7 @@
 		E84EA79222B14C5A00A07DBE /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78422B14C5A00A07DBE /* libMGFacepp-0.5.2.a */; };
 		E84EA79322B14C5A00A07DBE /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = E84EA78522B14C5A00A07DBE /* megviifacepp_0_5_2_model */; };
 		E84EA79422B14C5A00A07DBE /* MGFaceLicenseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = E84EA78F22B14C5A00A07DBE /* MGFaceLicenseHandle.m */; };
+		E85B56E022D9A22500DCACA1 /* LFGPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E85B56DF22D9A22400DCACA1 /* LFGPUImageBeautyFilter.m */; };
 		E87C109E228C68DA00653DDA /* SCCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C109D228C68DA00653DDA /* SCCameraTopView.m */; };
 		E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A2228FB46E00653DDA /* SCVideoResultViewController.m */; };
 		E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A8228FB4DF00653DDA /* SCVideoResultViewController+UI.m */; };
@@ -25,7 +26,6 @@
 		E89949F422A538DD00FC85C0 /* SCCameraVideoTimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F322A538DD00FC85C0 /* SCCameraVideoTimeLabel.m */; };
 		E89949F722A53BE600FC85C0 /* SCTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F622A53BE600FC85C0 /* SCTimeHelper.m */; };
 		E89949FD22A5612100FC85C0 /* SCCameraViewController+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949FC22A5612100FC85C0 /* SCCameraViewController+Notification.m */; };
-		E89E7B6422B3CC5A00C0C647 /* LFGPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E89E7B6322B3CC5A00C0C647 /* LFGPUImageBeautyFilter.m */; };
 		E8AFD82B22AC1E6C00787BDA /* haarcascade_eye.xml in Resources */ = {isa = PBXBuildFile; fileRef = E8AFD6AE22AC1E6B00787BDA /* haarcascade_eye.xml */; };
 		E8AFD82C22AC1E6C00787BDA /* haarcascade_eye_tree_eyeglasses.xml in Resources */ = {isa = PBXBuildFile; fileRef = E8AFD6AF22AC1E6B00787BDA /* haarcascade_eye_tree_eyeglasses.xml */; };
 		E8AFD82D22AC1E6C00787BDA /* haarcascade_frontalcatface.xml in Resources */ = {isa = PBXBuildFile; fileRef = E8AFD6B022AC1E6B00787BDA /* haarcascade_frontalcatface.xml */; };
@@ -438,6 +438,8 @@
 		E84EA78E22B14C5A00A07DBE /* MGFaceLicenseHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGFaceLicenseHandle.h; sourceTree = "<group>"; };
 		E84EA78F22B14C5A00A07DBE /* MGFaceLicenseHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGFaceLicenseHandle.m; sourceTree = "<group>"; };
 		E84EA79022B14C5A00A07DBE /* MGNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNetAccount.h; sourceTree = "<group>"; };
+		E85B56DE22D9A22400DCACA1 /* LFGPUImageBeautyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGPUImageBeautyFilter.h; sourceTree = "<group>"; };
+		E85B56DF22D9A22400DCACA1 /* LFGPUImageBeautyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGPUImageBeautyFilter.m; sourceTree = "<group>"; };
 		E87C109C228C68DA00653DDA /* SCCameraTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraTopView.h; sourceTree = "<group>"; };
 		E87C109D228C68DA00653DDA /* SCCameraTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraTopView.m; sourceTree = "<group>"; };
 		E87C10A1228FB46E00653DDA /* SCVideoResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVideoResultViewController.h; sourceTree = "<group>"; };
@@ -463,8 +465,6 @@
 		E89949F622A53BE600FC85C0 /* SCTimeHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCTimeHelper.m; sourceTree = "<group>"; };
 		E89949FB22A5612100FC85C0 /* SCCameraViewController+Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SCCameraViewController+Notification.h"; sourceTree = "<group>"; };
 		E89949FC22A5612100FC85C0 /* SCCameraViewController+Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SCCameraViewController+Notification.m"; sourceTree = "<group>"; };
-		E89E7B6222B3CC5A00C0C647 /* LFGPUImageBeautyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGPUImageBeautyFilter.h; sourceTree = "<group>"; };
-		E89E7B6322B3CC5A00C0C647 /* LFGPUImageBeautyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGPUImageBeautyFilter.m; sourceTree = "<group>"; };
 		E8AFD6AE22AC1E6B00787BDA /* haarcascade_eye.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye.xml; sourceTree = "<group>"; };
 		E8AFD6AF22AC1E6B00787BDA /* haarcascade_eye_tree_eyeglasses.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye_tree_eyeglasses.xml; sourceTree = "<group>"; };
 		E8AFD6B022AC1E6B00787BDA /* haarcascade_frontalcatface.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalcatface.xml; sourceTree = "<group>"; };
@@ -1006,6 +1006,15 @@
 				E84EA79022B14C5A00A07DBE /* MGNetAccount.h */,
 			);
 			path = MGLicenseManagerHelper;
+			sourceTree = "<group>";
+		};
+		E85B56DD22D9A22400DCACA1 /* LFGPUImageBeautyFilter */ = {
+			isa = PBXGroup;
+			children = (
+				E85B56DE22D9A22400DCACA1 /* LFGPUImageBeautyFilter.h */,
+				E85B56DF22D9A22400DCACA1 /* LFGPUImageBeautyFilter.m */,
+			);
+			path = LFGPUImageBeautyFilter;
 			sourceTree = "<group>";
 		};
 		E87C109F228FB42500653DDA /* VideoResult */ = {
@@ -1615,10 +1624,8 @@
 		E8D80C3722994EF900CDB060 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				E89E7B6222B3CC5A00C0C647 /* LFGPUImageBeautyFilter.h */,
-				E89E7B6322B3CC5A00C0C647 /* LFGPUImageBeautyFilter.m */,
+				E85B56DD22D9A22400DCACA1 /* LFGPUImageBeautyFilter */,
 				E84EA77E22B14C5A00A07DBE /* Facepp */,
-				E8AFD6A922AC1E6B00787BDA /* GPUImageBeautifyFilter */,
 				E8AFD6AC22AC1E6B00787BDA /* Stasm */,
 			);
 			path = ThirdParty;
@@ -2224,7 +2231,6 @@
 				E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */,
 				E8AFD83E22AC1E6C00787BDA /* convshape.cpp in Sources */,
 				E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */,
-				E89E7B6422B3CC5A00C0C647 /* LFGPUImageBeautyFilter.m in Sources */,
 				E8AFD83C22AC1E6C00787BDA /* asm.cpp in Sources */,
 				E87C10AC228FCC6300653DDA /* SCFileHelper.m in Sources */,
 				E8AFD84822AC1E6C00787BDA /* initasm.cpp in Sources */,
@@ -2235,6 +2241,7 @@
 				E8E578F02261D2FB0093BB7B /* SCFilterHelper.m in Sources */,
 				E8AFD98522AC1E6C00787BDA /* shapemod.cpp in Sources */,
 				E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */,
+				E85B56E022D9A22500DCACA1 /* LFGPUImageBeautyFilter.m in Sources */,
 				E8AFD98222AC1E6C00787BDA /* print.cpp in Sources */,
 				E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */,
 				E8D18EFE2258893800ECFB98 /* SCCameraViewController+UI.m in Sources */,
