@@ -32,6 +32,9 @@
 /// 抖音滤镜
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *tikTokFilterMaterials;
 
+/// 人脸识别滤镜
+@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *faceRecognizerFilterMaterials;
+
 - (NSInteger)currentCategoryIndex;
 
 @end

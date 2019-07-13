@@ -167,13 +167,6 @@ static NSString * const kFilterCategoryReuseIdentifier = @"kFilterCategoryReuseI
     if (_currentIndex == indexPath.row) {
         bottomLine.hidden = NO;
         bottomLine.backgroundColor = _itemSelectColor;
-        
-        CGRect frame = bottomLine.frame;
-        frame.size.width = _bottomLineWidth ? _bottomLineWidth : _itemWidth;
-        frame.size.height = _bottomLineHeight ? _bottomLineHeight : CGRectGetHeight(frame);
-        bottomLine.frame = frame;
-        
-        bottomLine.layer.cornerRadius = CGRectGetHeight(frame) / 2;
     } else {
         bottomLine.hidden = YES;
     }

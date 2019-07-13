@@ -96,6 +96,13 @@
     return _tikTokFilterMaterials;
 }
 
+- (NSArray<SCFilterMaterialModel *> *)faceRecognizerFilterMaterials {
+    if (!_faceRecognizerFilterMaterials) {
+        _faceRecognizerFilterMaterials = [[SCFilterManager shareManager] faceRecognizerFilters];
+    }
+    return _faceRecognizerFilterMaterials;
+}
+
 #pragma mark - Action
 
 - (void)filterAction:(id)sender {
@@ -167,6 +174,8 @@
         self.filterBarView.defaultFilterMaterials = self.defaultFilterMaterials;
     } else if (index == 1 && !self.filterBarView.tikTokFilterMaterials) {
         self.filterBarView.tikTokFilterMaterials = self.tikTokFilterMaterials;
+    } else if (index == 2 && !self.filterBarView.faceRecognizerFilterMaterials) {
+        self.filterBarView.faceRecognizerFilterMaterials = self.faceRecognizerFilterMaterials;
     }
 }
 

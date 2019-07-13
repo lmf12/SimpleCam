@@ -40,29 +40,22 @@ static NSInteger kFilterCategoryCellBottomLineHeight = 2;
 }
 
 - (void)commonInit {
+    self.titleLabel = [[UILabel alloc] init];
+    [self addSubview:self.titleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+    }];
     
-    _titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
-    _titleLabel.textAlignment = NSTextAlignmentCenter;
-    [self addSubview:_titleLabel];
-    
-    _bottomLine = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds) - kFilterCategoryCellBottomLineHeight, 0, kFilterCategoryCellBottomLineHeight)];
-    _bottomLine.clipsToBounds = YES;
-    _bottomLine.backgroundColor = [UIColor redColor];
-    [self addSubview:_bottomLine];
-    
-}
-
-- (void)layoutSubviews {
-    
-    [super layoutSubviews];
-    
-    _titleLabel.frame = self.bounds;
-    
-    CGRect bottomLineFrame = _bottomLine.frame;
-    bottomLineFrame.origin.x = (CGRectGetWidth(self.bounds) - CGRectGetWidth(bottomLineFrame)) / 2;
-    bottomLineFrame.origin.y = CGRectGetHeight(self.bounds) - CGRectGetHeight(bottomLineFrame);
-    _bottomLine.frame = bottomLineFrame;
-    
+    self.bottomLine = [[UIView alloc] init];
+    self.bottomLine.clipsToBounds = YES;
+    self.bottomLine.layer.cornerRadius = kFilterCategoryCellBottomLineHeight / 2;
+    [self addSubview:self.bottomLine];
+    [self.bottomLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.titleLabel);
+        make.centerX.equalTo(self);
+        make.height.mas_equalTo(kFilterCategoryCellBottomLineHeight);
+        make.bottom.equalTo(self);
+    }];
 }
 
 @end

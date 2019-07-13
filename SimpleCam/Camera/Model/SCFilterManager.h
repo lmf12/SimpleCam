@@ -18,6 +18,8 @@
 @property (nonatomic, strong, readonly) NSArray<SCFilterMaterialModel *> *defaultFilters;
 /// 抖音滤镜列表
 @property (nonatomic, strong, readonly) NSArray<SCFilterMaterialModel *> *tiktokFilters;
+/// 人脸识别滤镜列表
+@property (nonatomic, strong, readonly) NSArray<SCFilterMaterialModel *> *faceRecognizerFilters;
 
 /**
  获取实例

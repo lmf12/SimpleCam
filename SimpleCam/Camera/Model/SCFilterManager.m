@@ -14,9 +14,11 @@ static SCFilterManager *_filterManager;
 
 @property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *defaultFilters;
 @property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *tikTokFilters;
+@property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *faceRecognizerFilters;
 
 @property (nonatomic, strong) NSDictionary *defaultFilterMaterialsInfo;
 @property (nonatomic, strong) NSDictionary *tikTokFilterMaterialsInfo;
+@property (nonatomic, strong) NSDictionary *faceRecognizerMaterialsInfo;
 
 @property (nonatomic, strong) NSMutableDictionary *filterClassInfo;
 
@@ -55,6 +57,7 @@ static SCFilterManager *_filterManager;
     self.filterClassInfo = [[NSMutableDictionary alloc] init];
     [self setupDefaultFilterMaterialsInfo];
     [self setupTikTokFilterMaterialsInfo];
+    [self setupFaceRecognizerMaterialsInfo];
 }
 
 - (void)setupDefaultFilterMaterialsInfo {
@@ -67,6 +70,12 @@ static SCFilterManager *_filterManager;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"TikTokFilterMaterials" ofType:@"plist"];
     NSDictionary *info = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
     self.tikTokFilterMaterialsInfo = [info copy];
+}
+
+- (void)setupFaceRecognizerMaterialsInfo {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FaceRecognizerMaterials" ofType:@"plist"];
+    NSDictionary *info = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    self.faceRecognizerMaterialsInfo = [info copy];
 }
 
 - (NSArray<SCFilterMaterialModel *> *)setupFiltersWithInfo:(NSDictionary *)info {
@@ -101,6 +110,13 @@ static SCFilterManager *_filterManager;
         _tikTokFilters = [self setupFiltersWithInfo:self.tikTokFilterMaterialsInfo];
     }
     return _tikTokFilters;
+}
+
+- (NSArray<SCFilterMaterialModel *> *)faceRecognizerFilters {
+    if (!_faceRecognizerFilters) {
+        _faceRecognizerFilters = [self setupFiltersWithInfo:self.faceRecognizerMaterialsInfo];
+    }
+    return _faceRecognizerFilters;
 }
 
 @end

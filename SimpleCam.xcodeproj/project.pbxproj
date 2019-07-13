@@ -14,6 +14,7 @@
 		E84EA79322B14C5A00A07DBE /* megviifacepp_0_5_2_model in Resources */ = {isa = PBXBuildFile; fileRef = E84EA78522B14C5A00A07DBE /* megviifacepp_0_5_2_model */; };
 		E84EA79422B14C5A00A07DBE /* MGFaceLicenseHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = E84EA78F22B14C5A00A07DBE /* MGFaceLicenseHandle.m */; };
 		E85B56E022D9A22500DCACA1 /* LFGPUImageBeautyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E85B56DF22D9A22400DCACA1 /* LFGPUImageBeautyFilter.m */; };
+		E85B56E222D9A74500DCACA1 /* FaceRecognizerMaterials.plist in Resources */ = {isa = PBXBuildFile; fileRef = E85B56E122D9A74500DCACA1 /* FaceRecognizerMaterials.plist */; };
 		E87C109E228C68DA00653DDA /* SCCameraTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C109D228C68DA00653DDA /* SCCameraTopView.m */; };
 		E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A2228FB46E00653DDA /* SCVideoResultViewController.m */; };
 		E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10A8228FB4DF00653DDA /* SCVideoResultViewController+UI.m */; };
@@ -440,6 +441,7 @@
 		E84EA79022B14C5A00A07DBE /* MGNetAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGNetAccount.h; sourceTree = "<group>"; };
 		E85B56DE22D9A22400DCACA1 /* LFGPUImageBeautyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFGPUImageBeautyFilter.h; sourceTree = "<group>"; };
 		E85B56DF22D9A22400DCACA1 /* LFGPUImageBeautyFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFGPUImageBeautyFilter.m; sourceTree = "<group>"; };
+		E85B56E122D9A74500DCACA1 /* FaceRecognizerMaterials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FaceRecognizerMaterials.plist; sourceTree = "<group>"; };
 		E87C109C228C68DA00653DDA /* SCCameraTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraTopView.h; sourceTree = "<group>"; };
 		E87C109D228C68DA00653DDA /* SCCameraTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraTopView.m; sourceTree = "<group>"; };
 		E87C10A1228FB46E00653DDA /* SCVideoResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVideoResultViewController.h; sourceTree = "<group>"; };
@@ -1708,6 +1710,7 @@
 			children = (
 				E8D80C4422A2B9D500CDB060 /* DefaultFilterMaterials.plist */,
 				E8D80C4622A2BA1300CDB060 /* TikTokFilterMaterials.plist */,
+				E85B56E122D9A74500DCACA1 /* FaceRecognizerMaterials.plist */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -2063,6 +2066,7 @@
 				E8AFD93222AC1E6C00787BDA /* yaw00_lev3_p00_classic.mh in Resources */,
 				E8AFD95122AC1E6C00787BDA /* yaw00_lev3_p31_classic.mh in Resources */,
 				E8AFD89C22AC1E6C00787BDA /* yaw00_lev1_p04_classic.mh in Resources */,
+				E85B56E222D9A74500DCACA1 /* FaceRecognizerMaterials.plist in Resources */,
 				E8AFD8A422AC1E6C00787BDA /* yaw00_lev1_p12_classic.mh in Resources */,
 				E8AFD87822AC1E6C00787BDA /* yaw00_lev0_p45_hat.mh in Resources */,
 				E8AFD96C22AC1E6C00787BDA /* yaw00_lev3_p58_classic.mh in Resources */,
