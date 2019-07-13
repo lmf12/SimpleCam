@@ -131,6 +131,16 @@
     }
 }
 
+- (void)setFacesPointCount:(int)facesPointCount {
+    _facesPointCount = facesPointCount;
+    
+    for (GPUImageFilter *filter in self.filters) {
+        if ([filter isKindOfClass:[SCGPUImageBaseFilter class]]) {
+            ((SCGPUImageBaseFilter *)filter).facesPointCount = facesPointCount;
+        }
+    }
+}
+
 #pragma mark - Private
 
 - (void)commonInit {

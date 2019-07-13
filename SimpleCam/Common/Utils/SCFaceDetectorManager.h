@@ -36,9 +36,7 @@ typedef NS_ENUM(NSUInteger, SCFaceDetectMode) {
 
 /// 获取人脸点，前置是镜像
 - (float *)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer
-                      isMirror:(BOOL)isMirror;
-
-/// 人脸点个数
-- (int)facePointCount;
+                   facePointCount:(int *)facePointCount
+                         isMirror:(BOOL)isMirror;
 
 @end

@@ -17,6 +17,7 @@
     self.timeUniform = [filterProgram uniformIndex:@"time"];
     self.time = 0.0f;
     self.facesPoints = 0;
+    self.facesPointCount = 0;
     
     return self;
 }

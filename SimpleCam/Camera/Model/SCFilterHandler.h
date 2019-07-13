@@ -24,6 +24,9 @@
 /// 人脸点
 @property (nonatomic, assign) GLfloat *facesPoints;
 
+/// 人脸点个数
+@property (nonatomic, assign) int facesPointCount;
+
 /// 滤镜链第一个滤镜
 - (GPUImageFilter *)firstFilter;
 

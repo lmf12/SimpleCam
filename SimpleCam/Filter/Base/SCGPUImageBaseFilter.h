@@ -16,5 +16,6 @@
 @property (nonatomic, assign) CGFloat beginTime;  // 滤镜开始应用的时间
 
 @property (nonatomic, assign) GLfloat *facesPoints;
+@property (nonatomic, assign) int facesPointCount;
 
 @end

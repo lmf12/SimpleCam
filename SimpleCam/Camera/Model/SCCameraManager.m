@@ -345,10 +345,13 @@ static SCCameraManager *_cameraManager;
 #pragma mark - GPUImageVideoCameraDelegate
 
 - (void)willOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer {
+    int facePointCount = 0;
     SCFaceDetectorManager *manager = [SCFaceDetectorManager shareManager];
     float *facePoints = [manager detectWithSampleBuffer:sampleBuffer
+                                         facePointCount:&facePointCount
                                                isMirror:[self isPositionFront]];
     self.currentFilterHandler.facesPoints = facePoints;
+    self.currentFilterHandler.facesPointCount = facePointCount;
 }
 
 @end
