@@ -14,6 +14,7 @@
 @property (nonatomic, strong, readwrite) UIButton *flashButton;
 @property (nonatomic, strong, readwrite) UIButton *ratioButton;
 @property (nonatomic, strong, readwrite) UIButton *closeButton;
+@property (nonatomic, strong, readwrite) UIButton *settingButton;
 
 @property (nonatomic, assign) BOOL isRotating;  // 正在旋转中
 
@@ -36,6 +37,7 @@
     [self setupFlashButton];
     [self setupRatioButton];
     [self setupCloseButton];
+    [self setupSettingButton];
 }
 
 - (void)setupRotateButton {
@@ -43,7 +45,7 @@
     [self addSubview:self.rotateButton];
     [self.rotateButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.right.equalTo(self).offset(-20);
+        make.centerX.equalTo(self).multipliedBy(1.75);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     [self.rotateButton addTarget:self
@@ -57,7 +59,7 @@
     [self addSubview:self.flashButton];
     [self.flashButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.left.equalTo(self).offset(20);
+        make.centerX.equalTo(self).multipliedBy(0.75);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     [self.flashButton addTarget:self
@@ -71,7 +73,7 @@
     [self addSubview:self.ratioButton];
     [self.ratioButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.centerX.equalTo(self);
+        make.centerX.equalTo(self).multipliedBy(1.25);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     [self.ratioButton addTarget:self
@@ -86,13 +88,27 @@
     [self addSubview:self.closeButton];
     [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self);
-        make.left.equalTo(self).offset(20);
+        make.centerX.equalTo(self).multipliedBy(0.25);
         make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     [self.closeButton addTarget:self
                          action:@selector(closeAction:)
                forControlEvents:UIControlEventTouchUpInside];
     [self.closeButton setEnableDarkWithImageName:@"btn_close"];
+}
+
+- (void)setupSettingButton {
+    self.settingButton = [[UIButton alloc] init];
+    [self addSubview:self.settingButton];
+    [self.settingButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self);
+        make.centerX.equalTo(self).multipliedBy(0.25);
+        make.size.mas_equalTo(CGSizeMake(30, 30));
+    }];
+    [self.settingButton addTarget:self
+                           action:@selector(settingAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
+    [self.settingButton setEnableDarkWithImageName:@"btn_setting"];
 }
 
 #pragma mark - Action
@@ -130,6 +146,12 @@
 - (void)closeAction:(UIButton *)button {
     if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickCloseButton:)]) {
         [self.delegate cameraTopViewDidClickCloseButton:self];
+    }
+}
+
+- (void)settingAction:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(cameraTopViewDidClickSettingButton:)]) {
+        [self.delegate cameraTopViewDidClickSettingButton:self];
     }
 }
 

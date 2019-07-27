@@ -16,6 +16,7 @@
 - (void)cameraTopViewDidClickFlashButton:(SCCameraTopView *)cameraTopView;
 - (void)cameraTopViewDidClickRatioButton:(SCCameraTopView *)cameraTopView;
 - (void)cameraTopViewDidClickCloseButton:(SCCameraTopView *)cameraTopView;
+- (void)cameraTopViewDidClickSettingButton:(SCCameraTopView *)cameraTopView;
 
 @end
 
@@ -25,6 +26,7 @@
 @property (nonatomic, strong, readonly) UIButton *flashButton;  // 闪光灯按钮
 @property (nonatomic, strong, readonly) UIButton *ratioButton;  // 比例按钮
 @property (nonatomic, strong, readonly) UIButton *closeButton;  // 关闭按钮
+@property (nonatomic, strong, readonly) UIButton *settingButton;  // 设置按钮
 
 @property (nonatomic, weak) id <SCCameraTopViewDelegate> delegate;
 

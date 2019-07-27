@@ -248,6 +248,13 @@
     [self refreshUIWhenRecordVideo];
 }
 
+- (void)cameraTopViewDidClickSettingButton:(SCCameraTopView *)cameraTopView {
+    UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:[[SCSettingViewController alloc] init]];
+    [self presentViewController:navigationVC
+                       animated:YES
+                     completion:NULL];
+}
+
 #pragma mark - SCCapturingModeSwitchViewDelegate
 
 - (void)capturingModeSwitchView:(SCCapturingModeSwitchView *)view

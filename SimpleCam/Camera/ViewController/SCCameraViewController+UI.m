@@ -227,6 +227,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self refreshFlashButton];
     [self refreshRatioButton];
     [self refreshRotateButton];
+    [self refreshSettingButton];
     [self refreshNextButton];
     [self refreshModeSwitchView];
     [self refreshVideoTimeLabel];
@@ -286,6 +287,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.cameraTopView.ratioButton setIsDarkMode:isTopBarDark];
     [self.cameraTopView.rotateButton setIsDarkMode:isTopBarDark];
     [self.cameraTopView.closeButton setIsDarkMode:isTopBarDark];
+    [self.cameraTopView.settingButton setIsDarkMode:isTopBarDark];
     
     BOOL isBottomBarDark = ratio == SCCameraRatio1v1 || ratio == SCCameraRatio4v3;
     [self.filterButton setIsDarkMode:isBottomBarDark];
@@ -381,6 +383,14 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     [self.cameraTopView.rotateButton setHidden:hidden
                                       animated:YES
                                     completion:NULL];
+}
+
+/// 刷新设置
+- (void)refreshSettingButton {
+    BOOL hidden = self.videos.count > 0 || self.isRecordingVideo;
+    [self.cameraTopView.settingButton setHidden:hidden
+                                       animated:YES
+                                     completion:NULL];
 }
 
 /// 刷新关闭按钮

@@ -23,6 +23,7 @@
 
 #import "SCVideoResultViewController.h"
 #import "SCPhotoResultViewController.h"
+#import "SCSettingViewController.h"
 
 #import "SCCameraViewController.h"
 

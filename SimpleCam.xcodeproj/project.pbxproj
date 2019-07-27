@@ -404,6 +404,7 @@
 		E8D80C6522A391E200CDB060 /* SCGPUImageShineWhiteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C6422A391E200CDB060 /* SCGPUImageShineWhiteFilter.m */; };
 		E8D80C6822A397E400CDB060 /* SCGPUImageGlitchFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C6722A397E400CDB060 /* SCGPUImageGlitchFilter.m */; };
 		E8D80C6B22A3A1B100CDB060 /* SCGPUImageVertigoFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C6A22A3A1B100CDB060 /* SCGPUImageVertigoFilter.m */; };
+		E8DA864A22EC2F78009AB4EA /* SCSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DA864922EC2F78009AB4EA /* SCSettingViewController.m */; };
 		E8E578DF2261A8890093BB7B /* SCFilterBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578DE2261A8890093BB7B /* SCFilterBarView.m */; };
 		E8E578E32261B9580093BB7B /* SCFilterMaterialView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E22261B9570093BB7B /* SCFilterMaterialView.m */; };
 		E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E52261BA7B0093BB7B /* SCFilterMaterialViewCell.m */; };
@@ -900,6 +901,8 @@
 		E8D80C6722A397E400CDB060 /* SCGPUImageGlitchFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageGlitchFilter.m; sourceTree = "<group>"; };
 		E8D80C6922A3A1B100CDB060 /* SCGPUImageVertigoFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageVertigoFilter.h; sourceTree = "<group>"; };
 		E8D80C6A22A3A1B100CDB060 /* SCGPUImageVertigoFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageVertigoFilter.m; sourceTree = "<group>"; };
+		E8DA864822EC2F78009AB4EA /* SCSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCSettingViewController.h; sourceTree = "<group>"; };
+		E8DA864922EC2F78009AB4EA /* SCSettingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCSettingViewController.m; sourceTree = "<group>"; };
 		E8E578DD2261A8890093BB7B /* SCFilterBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFilterBarView.h; sourceTree = "<group>"; };
 		E8E578DE2261A8890093BB7B /* SCFilterBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFilterBarView.m; sourceTree = "<group>"; };
 		E8E578E02261B5440093BB7B /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -1671,6 +1674,15 @@
 			path = TikTok;
 			sourceTree = "<group>";
 		};
+		E8DA864722EC2F2C009AB4EA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E8DA864822EC2F78009AB4EA /* SCSettingViewController.h */,
+				E8DA864922EC2F78009AB4EA /* SCSettingViewController.m */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		E8E578ED2261D2EB0093BB7B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -1742,6 +1754,7 @@
 				E8D18EE422586BD600ECFB98 /* Camera */,
 				E8D18F022258925300ECFB98 /* PhotoResult */,
 				E87C109F228FB42500653DDA /* VideoResult */,
+				E8DA864722EC2F2C009AB4EA /* Setting */,
 				E8D18EE322586BD600ECFB98 /* Support */,
 				E8FC20E72261EB3700BB1BD9 /* Resource */,
 				E8FF5A4F22586A090088C1B2 /* Main.storyboard */,
@@ -2225,6 +2238,7 @@
 				E8D80C3D22997E1500CDB060 /* SCFilterHandler.m in Sources */,
 				E8AFD84122AC1E6C00787BDA /* eyedist.cpp in Sources */,
 				E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */,
+				E8DA864A22EC2F78009AB4EA /* SCSettingViewController.m in Sources */,
 				E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */,
 				E8FF5A5922586A090088C1B2 /* main.m in Sources */,
 				E84EA79422B14C5A00A07DBE /* MGFaceLicenseHandle.m in Sources */,
