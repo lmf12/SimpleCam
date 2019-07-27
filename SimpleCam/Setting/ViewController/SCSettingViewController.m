@@ -108,8 +108,8 @@ static NSString * const kModelIDOpenCV = @"ModelIDOpenCV";
 }
 
 - (void)setupCloseButton {
-    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [closeButton setImage:[UIImage imageNamed:@"btn_close_black"] forState:UIControlStateNormal];
+    UIButton *closeButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 36, 36)];
+    [closeButton setImage:[UIImage imageNamed:@"btn_navigation_close"] forState:UIControlStateNormal];
     [closeButton addTarget:self
                     action:@selector(closeAction:)
           forControlEvents:UIControlEventTouchUpInside];
