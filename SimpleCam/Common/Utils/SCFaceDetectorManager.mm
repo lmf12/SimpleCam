@@ -82,7 +82,8 @@ static SCFaceDetectorManager *_faceDetectorManager;
 
 // 通用初始化
 - (void)commonInit {
-    self.sampleBufferSize = CGSizeMake(720, 1280);
+    self.videoSize = CGSizeMake(720, 1280);
+    self.sampleBufferTopOffset = 0;
     self.faceDetectMode = SCFaceDetectModeOpenCV;
 }
 
@@ -124,9 +125,9 @@ static SCFaceDetectorManager *_faceDetectorManager;
         NSInteger faceIndex = [faceArray indexOfObject:faceInfo];
         [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:kFaceppPointCount];
         [faceInfo.points enumerateObjectsUsingBlock:^(NSValue *value, NSUInteger idx, BOOL *stop) {
-            float x = value.CGPointValue.y / self.sampleBufferSize.width;
+            float x = value.CGPointValue.y / self.videoSize.width;
             x = (isMirror ? x : (1 - x))  * 2 - 1;
-            float y = value.CGPointValue.x / self.sampleBufferSize.height * 2 - 1;
+            float y = (value.CGPointValue.x - self.sampleBufferTopOffset) / self.videoSize.height * 2 - 1;
             landmarks[singleFaceLen * faceIndex + idx * 2] = x;
             landmarks[singleFaceLen * faceIndex + idx * 2 + 1] = y;
         }];
@@ -149,7 +150,7 @@ static SCFaceDetectorManager *_faceDetectorManager;
                            facePointCount:(int *)facePointCount
                                  isMirror:(BOOL)isMirror {
     cv::Mat cvImage = [self grayMatWithSampleBuffer:sampleBuffer];
-    int resultWidth = 150;
+    int resultWidth = 250;
     int resultHeight = resultWidth * 1.0 / cvImage.rows * cvImage.cols;
     cvImage = [self resizeMat:cvImage toWidth:resultHeight]; // 此时还没旋转，所以传入高度
     cvImage = [self correctMat:cvImage isMirror:isMirror];
@@ -191,7 +192,8 @@ static SCFaceDetectorManager *_faceDetectorManager;
             if (index % 2 == 0) {
                 landmarks[index] = landmarks[index] / imgCols * 2 - 1;
             } else {
-                landmarks[index] = landmarks[index] / imgRows * 2 - 1;
+                float scale = (16.0 / 9.0) / (self.videoSize.height / self.videoSize.width);
+                landmarks[index] = (landmarks[index] / imgRows * 2 - 1) * scale;
             }
         }
         *facePointCount = stasm_NLANDMARKS;

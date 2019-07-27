@@ -22,8 +22,10 @@ typedef NS_ENUM(NSUInteger, SCFaceDetectMode) {
 
 @interface SCFaceDetectorManager : NSObject
 
-/// 预览尺寸，默认 (720, 1280)
-@property (nonatomic, assign) CGSize sampleBufferSize;
+/// 预览尺寸，默认 (720, 1280)，由于人脸识别是基于 (720, 1280)来进行，所以需要根据比例尺寸来计算正确的人脸点位置
+@property (nonatomic, assign) CGSize videoSize;
+/// 顶部距离偏移，默认0，用来计算人脸点位置
+@property (nonatomic, assign) CGFloat sampleBufferTopOffset;
 
 /// 人脸识别引擎，默认 SCFaceDetectModeOpenCV
 @property (nonatomic, assign) SCFaceDetectMode faceDetectMode;

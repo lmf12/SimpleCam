@@ -151,7 +151,8 @@ static SCCameraManager *_cameraManager;
     self.ratio = SCCameraRatio16v9;
     self.videoSize = [self videoSizeWithRatio:self.ratio];
     
-    [SCFaceDetectorManager shareManager].sampleBufferSize = CGSizeMake(720, 1280);
+    [SCFaceDetectorManager shareManager].videoSize = [self videoSizeWithRatio:self.ratio];
+    [SCFaceDetectorManager shareManager].sampleBufferTopOffset = 0;
     [SCFaceDetectorManager shareManager].faceDetectMode = SCFaceDetectModeFacepp;
 }
 
@@ -202,30 +203,12 @@ static SCCameraManager *_cameraManager;
 - (void)setRatio:(SCCameraRatio)ratio {
     _ratio = ratio;
     
-    CGRect rect = CGRectMake(0, 0, 1, 1);
-    if (ratio == SCCameraRatio1v1) {
-        self.camera.captureSessionPreset = AVCaptureSessionPreset640x480;
-        CGFloat space = (4 - 3) / 4.0; // 竖直方向应该裁剪掉的空间
-        rect = CGRectMake(0, space / 2, 1, 1 - space);
-    } else if (ratio == SCCameraRatio4v3) {
-        self.camera.captureSessionPreset = AVCaptureSessionPreset640x480;
-    } else if (ratio == SCCameraRatio16v9) {
-        self.camera.captureSessionPreset = AVCaptureSessionPreset1280x720;
-    } else if (ratio == SCCameraRatioFull) {
-        self.camera.captureSessionPreset = AVCaptureSessionPreset1280x720;
-        CGFloat currentRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
-        if (currentRatio > 16.0 / 9.0) { // 需要在水平方向裁剪
-            CGFloat resultWidth = 16.0 / currentRatio;
-            CGFloat space = (9.0 - resultWidth) / 9.0;
-            rect = CGRectMake(space / 2, 0, 1 - space, 1);
-        } else { // 需要在竖直方向裁剪
-            CGFloat resultHeight = 9.0 * currentRatio;
-            CGFloat space = (16.0 - resultHeight) / 16.0;
-            rect = CGRectMake(0, space / 2, 1, 1 - space);
-        }
-    }
+    CGRect rect = [self cropRectWithRatio:ratio];
     [self.currentFilterHandler setCropRect:rect];
     self.videoSize = [self videoSizeWithRatio:ratio];
+    CGSize videoSize = [self videoSizeWithRatio:self.ratio];
+    [SCFaceDetectorManager shareManager].videoSize = videoSize;
+    [SCFaceDetectorManager shareManager].sampleBufferTopOffset = rect.origin.y / rect.size.height * videoSize.height;
 }
 
 #pragma mark - Private
@@ -320,26 +303,37 @@ static SCCameraManager *_cameraManager;
     [device unlockForConfiguration];
 }
 
+/// 通过比例，计算出每一帧的尺寸大小
 - (CGSize)videoSizeWithRatio:(SCCameraRatio)ratio {
-    CGFloat videoWidth = SCREEN_WIDTH * SCREEN_SCALE;
-    CGFloat videoHeight = 0;
-    switch (ratio) {
-        case SCCameraRatio1v1:
-            videoHeight = videoWidth;
-            break;
-        case SCCameraRatio4v3:
-            videoHeight = videoWidth / 3.0 * 4.0;
-            break;
-        case SCCameraRatio16v9:
-            videoHeight = videoWidth / 9.0 * 16.0;
-            break;
-        case SCCameraRatioFull:
-            videoHeight = SCREEN_HEIGHT * SCREEN_SCALE;
-            break;
-        default:
-            break;
+    CGRect originRect = CGRectMake(0, 0, 720, 1280);
+    CGRect cropRect = [self cropRectWithRatio:ratio];
+    CGSize size = CGSizeMake(originRect.size.width * cropRect.size.width,
+                             originRect.size.height * cropRect.size.height);
+    return size;
+}
+
+/// 通过比例，计算裁剪区域
+- (CGRect)cropRectWithRatio:(SCCameraRatio)ratio {
+    CGRect rect = CGRectMake(0, 0, 1, 1);
+    if (ratio == SCCameraRatio1v1) {
+        CGFloat space = (16 - 9) / 16.0; // 竖直方向应该裁剪掉的空间
+        rect = CGRectMake(0, space / 2, 1, 1 - space);
+    } else if (ratio == SCCameraRatio4v3) {
+        CGFloat space = (16.0 / 9 - 4.0 / 3) / (16.0 / 9); // 竖直方向应该裁剪掉的空间
+        rect = CGRectMake(0, space / 2, 1, 1 - space);
+    } else if (ratio == SCCameraRatioFull) {
+        CGFloat currentRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
+        if (currentRatio > 16.0 / 9.0) { // 需要在水平方向裁剪
+            CGFloat resultWidth = 16.0 / currentRatio;
+            CGFloat space = (9.0 - resultWidth) / 9.0;
+            rect = CGRectMake(space / 2, 0, 1 - space, 1);
+        } else { // 需要在竖直方向裁剪
+            CGFloat resultHeight = 9.0 * currentRatio;
+            CGFloat space = (16.0 - resultHeight) / 16.0;
+            rect = CGRectMake(0, space / 2, 1, 1 - space);
+        }
     }
-    return CGSizeMake(videoWidth, videoHeight);
+    return rect;
 }
 
 #pragma mark - GPUImageVideoCameraDelegate
