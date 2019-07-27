@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSString *modelTitle;
 @property (nonatomic, assign) BOOL isSwitchOn;
 
+@property (nonatomic, copy) void (^switchChangedAction)(BOOL isOn);
+
 @end

@@ -32,6 +32,10 @@
     [self.statusSwitch setOn:isOn];
 }
 
+- (BOOL)isOn {
+    return [self.statusSwitch isOn];
+}
+
 #pragma mark - Custom Accessor
 
 - (void)setModel:(SCSettingModel *)model {
@@ -89,7 +93,9 @@
 #pragma mark - Action
 
 - (void)switchValueChangedAction:(id)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(settingCell:didChangedWithModel:)]) {
+        [self.delegate settingCell:self didChangedWithModel:self.model];
+    }
 }
 
 @end

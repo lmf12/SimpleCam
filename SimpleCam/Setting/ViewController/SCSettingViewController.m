@@ -6,14 +6,26 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import "SCAppSetting.h"
 #import "SCSettingCell.h"
 #import "SCSettingSectionModel.h"
+#import "SCFaceDetectorManager.h"
 
 #import "SCSettingViewController.h"
 
 static NSString * const kReuseIdentifier = @"SCSettingCell";
 
-@interface SCSettingViewController () <UITableViewDelegate, UITableViewDataSource>
+// section ID
+static NSString * const kSectionIDFace = @"SectionIDFace";
+
+// model ID
+static NSString * const kModelIDFacepp = @"ModelIDFacepp";
+static NSString * const kModelIDOpenCV = @"ModelIDOpenCV";
+
+@interface SCSettingViewController () <
+    UITableViewDelegate,
+    UITableViewDataSource,
+    SCSettingCellDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray <SCSettingSectionModel *>*sections;
@@ -51,14 +63,45 @@ static NSString * const kReuseIdentifier = @"SCSettingCell";
 - (void)setupData {
     /// 人脸识别引擎
     SCSettingSectionModel *faceSection = [[SCSettingSectionModel alloc] init];
+    faceSection.sectionID = kSectionIDFace;
     faceSection.sectionTitle = @"人脸识别引擎";
     // Face++
     SCSettingModel *faceppModel = [[SCSettingModel alloc] init];
+    faceppModel.modelID = kModelIDFacepp;
     faceppModel.modelTitle = @"Face++（推荐）";
+    faceppModel.isSwitchOn = [SCAppSetting isUsingFaceppEngine];
+    @weakify(self);
+    faceppModel.switchChangedAction = ^(BOOL isOn) {
+        @strongify(self);
+        SCFaceDetectorManager *manager = [SCFaceDetectorManager shareManager];
+        if (isOn) {
+            // 如果 OpenCV 使用中，则关闭 OpenCV
+            if (manager.faceDetectMode == SCFaceDetectModeOpenCV) {
+                [self changeModelStatusWithModelID:kModelIDOpenCV status:NO];
+            }
+            manager.faceDetectMode = SCFaceDetectModeFacepp;
+        } else if (manager.faceDetectMode == SCFaceDetectModeFacepp) {
+            manager.faceDetectMode = SCFaceDetectModeNone;
+        }
+    };
     // OpenCV
     SCSettingModel *openCVModel = [[SCSettingModel alloc] init];
+    openCVModel.modelID = kModelIDOpenCV;
     openCVModel.modelTitle = @"OpenCV";
-    
+    openCVModel.isSwitchOn = [SCAppSetting isUsingOpenCVEngine];
+    openCVModel.switchChangedAction = ^(BOOL isOn) {
+        @strongify(self);
+        SCFaceDetectorManager *manager = [SCFaceDetectorManager shareManager];
+        if (isOn) {
+            // 如果 Face++ 使用中，则关闭 Face++
+            if (manager.faceDetectMode == SCFaceDetectModeFacepp) {
+                [self changeModelStatusWithModelID:kModelIDFacepp status:NO];
+            }
+            manager.faceDetectMode = SCFaceDetectModeOpenCV;
+        } else if (manager.faceDetectMode == SCFaceDetectModeOpenCV) {
+            manager.faceDetectMode = SCFaceDetectModeNone;
+        }
+    };
     
     faceSection.models = @[faceppModel, openCVModel];
     self.sections = @[faceSection];
@@ -102,6 +145,29 @@ static NSString * const kReuseIdentifier = @"SCSettingCell";
     return view;
 }
 
+// 通过 ID 来更改 cell 和 model 的状态
+- (void)changeModelStatusWithModelID:(NSString *)modelID status:(BOOL)status {
+    SCSettingModel *targetModel = nil;
+    SCSettingSectionModel *targetSection = nil;
+    for (SCSettingSectionModel *section in self.sections) {
+        for (SCSettingModel *model in section.models) {
+            if ([model.modelID isEqualToString:modelID]) {
+                targetSection = section;
+                targetModel = model;
+                break;
+            }
+        }
+    }
+    if (targetModel) {
+        targetModel.isSwitchOn = status;
+        
+        // 查找cell，如果展示中，则修改UI
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[targetSection.models indexOfObject:targetModel] inSection:[self.sections indexOfObject:targetSection]];
+        SCSettingCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        [cell setOn:status];
+    }
+}
+
 #pragma mark - Action
 
 - (void)closeAction:(id)sender {
@@ -121,6 +187,7 @@ static NSString * const kReuseIdentifier = @"SCSettingCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SCSettingCell *cell = [tableView dequeueReusableCellWithIdentifier:kReuseIdentifier];
     cell.model = self.sections[indexPath.section].models[indexPath.row];
+    cell.delegate = self;
     return cell;
 }
 
@@ -140,6 +207,12 @@ static NSString * const kReuseIdentifier = @"SCSettingCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.5;
+}
+
+#pragma mark - SCSettingCellDelegate
+
+- (void)settingCell:(SCSettingCell *)settingCell didChangedWithModel:(SCSettingModel *)model {
+    model.isSwitchOn = [settingCell isOn];
 }
 
 @end

@@ -144,18 +144,6 @@ static SCCameraManager *_cameraManager;
 
 #pragma mark - Custom Accessor
 
-- (void)commonInit {
-    [self setupFilterHandler];
-    self.videoScale = 1;
-    self.flashMode = SCCameraFlashModeOff;
-    self.ratio = SCCameraRatio16v9;
-    self.videoSize = [self videoSizeWithRatio:self.ratio];
-    
-    [SCFaceDetectorManager shareManager].videoSize = [self videoSizeWithRatio:self.ratio];
-    [SCFaceDetectorManager shareManager].sampleBufferTopOffset = 0;
-    [SCFaceDetectorManager shareManager].faceDetectMode = SCFaceDetectModeFacepp;
-}
-
 - (void)setFlashMode:(SCCameraFlashMode)flashMode {
     _flashMode = flashMode;
     
@@ -212,6 +200,17 @@ static SCCameraManager *_cameraManager;
 }
 
 #pragma mark - Private
+
+- (void)commonInit {
+    [self setupFilterHandler];
+    self.videoScale = 1;
+    self.flashMode = SCCameraFlashModeOff;
+    self.ratio = SCCameraRatio16v9;
+    self.videoSize = [self videoSizeWithRatio:self.ratio];
+    
+    [SCFaceDetectorManager shareManager].videoSize = [self videoSizeWithRatio:self.ratio];
+    [SCFaceDetectorManager shareManager].sampleBufferTopOffset = 0;
+}
 
 /**
  初始化相机

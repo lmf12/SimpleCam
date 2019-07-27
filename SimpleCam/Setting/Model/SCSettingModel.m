@@ -10,4 +10,12 @@
 
 @implementation SCSettingModel
 
+- (void)setIsSwitchOn:(BOOL)isSwitchOn {
+    _isSwitchOn = isSwitchOn;
+    
+    if (self.switchChangedAction) {
+        self.switchChangedAction(isSwitchOn);
+    }
+}
+
 @end

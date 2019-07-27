@@ -408,6 +408,7 @@
 		E8DA865322EC3757009AB4EA /* SCSettingSectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DA865222EC3757009AB4EA /* SCSettingSectionModel.m */; };
 		E8DA865622EC376E009AB4EA /* SCSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DA865522EC376E009AB4EA /* SCSettingModel.m */; };
 		E8DA865922EC378E009AB4EA /* SCSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DA865822EC378E009AB4EA /* SCSettingCell.m */; };
+		E8DA865C22EC4870009AB4EA /* SCAppSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DA865B22EC4870009AB4EA /* SCAppSetting.m */; };
 		E8E578DF2261A8890093BB7B /* SCFilterBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578DE2261A8890093BB7B /* SCFilterBarView.m */; };
 		E8E578E32261B9580093BB7B /* SCFilterMaterialView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E22261B9570093BB7B /* SCFilterMaterialView.m */; };
 		E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E578E52261BA7B0093BB7B /* SCFilterMaterialViewCell.m */; };
@@ -912,6 +913,8 @@
 		E8DA865522EC376E009AB4EA /* SCSettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCSettingModel.m; sourceTree = "<group>"; };
 		E8DA865722EC378E009AB4EA /* SCSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCSettingCell.h; sourceTree = "<group>"; };
 		E8DA865822EC378E009AB4EA /* SCSettingCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCSettingCell.m; sourceTree = "<group>"; };
+		E8DA865A22EC4870009AB4EA /* SCAppSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAppSetting.h; sourceTree = "<group>"; };
+		E8DA865B22EC4870009AB4EA /* SCAppSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAppSetting.m; sourceTree = "<group>"; };
 		E8E578DD2261A8890093BB7B /* SCFilterBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFilterBarView.h; sourceTree = "<group>"; };
 		E8E578DE2261A8890093BB7B /* SCFilterBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFilterBarView.m; sourceTree = "<group>"; };
 		E8E578E02261B5440093BB7B /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
@@ -1735,6 +1738,8 @@
 				E89949F622A53BE600FC85C0 /* SCTimeHelper.m */,
 				E8AFD98922AC203600787BDA /* SCFaceDetectorManager.h */,
 				E8AFD98A22AC203600787BDA /* SCFaceDetectorManager.mm */,
+				E8DA865A22EC4870009AB4EA /* SCAppSetting.h */,
+				E8DA865B22EC4870009AB4EA /* SCAppSetting.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -2260,6 +2265,7 @@
 			files = (
 				E8AFD84422AC1E6C00787BDA /* hatdesc.cpp in Sources */,
 				E87C10AF228FE0E200653DDA /* SCCameraViewController+RecordVideo.m in Sources */,
+				E8DA865C22EC4870009AB4EA /* SCAppSetting.m in Sources */,
 				E8D80C6822A397E400CDB060 /* SCGPUImageGlitchFilter.m in Sources */,
 				E8D80C6B22A3A1B100CDB060 /* SCGPUImageVertigoFilter.m in Sources */,
 				E8D80C6222A38F2600CDB060 /* SCGPUImageShakeFilter.m in Sources */,

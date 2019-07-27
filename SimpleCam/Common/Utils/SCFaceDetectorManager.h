@@ -12,10 +12,12 @@
 /**
  人脸识别引擎
 
+ - SCFaceDetectModeNone: 不使用
  - SCFaceDetectModeOpenCV: OpenCV
  - SCFaceDetectModeFacepp: Face++
  */
 typedef NS_ENUM(NSUInteger, SCFaceDetectMode) {
+    SCFaceDetectModeNone,
     SCFaceDetectModeOpenCV,
     SCFaceDetectModeFacepp,
 };
@@ -27,7 +29,7 @@ typedef NS_ENUM(NSUInteger, SCFaceDetectMode) {
 /// 顶部距离偏移，默认0，用来计算人脸点位置
 @property (nonatomic, assign) CGFloat sampleBufferTopOffset;
 
-/// 人脸识别引擎，默认 SCFaceDetectModeOpenCV
+/// 人脸识别引擎，默认 SCFaceDetectModeFacepp
 @property (nonatomic, assign) SCFaceDetectMode faceDetectMode;
 
 /// 获取单例

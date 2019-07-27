@@ -15,6 +15,8 @@
 #import "MGFacepp.h"
 #import "MGFaceLicenseHandle.h"
 
+#import "SCAppSetting.h"
+
 #import "SCFaceDetectorManager.h"
 
 #define kFaceppPointCount 106  // Face++ 的人脸点数
@@ -55,7 +57,7 @@ static SCFaceDetectorManager *_faceDetectorManager;
         facePoints = [self detectInOpenCVWithSampleBuffer:sampleBuffer
                                            facePointCount:(int *)facePointCount
                                                  isMirror:isMirror];
-    } else {
+    } else if (self.faceDetectMode == SCFaceDetectModeFacepp) {
         facePoints = [self detectInFaceppWithSampleBuffer:sampleBuffer
                                            facePointCount:(int *)facePointCount
                                                  isMirror:isMirror];
@@ -78,13 +80,31 @@ static SCFaceDetectorManager *_faceDetectorManager;
     }];
 }
 
+#pragma mark - Custom Accessor
+
+- (void)setFaceDetectMode:(SCFaceDetectMode)faceDetectMode {
+    _faceDetectMode = faceDetectMode;
+    
+    [SCAppSetting setUsingFaceppEngine:faceDetectMode == SCFaceDetectModeFacepp];
+    [SCAppSetting setUsingOpenCVEngine:faceDetectMode == SCFaceDetectModeOpenCV];
+}
+
 #pragma mark - Private
 
 // 通用初始化
 - (void)commonInit {
     self.videoSize = CGSizeMake(720, 1280);
     self.sampleBufferTopOffset = 0;
-    self.faceDetectMode = SCFaceDetectModeOpenCV;
+    
+    SCFaceDetectMode mode = SCFaceDetectModeNone;
+    if (![SCAppSetting hasSaveFaceDetectEngine]) {  // 第一次安装启动
+        mode = SCFaceDetectModeFacepp;
+    } else if ([SCAppSetting isUsingFaceppEngine]) {
+        mode = SCFaceDetectModeFacepp;
+    } else if ([SCAppSetting isUsingOpenCVEngine]) {
+        mode = SCFaceDetectModeOpenCV;
+    }
+    self.faceDetectMode = mode;
 }
 
 #pragma mark Face++
