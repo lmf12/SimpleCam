@@ -15,7 +15,8 @@
 
 @interface SCFilterMaterialViewCell ()
 
-@property (nonatomic, strong) GPUImageView *imageView;
+@property (nonatomic, strong) GPUImageView *imageView;  // 用滤镜来生成封面
+@property (nonatomic, strong) UIImageView *staticImageView;  // 用图片来展示封面
 @property (nonatomic, strong) UILabel *titleLabel;
 
 @property (nonatomic, strong) GPUImagePicture *picture;
@@ -45,6 +46,7 @@
 
 - (void)commonInit {
     [self setupImageView];
+    [self setupStaticImageView];
     [self setupTitleLabel];
     [self setupSelectView];
     
@@ -53,8 +55,20 @@
 
 - (void)setupImageView {
     self.imageView = [[GPUImageView alloc] init];
+    self.imageView.hidden = YES;
     [self addSubview:self.imageView];
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(60, 80));
+        make.centerX.equalTo(self);
+        make.top.mas_equalTo(self);
+    }];
+}
+
+- (void)setupStaticImageView {
+    self.staticImageView = [[UIImageView alloc] init];
+    self.staticImageView.hidden = YES;
+    [self addSubview:self.staticImageView];
+    [self.staticImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(60, 80));
         make.centerX.equalTo(self);
         make.top.mas_equalTo(self);
@@ -99,7 +113,18 @@
     GPUImageFilter *filter = [[SCFilterManager shareManager] filterWithFilterID:filterMaterialModel.filterID];
     
     if ([filter isKindOfClass:[SCGPUImageBaseFilter class]]) {
-        ((SCGPUImageBaseFilter *)filter).time = 0.2f;
+        SCGPUImageBaseFilter *baseFilter = (SCGPUImageBaseFilter *)filter;
+        // 是否只需要设置静态的图片
+        NSString *imageName = [baseFilter coverImageName];
+        if (imageName) {
+            self.staticImageView.image = [UIImage imageNamed:imageName];
+            self.staticImageView.hidden = NO;
+            self.imageView.hidden = YES;
+            return;
+        } else {
+            // 设置一点进度来看到效果
+            baseFilter.time = 0.2f;
+        }
     }
     
     [self.picture addTarget:filter];
@@ -113,6 +138,9 @@
     } else {
         [self.picture processImage];
     }
+    
+    self.staticImageView.hidden = YES;
+    self.imageView.hidden = NO;
 }
 
 - (void)setIsSelect:(BOOL)isSelect {

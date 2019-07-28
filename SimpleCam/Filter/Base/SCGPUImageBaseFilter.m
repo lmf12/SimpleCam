@@ -28,4 +28,8 @@
     [self setFloat:time forUniform:self.timeUniform program:filterProgram];
 }
 
+-(NSString *)coverImageName {
+    return nil;
+}
+
 @end
