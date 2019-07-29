@@ -28,6 +28,8 @@ typedef NS_ENUM(NSUInteger, SCFaceDetectMode) {
 @property (nonatomic, assign) CGSize videoSize;
 /// 顶部距离偏移，默认0，用来计算人脸点位置
 @property (nonatomic, assign) CGFloat sampleBufferTopOffset;
+/// 左部距离偏移，默认0，用来计算人脸点位置
+@property (nonatomic, assign) CGFloat sampleBufferLeftOffset;
 
 /// 人脸识别引擎，默认 SCFaceDetectModeFacepp
 @property (nonatomic, assign) SCFaceDetectMode faceDetectMode;

@@ -197,6 +197,7 @@ static SCCameraManager *_cameraManager;
     CGSize videoSize = [self videoSizeWithRatio:self.ratio];
     [SCFaceDetectorManager shareManager].videoSize = videoSize;
     [SCFaceDetectorManager shareManager].sampleBufferTopOffset = rect.origin.y / rect.size.height * videoSize.height;
+    [SCFaceDetectorManager shareManager].sampleBufferLeftOffset = rect.origin.x / rect.size.width * videoSize.width;
 }
 
 #pragma mark - Private
@@ -210,6 +211,7 @@ static SCCameraManager *_cameraManager;
     
     [SCFaceDetectorManager shareManager].videoSize = [self videoSizeWithRatio:self.ratio];
     [SCFaceDetectorManager shareManager].sampleBufferTopOffset = 0;
+    [SCFaceDetectorManager shareManager].sampleBufferLeftOffset = 0;
 }
 
 /**

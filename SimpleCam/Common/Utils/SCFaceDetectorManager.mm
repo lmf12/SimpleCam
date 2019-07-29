@@ -95,6 +95,7 @@ static SCFaceDetectorManager *_faceDetectorManager;
 - (void)commonInit {
     self.videoSize = CGSizeMake(720, 1280);
     self.sampleBufferTopOffset = 0;
+    self.sampleBufferLeftOffset = 0;
     
     SCFaceDetectMode mode = SCFaceDetectModeNone;
     if (![SCAppSetting hasSaveFaceDetectEngine]) {  // 第一次安装启动
@@ -145,7 +146,7 @@ static SCFaceDetectorManager *_faceDetectorManager;
         NSInteger faceIndex = [faceArray indexOfObject:faceInfo];
         [self.markManager GetGetLandmark:faceInfo isSmooth:YES pointsNumber:kFaceppPointCount];
         [faceInfo.points enumerateObjectsUsingBlock:^(NSValue *value, NSUInteger idx, BOOL *stop) {
-            float x = value.CGPointValue.y / self.videoSize.width;
+            float x = (value.CGPointValue.y - self.sampleBufferLeftOffset) / self.videoSize.width;
             x = (isMirror ? x : (1 - x))  * 2 - 1;
             float y = (value.CGPointValue.x - self.sampleBufferTopOffset) / self.videoSize.height * 2 - 1;
             landmarks[singleFaceLen * faceIndex + idx * 2] = x;
@@ -210,9 +211,12 @@ static SCFaceDetectorManager *_faceDetectorManager;
         // 转换坐标
         for (int index = 0; index < len; ++index) {
             if (index % 2 == 0) {
-                landmarks[index] = landmarks[index] / imgCols * 2 - 1;
+                float scale = (self.videoSize.height / self.videoSize.width) / (16.0 / 9.0);
+                scale = MAX(1, scale);  // 比例超过 16 : 9 进行横向缩放
+                landmarks[index] = (landmarks[index] / imgCols * 2 - 1) * scale;
             } else {
                 float scale = (16.0 / 9.0) / (self.videoSize.height / self.videoSize.width);
+                scale = MAX(1, scale);   // 比例小于 16 : 9 进行纵向缩放
                 landmarks[index] = (landmarks[index] / imgRows * 2 - 1) * scale;
             }
         }
