@@ -34,6 +34,7 @@
 # 相关文章
 
 * [使用 GPUImage 实现一个简单相机](http://www.lymanli.com/2019/06/15/ios-gpuimage-camera/)
+* [在 GPUImage 中检测人脸关键点](http://www.lymanli.com/2019/09/29/ios-gpuimage-face-detect/)
 
 # 版本更新
 
