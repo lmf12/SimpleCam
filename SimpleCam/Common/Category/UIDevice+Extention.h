@@ -32,6 +32,9 @@ typedef NS_ENUM(NSInteger,DeviceType) {
     IPhone_XR,
     IPhone_XS,
     IPhone_XS_Max,
+    IPhone_11,
+    IPhone_11_Pro,
+    IPhone_11_Pro_Max,
 };
 
 @interface UIDevice (Extention)

@@ -53,6 +53,9 @@
     if ([platform isEqualToString:@"iPhone11,2"])    return IPhone_XS;
     if ([platform isEqualToString:@"iPhone11,4"] ||
         [platform isEqualToString:@"iPhone11,6"])    return IPhone_XS_Max;
+    if ([platform isEqualToString:@"iPhone12,1"])    return IPhone_11;
+    if ([platform isEqualToString:@"iPhone12,3"])    return IPhone_11_Pro;
+    if ([platform isEqualToString:@"iPhone12,5"])    return IPhone_11_Pro_Max;
     
     return Unknown;
 }
@@ -62,7 +65,10 @@
     BOOL is_iPhoneX = deviceType == IPhone_X ||
                       deviceType == IPhone_XR ||
                       deviceType == IPhone_XS ||
-                      deviceType == IPhone_XS_Max;
+                      deviceType == IPhone_XS_Max ||
+                      deviceType == IPhone_11 ||
+                      deviceType == IPhone_11_Pro ||
+                      deviceType == IPhone_11_Pro_Max;
     return is_iPhoneX;
 }
 
