@@ -45,7 +45,21 @@ NSString * const kSCGPUImageStaticSplitFilterShaderString = SHADER_STRING
 
 - (id)init {
     self = [super initWithFragmentShaderFromString:kSCGPUImageStaticSplitFilterShaderString];
+    self.horizontal = 2.0;
+    self.vertical = 2.0;
     return self;
+}
+
+- (void)setHorizontal:(CGFloat)horizontal {
+    _horizontal = horizontal;
+    
+    [self setFloat:MAX(horizontal, 1.0) forUniformName:@"horizontal"];
+}
+
+- (void)setVertical:(CGFloat)vertical {
+    _vertical = vertical;
+    
+    [self setFloat:MAX(vertical, 1.0) forUniformName:@"vertical"];
 }
 
 @end

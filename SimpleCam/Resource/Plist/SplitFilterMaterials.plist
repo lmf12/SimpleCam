@@ -6,11 +6,35 @@
 	<array>
 		<dict>
 			<key>filter_id</key>
-			<string>static_split</string>
+			<string>split_1v3</string>
 			<key>filter_name</key>
-			<string>静态分屏</string>
+			<string>1 : 3 分屏</string>
 			<key>filter_class</key>
-			<string>SCGPUImageStaticSplitFilter</string>
+			<string>SCGPUImageSplit1V3Filter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>split_3v2</string>
+			<key>filter_name</key>
+			<string>3 : 2 分屏</string>
+			<key>filter_class</key>
+			<string>SCGPUImageSplit3V2Filter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>split_3v3</string>
+			<key>filter_name</key>
+			<string>3 : 3 分屏</string>
+			<key>filter_class</key>
+			<string>SCGPUImageSplit3V3Filter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
+			<string>split_4v4</string>
+			<key>filter_name</key>
+			<string>4 : 4 分屏</string>
+			<key>filter_class</key>
+			<string>SCGPUImageSplit4V4Filter</string>
 		</dict>
 	</array>
 </dict>
