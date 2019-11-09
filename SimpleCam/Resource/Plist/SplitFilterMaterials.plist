@@ -6,6 +6,14 @@
 	<array>
 		<dict>
 			<key>filter_id</key>
+			<string>split_dynamic</string>
+			<key>filter_name</key>
+			<string>动态分屏</string>
+			<key>filter_class</key>
+			<string>SCGPUImageDynamicSplitFilter</string>
+		</dict>
+		<dict>
+			<key>filter_id</key>
 			<string>split_1v3</string>
 			<key>filter_name</key>
 			<string>1 : 3 分屏</string>

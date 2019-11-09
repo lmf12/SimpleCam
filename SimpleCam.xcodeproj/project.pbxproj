@@ -395,6 +395,7 @@
 		E8D70D0D2376C5460028AF60 /* SCGPUImageSplit1V3Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D70D0C2376C5460028AF60 /* SCGPUImageSplit1V3Filter.m */; };
 		E8D70D102376C5700028AF60 /* SCGPUImageSplit3V2Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D70D0F2376C5700028AF60 /* SCGPUImageSplit3V2Filter.m */; };
 		E8D70D132376C5880028AF60 /* SCGPUImageSplit4V4Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D70D122376C5880028AF60 /* SCGPUImageSplit4V4Filter.m */; };
+		E8D70D162376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D70D152376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m */; };
 		E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2922901A6100CDB060 /* UIView+Extention.m */; };
 		E8D80C2D22990D3700CDB060 /* SCAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2C22990D3700CDB060 /* SCAssetHelper.m */; };
 		E8D80C3322992E7000CDB060 /* GPUImageMovieWriter+BugFix.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C3222992E7000CDB060 /* GPUImageMovieWriter+BugFix.m */; };
@@ -894,6 +895,8 @@
 		E8D70D0F2376C5700028AF60 /* SCGPUImageSplit3V2Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageSplit3V2Filter.m; sourceTree = "<group>"; };
 		E8D70D112376C5880028AF60 /* SCGPUImageSplit4V4Filter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageSplit4V4Filter.h; sourceTree = "<group>"; };
 		E8D70D122376C5880028AF60 /* SCGPUImageSplit4V4Filter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageSplit4V4Filter.m; sourceTree = "<group>"; };
+		E8D70D142376C8030028AF60 /* SCGPUImageDynamicSplitFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageDynamicSplitFilter.h; sourceTree = "<group>"; };
+		E8D70D152376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageDynamicSplitFilter.m; sourceTree = "<group>"; };
 		E8D80C2822901A6100CDB060 /* UIView+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
 		E8D80C2922901A6100CDB060 /* UIView+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
 		E8D80C2B22990D3700CDB060 /* SCAssetHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAssetHelper.h; sourceTree = "<group>"; };
@@ -1647,6 +1650,8 @@
 			children = (
 				E8D70D01237694500028AF60 /* SCGPUImageStaticSplitFilter.h */,
 				E8D70D02237694500028AF60 /* SCGPUImageStaticSplitFilter.m */,
+				E8D70D142376C8030028AF60 /* SCGPUImageDynamicSplitFilter.h */,
+				E8D70D152376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m */,
 				E8D70D082376C4E40028AF60 /* SCGPUImageSplit3V3Filter.h */,
 				E8D70D092376C4E40028AF60 /* SCGPUImageSplit3V3Filter.m */,
 				E8D70D0B2376C5460028AF60 /* SCGPUImageSplit1V3Filter.h */,
@@ -2309,6 +2314,7 @@
 				E87C10AF228FE0E200653DDA /* SCCameraViewController+RecordVideo.m in Sources */,
 				E8DA865C22EC4870009AB4EA /* SCAppSetting.m in Sources */,
 				E8D80C6822A397E400CDB060 /* SCGPUImageGlitchFilter.m in Sources */,
+				E8D70D162376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m in Sources */,
 				E8D80C6B22A3A1B100CDB060 /* SCGPUImageVertigoFilter.m in Sources */,
 				E8D80C6222A38F2600CDB060 /* SCGPUImageShakeFilter.m in Sources */,
 				E89949F122A27E5700FC85C0 /* SCVisualEffectView.m in Sources */,
