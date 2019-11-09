@@ -389,6 +389,8 @@
 		E8D18F062258927A00ECFB98 /* SCPhotoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F052258927A00ECFB98 /* SCPhotoResultViewController.m */; };
 		E8D18F0D2258A11D00ECFB98 /* SCCameraViewController+Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F0C2258A11D00ECFB98 /* SCCameraViewController+Filter.m */; };
 		E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */; };
+		E8D70D03237694500028AF60 /* SCGPUImageStaticSplitFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D70D02237694500028AF60 /* SCGPUImageStaticSplitFilter.m */; };
+		E8D70D0723769F110028AF60 /* SplitFilterMaterials.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8D70D0623769F110028AF60 /* SplitFilterMaterials.plist */; };
 		E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2922901A6100CDB060 /* UIView+Extention.m */; };
 		E8D80C2D22990D3700CDB060 /* SCAssetHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C2C22990D3700CDB060 /* SCAssetHelper.m */; };
 		E8D80C3322992E7000CDB060 /* GPUImageMovieWriter+BugFix.m in Sources */ = {isa = PBXBuildFile; fileRef = E8D80C3222992E7000CDB060 /* GPUImageMovieWriter+BugFix.m */; };
@@ -877,6 +879,9 @@
 		E8D18F0E2258A31D00ECFB98 /* SCPhotoResultViewController+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCPhotoResultViewController+Private.h"; sourceTree = "<group>"; };
 		E8D18F112258A3AB00ECFB98 /* SCPhotoResultViewController+UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SCPhotoResultViewController+UI.h"; sourceTree = "<group>"; };
 		E8D18F122258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SCPhotoResultViewController+UI.m"; sourceTree = "<group>"; };
+		E8D70D01237694500028AF60 /* SCGPUImageStaticSplitFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageStaticSplitFilter.h; sourceTree = "<group>"; };
+		E8D70D02237694500028AF60 /* SCGPUImageStaticSplitFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageStaticSplitFilter.m; sourceTree = "<group>"; };
+		E8D70D0623769F110028AF60 /* SplitFilterMaterials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SplitFilterMaterials.plist; sourceTree = "<group>"; };
 		E8D80C2822901A6100CDB060 /* UIView+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extention.h"; sourceTree = "<group>"; };
 		E8D80C2922901A6100CDB060 /* UIView+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extention.m"; sourceTree = "<group>"; };
 		E8D80C2B22990D3700CDB060 /* SCAssetHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAssetHelper.h; sourceTree = "<group>"; };
@@ -1625,6 +1630,15 @@
 			path = Define;
 			sourceTree = "<group>";
 		};
+		E8D70D00237693EE0028AF60 /* Split */ = {
+			isa = PBXGroup;
+			children = (
+				E8D70D01237694500028AF60 /* SCGPUImageStaticSplitFilter.h */,
+				E8D70D02237694500028AF60 /* SCGPUImageStaticSplitFilter.m */,
+			);
+			path = Split;
+			sourceTree = "<group>";
+		};
 		E8D80C2722901A2300CDB060 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -1656,6 +1670,7 @@
 				E8D80C5522A38C5D00CDB060 /* Base */,
 				E8D80C5822A38C5D00CDB060 /* TikTok */,
 				E833C7F022ACB2060065E557 /* Face */,
+				E8D70D00237693EE0028AF60 /* Split */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -1770,6 +1785,7 @@
 				E8D80C4422A2B9D500CDB060 /* DefaultFilterMaterials.plist */,
 				E8D80C4622A2BA1300CDB060 /* TikTokFilterMaterials.plist */,
 				E85B56E122D9A74500DCACA1 /* FaceRecognizerMaterials.plist */,
+				E8D70D0623769F110028AF60 /* SplitFilterMaterials.plist */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -2091,6 +2107,7 @@
 				E8AFD8A522AC1E6C00787BDA /* yaw00_lev1_p13_classic.mh in Resources */,
 				E8AFD92F22AC1E6C00787BDA /* yaw00_lev2_p74_hat.mh in Resources */,
 				E8AFD96D22AC1E6C00787BDA /* yaw00_lev3_p59_classic.mh in Resources */,
+				E8D70D0723769F110028AF60 /* SplitFilterMaterials.plist in Resources */,
 				E8AFD90C22AC1E6C00787BDA /* yaw00_lev2_p39_hat.mh in Resources */,
 				E8AFD8E122AC1E6C00787BDA /* yaw00_lev1_p73_hat.mh in Resources */,
 				E8AFD8E922AC1E6C00787BDA /* yaw00_lev2_p04_classic.mh in Resources */,
@@ -2267,6 +2284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D70D03237694500028AF60 /* SCGPUImageStaticSplitFilter.m in Sources */,
 				E8AFD84422AC1E6C00787BDA /* hatdesc.cpp in Sources */,
 				E87C10AF228FE0E200653DDA /* SCCameraViewController+RecordVideo.m in Sources */,
 				E8DA865C22EC4870009AB4EA /* SCAppSetting.m in Sources */,

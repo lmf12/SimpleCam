@@ -35,6 +35,9 @@
 /// 人脸识别滤镜
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *faceRecognizerFilterMaterials;
 
+/// 分屏滤镜
+@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *splitFilterMaterials;
+
 - (NSInteger)currentCategoryIndex;
 
 @end

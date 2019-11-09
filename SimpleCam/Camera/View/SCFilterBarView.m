@@ -56,7 +56,7 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
     self.filterCategoryView.delegate = self;
     self.filterCategoryView.itemNormalColor = [UIColor whiteColor];
     self.filterCategoryView.itemSelectColor = ThemeColor;
-    self.filterCategoryView.itemList = @[@"内置", @"抖音", @"人脸识别"];
+    self.filterCategoryView.itemList = @[@"内置", @"抖音", @"人脸识别", @"分屏"];
     self.filterCategoryView.itemFont = [UIFont systemFontOfSize:14];
     self.filterCategoryView.itemWidth = 65;
     self.filterCategoryView.bottomLineWidth = 30;
@@ -169,6 +169,14 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
     }
 }
 
+- (void)setSplitFilterMaterials:(NSArray<SCFilterMaterialModel *> *)splitFilterMaterials {
+    _splitFilterMaterials = [splitFilterMaterials copy];
+    
+    if (self.filterCategoryView.currentIndex == 3) {
+        self.filterMaterialView.itemList = splitFilterMaterials;
+    }
+}
+
 #pragma mark - SCFilterMaterialViewDelegate
 
 - (void)filterMaterialView:(SCFilterMaterialView *)filterMaterialView didScrollToIndex:(NSUInteger)index {
@@ -187,6 +195,8 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
         self.filterMaterialView.itemList = self.tikTokFilterMaterials;
     } else if (currentIndex == 2) {
         self.filterMaterialView.itemList = self.faceRecognizerFilterMaterials;
+    } else if (currentIndex == 3) {
+        self.filterMaterialView.itemList = self.splitFilterMaterials;
     }
     
     if ([self.delegate respondsToSelector:@selector(filterBarView:categoryDidScrollToIndex:)]) {

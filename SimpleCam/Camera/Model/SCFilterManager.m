@@ -15,10 +15,12 @@ static SCFilterManager *_filterManager;
 @property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *defaultFilters;
 @property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *tikTokFilters;
 @property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *faceRecognizerFilters;
+@property (nonatomic, strong, readwrite) NSArray<SCFilterMaterialModel *> *splitFilters;
 
 @property (nonatomic, strong) NSDictionary *defaultFilterMaterialsInfo;
 @property (nonatomic, strong) NSDictionary *tikTokFilterMaterialsInfo;
 @property (nonatomic, strong) NSDictionary *faceRecognizerMaterialsInfo;
+@property (nonatomic, strong) NSDictionary *splitFilterMaterialsInfo;
 
 @property (nonatomic, strong) NSMutableDictionary *filterClassInfo;
 
@@ -58,6 +60,7 @@ static SCFilterManager *_filterManager;
     [self setupDefaultFilterMaterialsInfo];
     [self setupTikTokFilterMaterialsInfo];
     [self setupFaceRecognizerMaterialsInfo];
+    [self setupSplitFilterMaterialsInfo];
 }
 
 - (void)setupDefaultFilterMaterialsInfo {
@@ -76,6 +79,12 @@ static SCFilterManager *_filterManager;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"FaceRecognizerMaterials" ofType:@"plist"];
     NSDictionary *info = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
     self.faceRecognizerMaterialsInfo = [info copy];
+}
+
+- (void)setupSplitFilterMaterialsInfo {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"SplitFilterMaterials" ofType:@"plist"];
+    NSDictionary *info = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    self.splitFilterMaterialsInfo = [info copy];
 }
 
 - (NSArray<SCFilterMaterialModel *> *)setupFiltersWithInfo:(NSDictionary *)info {
@@ -117,6 +126,13 @@ static SCFilterManager *_filterManager;
         _faceRecognizerFilters = [self setupFiltersWithInfo:self.faceRecognizerMaterialsInfo];
     }
     return _faceRecognizerFilters;
+}
+
+- (NSArray<SCFilterMaterialModel *> *)splitFilters {
+    if (!_splitFilters) {
+        _splitFilters = [self setupFiltersWithInfo:self.splitFilterMaterialsInfo];
+    }
+    return _splitFilters;
 }
 
 @end

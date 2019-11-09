@@ -32,6 +32,8 @@
         return self.tikTokFilterMaterials;
     } else if (index == 2) {
         return self.faceRecognizerFilterMaterials;
+    } else if (index == 3) {
+        return self.splitFilterMaterials;
     }
     return nil;
 }

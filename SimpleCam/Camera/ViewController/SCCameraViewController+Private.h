@@ -58,6 +58,7 @@
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *tikTokFilterMaterials;
 @property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *faceRecognizerFilterMaterials;
+@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *splitFilterMaterials;
 
 #pragma mark - UI
 
