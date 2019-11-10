@@ -30,17 +30,21 @@
 * **自定义抖音滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-2.gif)
 * **美颜滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-1.gif)
 * **人脸关键点识别**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-3.gif)
+* **分屏滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-4.gif)
+* **延时动态分屏滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-5.gif)
 
 # 相关文章
 
 * [使用 GPUImage 实现一个简单相机](http://www.lymanli.com/2019/06/15/ios-gpuimage-camera/)
 * [在 GPUImage 中检测人脸关键点](http://www.lymanli.com/2019/09/29/ios-gpuimage-face-detect/)
+* [如何优雅地实现一个分屏滤镜](http://www.lymanli.com/2019/11/09/ios-gpuimage-split-filter/)
 
 # 版本更新
 
 
 | 版本号 | 更新日志 |
 | --- | --- |
+| v0.3.0 | 1. 添加多种分屏滤镜 <br> 2. 添加延时动态分屏滤镜|
 | v0.2.1 | 1. 添加 iPhone 11 系列手机判断 |
 | v0.2.0 | 1. 集成 OpenCV + Stasm 人脸关键点识别 <br> 2. 集成 Face++ 人脸关键点识别 |
 | v0.1.0 | 1. 完成一个基础相机框架搭建 <br> 2. 集成自定义抖音滤镜 <br> 3. 集成美颜滤镜 |
