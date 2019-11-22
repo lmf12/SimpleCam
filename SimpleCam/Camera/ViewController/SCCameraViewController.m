@@ -221,8 +221,17 @@
 
 - (void)cameraTopViewDidClickRotateButton:(SCCameraTopView *)cameraTopView {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[SCCameraManager shareManager] rotateCamera];
+        SCCameraManager *cameraManager = [SCCameraManager shareManager];
+        [cameraManager rotateCamera];
         self.currentVideoScale = 1.0f;  // 切换摄像头，重置缩放比例
+        // 前置摄像头，禁用闪光灯
+        if ([cameraManager isPositionFront]) {
+            [self setFlashEnable:NO];
+            cameraManager.flashMode = SCCameraFlashModeOff;
+            [self updateFlashButtonWithFlashMode:SCCameraFlashModeOff];
+        } else {
+            [self setFlashEnable:YES];
+        }
     });
 }
 

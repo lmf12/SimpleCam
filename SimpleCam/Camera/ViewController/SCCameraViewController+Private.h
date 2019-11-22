@@ -92,6 +92,9 @@
                  animated:(BOOL)animated
                completion:(void (^)(void))completion;
 
+/// 设置闪光灯功能是否可用
+- (void)setFlashEnable:(BOOL)enable;
+
 #pragma mark - Action
 
 - (void)filterAction:(id)sender;

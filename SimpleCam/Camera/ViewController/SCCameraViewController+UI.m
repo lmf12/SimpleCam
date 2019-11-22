@@ -128,6 +128,8 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
         make.left.right.equalTo(self.view);
         make.height.mas_equalTo(60);
     }];
+    // 默认前置摄像头，初始化时禁用闪光灯
+    [self setFlashEnable:NO];
 }
 
 - (void)setupModeSwitchView {
@@ -348,6 +350,10 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     }];
 }
 
+- (void)setFlashEnable:(BOOL)enable {
+    self.cameraTopView.flashButton.enabled = enable;
+    self.cameraTopView.flashButton.alpha = enable ? 1.0 : 0.6;
+}
 
 #pragma mark - Private
 
