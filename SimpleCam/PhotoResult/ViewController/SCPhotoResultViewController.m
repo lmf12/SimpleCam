@@ -42,13 +42,34 @@
 // 保存图片到相册
 - (void)writeImageToSavedPhotosAlbum:(UIImage *)image
                           completion:(void (^)(BOOL success))completion {
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        [PHAssetChangeRequest creationRequestForAssetFromImage:image];
-    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+    void (^saveBlock)(void) = ^ {
+        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+            [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        } completionHandler:^(BOOL success, NSError * _Nullable error) {
+            if (completion) {
+                completion(success);
+            }
+        }];
+    };
+    
+    PHAuthorizationStatus authStatus = [PHPhotoLibrary authorizationStatus];
+    if (authStatus == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                saveBlock();
+            } else {
+                if (completion) {
+                    completion(NO);
+                }
+            }
+        }];
+    } else if (authStatus != PHAuthorizationStatusAuthorized) {
         if (completion) {
-            completion(success);
+            completion(NO);
         }
-    }];
+    } else {
+        saveBlock();
+    }
 }
 
 #pragma mark - Action
@@ -57,12 +78,14 @@
     @weakify(self);
     [self writeImageToSavedPhotosAlbum:self.resultImage completion:^(BOOL success) {
         @strongify(self);
-        if (success) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (success) {
                 [self backToCamera];
                 [self.view.window makeToast:@"保存成功"];
-            });
-        }
+            } else {
+                [self.view.window makeToast:@"保存失败"];
+            }
+        });
     }];
 }
 

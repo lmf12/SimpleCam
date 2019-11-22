@@ -90,16 +90,35 @@
 
 // 保存视频
 - (void)saveVideo:(NSString *)path completion:(void (^)(BOOL success))completion {
-    NSURL *url = [NSURL fileURLWithPath:path];
-    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
-        [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url];
-    } completionHandler:^(BOOL success, NSError * _Nullable error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+    void (^saveBlock)(void) = ^ {
+        NSURL *url = [NSURL fileURLWithPath:path];
+        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+            [PHAssetChangeRequest creationRequestForAssetFromVideoAtFileURL:url];
+        } completionHandler:^(BOOL success, NSError * _Nullable error) {
             if (completion) {
                 completion(success);
             }
-        });
-    }];
+        }];
+    };
+    
+    PHAuthorizationStatus authStatus = [PHPhotoLibrary authorizationStatus];
+    if (authStatus == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            if (status == PHAuthorizationStatusAuthorized) {
+                saveBlock();
+            } else {
+                if (completion) {
+                    completion(NO);
+                }
+            }
+        }];
+    } else if (authStatus != PHAuthorizationStatusAuthorized) {
+        if (completion) {
+            completion(NO);
+        }
+    } else {
+        saveBlock();
+    }
 }
 
 #pragma mark - Action
@@ -110,11 +129,15 @@
         @weakify(self);
         [self saveVideo:path completion:^(BOOL success) {
             @strongify(self);
-            if (success) {
-                [self backToCamera];
+            dispatch_async(dispatch_get_main_queue(), ^{
                 [self.view hideToastActivity];
-                [self.view.window makeToast:@"保存成功"];
-            }
+                if (success) {
+                    [self backToCamera];
+                    [self.view.window makeToast:@"保存成功"];
+                } else {
+                    [self.view.window makeToast:@"保存失败"];
+                }
+            });
         }];
     };
     
