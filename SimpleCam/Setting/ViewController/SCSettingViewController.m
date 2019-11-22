@@ -20,7 +20,6 @@ static NSString * const kSectionIDFace = @"SectionIDFace";
 
 // model ID
 static NSString * const kModelIDFacepp = @"ModelIDFacepp";
-static NSString * const kModelIDOpenCV = @"ModelIDOpenCV";
 
 @interface SCSettingViewController () <
     UITableViewDelegate,
@@ -68,42 +67,18 @@ static NSString * const kModelIDOpenCV = @"ModelIDOpenCV";
     // Face++
     SCSettingModel *faceppModel = [[SCSettingModel alloc] init];
     faceppModel.modelID = kModelIDFacepp;
-    faceppModel.modelTitle = @"Face++（推荐）";
+    faceppModel.modelTitle = @"Face++";
     faceppModel.isSwitchOn = [SCAppSetting isUsingFaceppEngine];
-    @weakify(self);
     faceppModel.switchChangedAction = ^(BOOL isOn) {
-        @strongify(self);
         SCFaceDetectorManager *manager = [SCFaceDetectorManager shareManager];
         if (isOn) {
-            // 如果 OpenCV 使用中，则关闭 OpenCV
-            if (manager.faceDetectMode == SCFaceDetectModeOpenCV) {
-                [self changeModelStatusWithModelID:kModelIDOpenCV status:NO];
-            }
             manager.faceDetectMode = SCFaceDetectModeFacepp;
         } else if (manager.faceDetectMode == SCFaceDetectModeFacepp) {
             manager.faceDetectMode = SCFaceDetectModeNone;
         }
     };
-    // OpenCV
-    SCSettingModel *openCVModel = [[SCSettingModel alloc] init];
-    openCVModel.modelID = kModelIDOpenCV;
-    openCVModel.modelTitle = @"OpenCV";
-    openCVModel.isSwitchOn = [SCAppSetting isUsingOpenCVEngine];
-    openCVModel.switchChangedAction = ^(BOOL isOn) {
-        @strongify(self);
-        SCFaceDetectorManager *manager = [SCFaceDetectorManager shareManager];
-        if (isOn) {
-            // 如果 Face++ 使用中，则关闭 Face++
-            if (manager.faceDetectMode == SCFaceDetectModeFacepp) {
-                [self changeModelStatusWithModelID:kModelIDFacepp status:NO];
-            }
-            manager.faceDetectMode = SCFaceDetectModeOpenCV;
-        } else if (manager.faceDetectMode == SCFaceDetectModeOpenCV) {
-            manager.faceDetectMode = SCFaceDetectModeNone;
-        }
-    };
     
-    faceSection.models = @[faceppModel, openCVModel];
+    faceSection.models = @[faceppModel];
     self.sections = @[faceSection];
 }
 

@@ -9,7 +9,6 @@
 #import "SCAppSetting.h"
 
 static NSString * const kUsingFaceppEngine = @"kUsingFaceppEngine";
-static NSString * const kUsingOpenCVEngine = @"kUsingOpenCVEngine";
 
 @implementation SCAppSetting
 
@@ -25,18 +24,8 @@ static NSString * const kUsingOpenCVEngine = @"kUsingOpenCVEngine";
     return [[NSUserDefaults standardUserDefaults] boolForKey:kUsingFaceppEngine];
 }
 
-+ (void)setUsingOpenCVEngine:(BOOL)isUsingOpenCVEngine {
-    [[NSUserDefaults standardUserDefaults] setBool:isUsingOpenCVEngine
-                                            forKey:kUsingOpenCVEngine];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-+ (BOOL)isUsingOpenCVEngine {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:kUsingOpenCVEngine];
-}
-
 + (BOOL)hasSaveFaceDetectEngine {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:kUsingOpenCVEngine] || [[NSUserDefaults standardUserDefaults] objectForKey:kUsingFaceppEngine];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUsingFaceppEngine];
 }
 
 @end

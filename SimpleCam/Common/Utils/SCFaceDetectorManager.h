@@ -13,12 +13,10 @@
  人脸识别引擎
 
  - SCFaceDetectModeNone: 不使用
- - SCFaceDetectModeOpenCV: OpenCV
  - SCFaceDetectModeFacepp: Face++
  */
 typedef NS_ENUM(NSUInteger, SCFaceDetectMode) {
     SCFaceDetectModeNone,
-    SCFaceDetectModeOpenCV,
     SCFaceDetectModeFacepp,
 };
 
