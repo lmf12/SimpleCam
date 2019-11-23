@@ -46,9 +46,12 @@ static SCFaceDetectorManager *_faceDetectorManager;
 - (float *)detectWithSampleBuffer:(CMSampleBufferRef)sampleBuffer
                    facePointCount:(int *)facePointCount
                          isMirror:(BOOL)isMirror {
-    float *facePoints = [self detectInFaceppWithSampleBuffer:sampleBuffer
-                                              facePointCount:(int *)facePointCount
-                                                    isMirror:isMirror];
+    float *facePoints = nil;
+    if (self.faceDetectMode == SCFaceDetectModeFacepp) {
+        facePoints = [self detectInFaceppWithSampleBuffer:sampleBuffer
+                                           facePointCount:(int *)facePointCount
+                                                 isMirror:isMirror];
+    }
     return facePoints;
 }
 
