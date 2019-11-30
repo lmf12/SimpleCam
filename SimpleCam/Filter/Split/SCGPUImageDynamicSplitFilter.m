@@ -61,6 +61,7 @@ NSString * const kSCGPUImageDynamicSplitFilterShaderString = SHADER_STRING
 @property (nonatomic, assign) CGFloat lastCaptureTime;  // 上次补获视频帧的时间
 
 @property (nonatomic, assign) NSInteger capturedCount;
+@property (nonatomic, assign) BOOL needsCaptureFramebuffer;  // 是否需要捕获视频帧
 
 @end
 
@@ -89,6 +90,11 @@ NSString * const kSCGPUImageDynamicSplitFilterShaderString = SHADER_STRING
     {
         [firstInputFramebuffer unlock];
         return;
+    }
+    
+    if (self.needsCaptureFramebuffer) {
+        [self captureFramebuffer];
+        self.needsCaptureFramebuffer = NO;
     }
     
     [GPUImageContext setActiveShaderProgram:filterProgram];
@@ -174,23 +180,25 @@ NSString * const kSCGPUImageDynamicSplitFilterShaderString = SHADER_STRING
 
 /// 释放所有视频帧
 - (void)releaseAllFramebuffer {
-    if (self.firstFramebuffer) {
-        [self.firstFramebuffer unlock];
-        self.firstFramebuffer = nil;
-    }
-    if (self.secondFramebuffer) {
-        [self.secondFramebuffer unlock];
-        self.secondFramebuffer = nil;
-    }
-    if (self.thirdFramebuffer) {
-        [self.thirdFramebuffer unlock];
-        self.thirdFramebuffer = nil;
-    }
-    if (self.fourthFramebuffer) {
-        [self.fourthFramebuffer unlock];
-        self.fourthFramebuffer = nil;
-    }
-    self.capturedCount = 0;
+    runAsynchronouslyOnVideoProcessingQueue(^{
+        if (self.firstFramebuffer) {
+            [self.firstFramebuffer unlock];
+            self.firstFramebuffer = nil;
+        }
+        if (self.secondFramebuffer) {
+            [self.secondFramebuffer unlock];
+            self.secondFramebuffer = nil;
+        }
+        if (self.thirdFramebuffer) {
+            [self.thirdFramebuffer unlock];
+            self.thirdFramebuffer = nil;
+        }
+        if (self.fourthFramebuffer) {
+            [self.fourthFramebuffer unlock];
+            self.fourthFramebuffer = nil;
+        }
+        self.capturedCount = 0;
+    });
 }
 
 - (void)setTime:(CGFloat)time {
@@ -200,7 +208,7 @@ NSString * const kSCGPUImageDynamicSplitFilterShaderString = SHADER_STRING
         if (self.capturedCount >= 4) {  // 已经捕获 4 个视频帧
             [self releaseAllFramebuffer];
         } else {
-            [self captureFramebuffer];
+            self.needsCaptureFramebuffer = YES;
         }
         self.lastCaptureTime = self.time;
     }
