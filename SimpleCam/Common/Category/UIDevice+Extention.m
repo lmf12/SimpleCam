@@ -72,4 +72,10 @@
     return is_iPhoneX;
 }
 
++ (BOOL)is_6_5_Inch {
+    DeviceType deviceType = [self deviceType];
+    return (deviceType == IPhone_XS_Max ||
+            deviceType == IPhone_11_Pro_Max);
+}
+
 @end

@@ -6,8 +6,9 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import "SCPhotoResultViewController+Private.h"
+#import "UIDevice+Extention.h"
 
+#import "SCPhotoResultViewController+Private.h"
 #import "SCPhotoResultViewController+UI.h"
 
 #pragma clang diagnostic push
@@ -57,7 +58,8 @@
         make.size.mas_equalTo(CGSizeMake(80, 80));
         make.centerX.equalTo(self.view);
         if (@available(iOS 11.0, *)) {
-            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-40);
+            CGFloat offest = [UIDevice is_6_5_Inch] ? -60 : -40;
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(offest);
         } else {
             make.bottom.mas_equalTo(self.view.mas_bottom).offset(-40);
         }

@@ -11,7 +11,7 @@ DEPENDENCIES:
   - Toast (~> 4.0.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - GPUImage
     - Masonry
     - RSSwizzle
@@ -25,4 +25,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e53058d7dbf9dabdc880eb9ab198bdd13e3fd377
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

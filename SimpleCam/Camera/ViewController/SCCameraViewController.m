@@ -268,6 +268,7 @@
 
 - (void)cameraTopViewDidClickSettingButton:(SCCameraTopView *)cameraTopView {
     UINavigationController *navigationVC = [[UINavigationController alloc] initWithRootViewController:[[SCSettingViewController alloc] init]];
+    navigationVC.modalPresentationStyle = UIModalPresentationFullScreen;
     [self presentViewController:navigationVC
                        animated:YES
                      completion:NULL];

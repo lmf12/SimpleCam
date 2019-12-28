@@ -803,7 +803,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SimpleCam/Pods-SimpleCam-resources.sh",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
@@ -820,7 +820,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SimpleCam/Pods-SimpleCam-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

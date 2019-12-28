@@ -41,6 +41,10 @@ typedef NS_ENUM(NSInteger,DeviceType) {
 
 + (DeviceType)deviceType;
 
+/// 是否 iPhoneX 系列手机
 + (BOOL)is_iPhoneX_Series;
+
+/// 是否 6.5 英寸手机
++ (BOOL)is_6_5_Inch;
 
 @end

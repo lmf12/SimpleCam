@@ -6,6 +6,8 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import "UIDevice+Extention.h"
+
 #import "SCVideoResultViewController+Private.h"
 #import "SCVideoResultViewController+UI.h"
 
@@ -58,7 +60,8 @@
         make.size.mas_equalTo(CGSizeMake(80, 80));
         make.centerX.equalTo(self.view);
         if (@available(iOS 11.0, *)) {
-            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-40);
+            CGFloat offest = [UIDevice is_6_5_Inch] ? -60 : -40;
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(offest);
         } else {
             make.bottom.mas_equalTo(self.view.mas_bottom).offset(-40);
         }
