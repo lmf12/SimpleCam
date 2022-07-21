@@ -1,0 +1,7 @@
+{
+    "id" : "glitch",
+    "tab_id" : "tiktok",
+    "name" : "毛刺",
+    "class" : "SCGPUImageCustomFilter",
+    "sort" : "5"
+}

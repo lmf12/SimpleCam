@@ -1,0 +1,7 @@
+{
+    "id" : "scale",
+    "tab_id" : "tiktok",
+    "name" : "缩放",
+    "class" : "SCGPUImageCustomFilter",
+    "sort" : "1"
+}

@@ -1,0 +1,7 @@
+{
+    "id" : "shake",
+    "tab_id" : "tiktok",
+    "name" : "抖动",
+    "class" : "SCGPUImageCustomFilter",
+    "sort" : "3"
+}

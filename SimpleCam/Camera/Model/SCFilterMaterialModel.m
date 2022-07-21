@@ -6,6 +6,8 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
+#import "SCGPUImageCustomFilter.h"
+
 #import "SCFilterMaterialModel.h"
 
 @interface SCFilterMaterialModel ()
@@ -31,6 +33,12 @@
 }
 
 - (GPUImageFilter *)filter {
+    if ([self.filterClass isEqualToString:NSStringFromClass([SCGPUImageCustomFilter class])]) {
+        NSString *vsh = [NSString stringWithFormat:@"%@/Vertex.vsh", self.floderPath];
+        NSString *fsh = [NSString stringWithFormat:@"%@/Fragment.fsh", self.floderPath];
+        return [[SCGPUImageCustomFilter alloc] initWithVertexShaderFile:vsh
+                                                     fragmentShaderFile:fsh];
+    }
     return [[NSClassFromString(self.filterClass) alloc] init];
 }
 
