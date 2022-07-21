@@ -1,0 +1,7 @@
+{
+    "id" : "face_feature",
+    "tab_id" : "default",
+    "name" : "人脸点",
+    "class" : "SCGPUImageFaceFeatureFilter",
+    "sort" : "2"
+}

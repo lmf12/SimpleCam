@@ -18,7 +18,4 @@
 @property (nonatomic, assign) GLfloat *facesPoints;
 @property (nonatomic, assign) int facesPointCount;
 
-/// 封面图片名称，如果非nil，则用改图片，否则用滤镜来生成
-- (NSString *)coverImageName;
-
 @end

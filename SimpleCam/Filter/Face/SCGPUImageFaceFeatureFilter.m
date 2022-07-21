@@ -117,8 +117,4 @@ NSString *const kGPUImageFaceFeatureFragmentShaderString = SHADER_STRING
     }
 }
 
-- (NSString *)coverImageName {
-    return @"filter_sample_face_feature.jpg";
-}
-
 @end

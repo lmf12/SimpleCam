@@ -67,10 +67,6 @@ static NSString * const kSCFilterMaterialViewReuseIdentifier = @"SCFilterMateria
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.collectionView registerClass:[SCFilterMaterialViewCell class] forCellWithReuseIdentifier:kSCFilterMaterialViewReuseIdentifier];
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self selectIndex:0];
-    });
 }
 
 - (void)createCollectionViewLayout {
@@ -113,6 +109,13 @@ static NSString * const kSCFilterMaterialViewReuseIdentifier = @"SCFilterMateria
 
 - (void)setItemList:(NSArray<SCFilterMaterialModel *> *)itemList {
     _itemList = [itemList copy];
+    // 第一次打开
+    if (!self.selectMaterialModel) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self selectIndex:[NSIndexPath indexPathForRow:0 inSection:0]];
+        });
+        return;
+    }
     
     [self.collectionView reloadData];
     if ([itemList containsObject:self.selectMaterialModel]) {

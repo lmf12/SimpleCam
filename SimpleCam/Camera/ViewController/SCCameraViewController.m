@@ -80,36 +80,6 @@
     [self.navigationController pushViewController:vc animated:NO];
 }
 
-#pragma mark - Custom Accessor
-
-- (NSArray<SCFilterMaterialModel *> *)defaultFilterMaterials {
-    if (!_defaultFilterMaterials) {
-        _defaultFilterMaterials = [[SCFilterManager shareManager] defaultFilters];
-    }
-    return _defaultFilterMaterials;
-}
-
-- (NSArray<SCFilterMaterialModel *> *)tikTokFilterMaterials {
-    if (!_tikTokFilterMaterials) {
-        _tikTokFilterMaterials = [[SCFilterManager shareManager] tiktokFilters];
-    }
-    return _tikTokFilterMaterials;
-}
-
-- (NSArray<SCFilterMaterialModel *> *)faceRecognizerFilterMaterials {
-    if (!_faceRecognizerFilterMaterials) {
-        _faceRecognizerFilterMaterials = [[SCFilterManager shareManager] faceRecognizerFilters];
-    }
-    return _faceRecognizerFilterMaterials;
-}
-
-- (NSArray<SCFilterMaterialModel *> *)splitFilterMaterials {
-    if (!_splitFilterMaterials) {
-        _splitFilterMaterials = [[SCFilterManager shareManager] splitFilters];
-    }
-    return _splitFilterMaterials;
-}
-
 #pragma mark - Action
 
 - (void)filterAction:(id)sender {
@@ -118,11 +88,6 @@
                       completion:NULL];
     
     [self refreshUIWhenFilterBarShowOrHide];
-    
-    // 第一次展开的时候，添加数据
-    if (!self.filterBarView.defaultFilterMaterials) {
-        self.filterBarView.defaultFilterMaterials = self.defaultFilterMaterials;
-    }
 }
 
 - (void)nextAction:(id)sender {
@@ -177,22 +142,13 @@
 #pragma mark - SCFilterBarViewDelegate
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView categoryDidScrollToIndex:(NSUInteger)index {
-    if (index == 0 && !self.filterBarView.defaultFilterMaterials) {
-        self.filterBarView.defaultFilterMaterials = self.defaultFilterMaterials;
-    } else if (index == 1 && !self.filterBarView.tikTokFilterMaterials) {
-        self.filterBarView.tikTokFilterMaterials = self.tikTokFilterMaterials;
-    } else if (index == 2 && !self.filterBarView.faceRecognizerFilterMaterials) {
-        self.filterBarView.faceRecognizerFilterMaterials = self.faceRecognizerFilterMaterials;
-    } else if (index == 3 && !self.filterBarView.splitFilterMaterials) {
-        self.filterBarView.splitFilterMaterials = self.splitFilterMaterials;
-    }
 }
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView materialDidScrollToIndex:(NSUInteger)index {
-    NSArray<SCFilterMaterialModel *> *models = [self filtersWithCategoryIndex:self.filterBarView.currentCategoryIndex];
+    NSArray<SCFilterMaterialModel *> *models = [SCFilterManager shareManager].tabs[filterBarView.currentCategoryIndex].filters;
     
     SCFilterMaterialModel *model = models[index];
-    [[SCCameraManager shareManager].currentFilterHandler setEffectFilter:[[SCFilterManager shareManager] filterWithFilterID:model.filterID]];
+    [[SCCameraManager shareManager].currentFilterHandler setEffectFilter:model.filter];
 }
 
 - (void)filterBarView:(SCFilterBarView *)filterBarView beautifySwitchIsOn:(BOOL)isOn {

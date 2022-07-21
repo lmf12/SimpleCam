@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SCTabModel.h"
 
 @class SCFilterCategoryView;
 
@@ -28,7 +29,7 @@
 
 @property (nonatomic, assign, readonly) NSInteger currentIndex;
 
-@property (nonatomic, strong) NSArray <NSString *> *itemList;
+@property (nonatomic, copy) NSArray<SCTabModel *> *itemList;
 
 @property (nonatomic, weak) id<SCFilterCategoryViewDelegate> delegate;
 

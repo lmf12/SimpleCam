@@ -109,6 +109,7 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
     self.filterBarView = [[SCFilterBarView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 0)];
     self.filterBarView.delegate = self;
     self.filterBarView.showing = NO;
+    [self.filterBarView setTabs:[SCFilterManager shareManager].tabs];
     [self.view addSubview:self.filterBarView];
     [self.filterBarView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);

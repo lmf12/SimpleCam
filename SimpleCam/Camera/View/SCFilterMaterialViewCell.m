@@ -108,16 +108,15 @@
 - (void)setFilterMaterialModel:(SCFilterMaterialModel *)filterMaterialModel {
     _filterMaterialModel = filterMaterialModel;
 
-    self.titleLabel.text = filterMaterialModel.filterName;
-    
-    GPUImageFilter *filter = [[SCFilterManager shareManager] filterWithFilterID:filterMaterialModel.filterID];
+    self.titleLabel.text = filterMaterialModel.name;
+    GPUImageFilter *filter = filterMaterialModel.filter;
     
     if ([filter isKindOfClass:[SCGPUImageBaseFilter class]]) {
         SCGPUImageBaseFilter *baseFilter = (SCGPUImageBaseFilter *)filter;
         // 是否只需要设置静态的图片
-        NSString *imageName = [baseFilter coverImageName];
-        if (imageName) {
-            self.staticImageView.image = [UIImage imageNamed:imageName];
+        NSString *coverPath = [filterMaterialModel coverImagePath];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:coverPath]) {
+            self.staticImageView.image = [[UIImage alloc] initWithContentsOfFile:coverPath];
             self.staticImageView.hidden = NO;
             self.imageView.hidden = YES;
             return;

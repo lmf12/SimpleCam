@@ -6,7 +6,7 @@
 //  Copyright © 2019年 Lyman Li. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "SCTabModel.h"
 
 #import "SCFilterMaterialModel.h"
 
@@ -26,18 +26,7 @@
 @property (nonatomic, assign) BOOL showing;
 @property (nonatomic, weak) id <SCFilterBarViewDelegate> delegate;
 
-/// 内置滤镜
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
-
-/// 抖音滤镜
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *tikTokFilterMaterials;
-
-/// 人脸识别滤镜
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *faceRecognizerFilterMaterials;
-
-/// 分屏滤镜
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *splitFilterMaterials;
-
+- (void)setTabs:(NSArray<SCTabModel *> *)tabs;
 - (NSInteger)currentCategoryIndex;
 
 @end

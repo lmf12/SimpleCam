@@ -8,6 +8,7 @@
 
 #import "SCFilterBarView.h"
 #import "SCFilterCategoryView.h"
+#import "SCTabModel.h"
 
 #import "SCFilterMaterialView.h"
 
@@ -56,7 +57,6 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
     self.filterCategoryView.delegate = self;
     self.filterCategoryView.itemNormalColor = [UIColor whiteColor];
     self.filterCategoryView.itemSelectColor = ThemeColor;
-    self.filterCategoryView.itemList = @[@"内置", @"抖音", @"人脸识别", @"分屏"];
     self.filterCategoryView.itemFont = [UIFont systemFontOfSize:14];
     self.filterCategoryView.itemWidth = 65;
     self.filterCategoryView.bottomLineWidth = 30;
@@ -123,6 +123,11 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 
 #pragma mark - Public
 
+- (void)setTabs:(NSArray<SCTabModel *> *)tabs {
+    self.filterCategoryView.itemList = tabs;
+    self.filterMaterialView.itemList = tabs.firstObject.filters;
+}
+
 - (NSInteger)currentCategoryIndex {
     return self.filterCategoryView.currentIndex;
 }
@@ -143,40 +148,6 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
     }
 }
 
-#pragma mark - Custom Accessor
-
-- (void)setDefaultFilterMaterials:(NSArray<SCFilterMaterialModel *> *)defaultFilterMaterials {
-    _defaultFilterMaterials = [defaultFilterMaterials copy];
-    
-    if (self.filterCategoryView.currentIndex == 0) {
-        self.filterMaterialView.itemList = defaultFilterMaterials;
-    }
-}
-
-- (void)setTikTokFilterMaterials:(NSArray<SCFilterMaterialModel *> *)tikTokFilterMaterials {
-    _tikTokFilterMaterials = [tikTokFilterMaterials copy];
-    
-    if (self.filterCategoryView.currentIndex == 1) {
-        self.filterMaterialView.itemList = tikTokFilterMaterials;
-    }
-}
-
-- (void)setFaceRecognizerFilterMaterials:(NSArray<SCFilterMaterialModel *> *)faceRecognizerFilterMaterials {
-    _faceRecognizerFilterMaterials = [faceRecognizerFilterMaterials copy];
-    
-    if (self.filterCategoryView.currentIndex == 2) {
-        self.filterMaterialView.itemList = faceRecognizerFilterMaterials;
-    }
-}
-
-- (void)setSplitFilterMaterials:(NSArray<SCFilterMaterialModel *> *)splitFilterMaterials {
-    _splitFilterMaterials = [splitFilterMaterials copy];
-    
-    if (self.filterCategoryView.currentIndex == 3) {
-        self.filterMaterialView.itemList = splitFilterMaterials;
-    }
-}
-
 #pragma mark - SCFilterMaterialViewDelegate
 
 - (void)filterMaterialView:(SCFilterMaterialView *)filterMaterialView didScrollToIndex:(NSUInteger)index {
@@ -188,16 +159,8 @@ static CGFloat const kFilterMaterialViewHeight = 100.0f;
 #pragma mark - SCFilterCategoryViewDelegate
 
 - (void)filterCategoryView:(SCFilterCategoryView *)filterCategoryView didScrollToIndex:(NSUInteger)index {
-    NSInteger currentIndex = filterCategoryView.currentIndex;
-    if (currentIndex == 0) {
-        self.filterMaterialView.itemList = self.defaultFilterMaterials;
-    } else if (currentIndex == 1) {
-        self.filterMaterialView.itemList = self.tikTokFilterMaterials;
-    } else if (currentIndex == 2) {
-        self.filterMaterialView.itemList = self.faceRecognizerFilterMaterials;
-    } else if (currentIndex == 3) {
-        self.filterMaterialView.itemList = self.splitFilterMaterials;
-    }
+    SCTabModel *tab = filterCategoryView.itemList[index];
+    self.filterMaterialView.itemList = tab.filters;
     
     if ([self.delegate respondsToSelector:@selector(filterBarView:categoryDidScrollToIndex:)]) {
         [self.delegate filterBarView:self categoryDidScrollToIndex:index];

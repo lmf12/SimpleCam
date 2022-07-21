@@ -1,0 +1,7 @@
+{
+    "id" : "base",
+    "tab_id" : "default",
+    "name" : "原图",
+    "class" : "SCGPUImageBaseFilter",
+    "sort" : "1"
+}

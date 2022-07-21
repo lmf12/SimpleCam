@@ -1,0 +1,16 @@
+{
+	"tabs" : [
+        {
+            "id" : "default",
+            "name" : "默认",
+        },
+        {
+            "id" : "tiktok",
+            "name" : "抖音",
+        },
+        {
+            "id" : "split",
+            "name" : "分屏",
+        }
+    ]
+}

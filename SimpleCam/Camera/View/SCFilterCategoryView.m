@@ -44,9 +44,9 @@ static NSString * const kFilterCategoryReuseIdentifier = @"kFilterCategoryReuseI
 
 #pragma mark - Custom Accessor
 
-- (void)setItemList:(NSArray<NSString *> *)itemList {
+- (void)setItemList:(NSArray<SCTabModel *> *)itemList {
     
-    _itemList = itemList;
+    _itemList = [itemList copy];
     [_collectionView reloadData];
 }
 
@@ -159,7 +159,7 @@ static NSString * const kFilterCategoryReuseIdentifier = @"kFilterCategoryReuseI
     
     // 配置样式
     UILabel *label = cell.titleLabel;
-    label.text = _itemList[indexPath.row];
+    label.text = _itemList[indexPath.row].name;
     label.font = _itemFont;
     label.textColor = _currentIndex == indexPath.row ? _itemSelectColor : _itemNormalColor;
     

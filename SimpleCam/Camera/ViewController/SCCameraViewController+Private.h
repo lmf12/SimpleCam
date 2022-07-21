@@ -55,11 +55,6 @@
 
 @property (nonatomic, strong) NSTimer *videoTimer;  // 用于刷新录制中视频的时间
 
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *defaultFilterMaterials;
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *tikTokFilterMaterials;
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *faceRecognizerFilterMaterials;
-@property (nonatomic, copy) NSArray<SCFilterMaterialModel *> *splitFilterMaterials;
-
 #pragma mark - UI
 
 - (void)setupUI;
@@ -106,9 +101,6 @@
 
 /// 移除美颜滤镜
 - (void)removeBeautifyFilter;
-
-/// 根据分类索引，获取滤镜列表
-- (NSArray<SCFilterMaterialModel *> *)filtersWithCategoryIndex:(NSInteger)index;
 
 #pragma mark - TakePhoto
 
