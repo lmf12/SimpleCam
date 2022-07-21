@@ -1,0 +1,7 @@
+{
+    "id" : "dynamic_split",
+    "tab_id" : "split",
+    "name" : "动态分屏",
+    "class" : "SCGPUImageDynamicSplitFilter",
+    "sort" : "1",
+}

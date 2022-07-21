@@ -1,0 +1,11 @@
+{
+    "id" : "split3v3",
+    "tab_id" : "split",
+    "name" : "3 : 3 分屏",
+    "class" : "SCGPUImageCustomFilter",
+    "sort" : "3",
+    "uniforms" : {
+        "horizontal" : "3",
+        "vertical" : "3"
+    }
+}

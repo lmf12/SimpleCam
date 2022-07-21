@@ -13,6 +13,7 @@
 @interface SCFilterMaterialModel ()
 
 @property (nonatomic, copy) NSString *floder;
+@property (nonatomic, copy) NSDictionary *uniforms;
 
 @end
 
@@ -27,6 +28,7 @@
         self.filterClass = dictionary[@"class"];
         self.tabID = dictionary[@"tab_id"];
         self.sort = [dictionary[@"sort"] intValue];
+        self.uniforms = dictionary[@"uniforms"];
         self.floder = floder;
     }
     return self;
@@ -37,7 +39,8 @@
         NSString *vsh = [NSString stringWithFormat:@"%@/Vertex.vsh", self.floderPath];
         NSString *fsh = [NSString stringWithFormat:@"%@/Fragment.fsh", self.floderPath];
         return [[SCGPUImageCustomFilter alloc] initWithVertexShaderFile:vsh
-                                                     fragmentShaderFile:fsh];
+                                                     fragmentShaderFile:fsh
+                                                               uniforms:self.uniforms];
     }
     return [[NSClassFromString(self.filterClass) alloc] init];
 }
