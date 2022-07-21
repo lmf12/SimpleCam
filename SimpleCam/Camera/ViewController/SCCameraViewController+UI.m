@@ -161,8 +161,8 @@ static CGFloat const kFilterBarViewHeight = 200.0f;  // 滤镜栏高度
 }
 
 - (void)setupRatioBlurView {
-    self.ratioBlurView = [[SCVisualEffectView alloc] init];
-    self.ratioBlurView.blurRadius = 50;
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.ratioBlurView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     self.ratioBlurView.hidden = YES;
     [self.view insertSubview:self.ratioBlurView aboveSubview:self.cameraView];
     [self.ratioBlurView mas_makeConstraints:^(MASConstraintMaker *make) {

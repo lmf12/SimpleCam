@@ -11,7 +11,6 @@
 #import "SCFilterBarView.h"
 #import "SCCameraTopView.h"
 #import "SCCapturingModeSwitchView.h"
-#import "SCVisualEffectView.h"
 #import "SCCameraVideoTimeLabel.h"
 
 #import "SCCameraManager.h"
@@ -44,7 +43,7 @@
 @property (nonatomic, strong) SCCapturingModeSwitchView *modeSwitchView;
 @property (nonatomic, strong) SCCameraVideoTimeLabel *videoTimeLabel;
 @property (nonatomic, strong) UIView *cameraFocusView;  // 聚焦框
-@property (nonatomic, strong) SCVisualEffectView *ratioBlurView;  // 切换比例的时候的模糊蒙层
+@property (nonatomic, strong) UIVisualEffectView *ratioBlurView;  // 切换比例的时候的模糊蒙层
 
 @property (nonatomic, assign) BOOL isRecordingVideo;  // 是否正在录制视频
 @property (nonatomic, assign) BOOL isChangingRatio;  // 是否正在改变比例

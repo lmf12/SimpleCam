@@ -26,7 +26,6 @@
 		E87C10B2228FEA7B00653DDA /* SCVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10B1228FEA7B00653DDA /* SCVideoModel.m */; };
 		E87C10B52290009A00653DDA /* SCCapturingModeSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10B42290009A00653DDA /* SCCapturingModeSwitchView.m */; };
 		E89949ED22A25C8C00FC85C0 /* UIDevice+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */; };
-		E89949F122A27E5700FC85C0 /* SCVisualEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F022A27E5700FC85C0 /* SCVisualEffectView.m */; };
 		E89949F422A538DD00FC85C0 /* SCCameraVideoTimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F322A538DD00FC85C0 /* SCCameraVideoTimeLabel.m */; };
 		E89949F722A53BE600FC85C0 /* SCTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F622A53BE600FC85C0 /* SCTimeHelper.m */; };
 		E89949FD22A5612100FC85C0 /* SCCameraViewController+Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949FC22A5612100FC85C0 /* SCCameraViewController+Notification.m */; };
@@ -115,8 +114,6 @@
 		E87C10B42290009A00653DDA /* SCCapturingModeSwitchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCapturingModeSwitchView.m; sourceTree = "<group>"; };
 		E89949EB22A25C8C00FC85C0 /* UIDevice+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Extention.h"; sourceTree = "<group>"; };
 		E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Extention.m"; sourceTree = "<group>"; };
-		E89949EF22A27E5700FC85C0 /* SCVisualEffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCVisualEffectView.h; sourceTree = "<group>"; };
-		E89949F022A27E5700FC85C0 /* SCVisualEffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCVisualEffectView.m; sourceTree = "<group>"; };
 		E89949F222A538DD00FC85C0 /* SCCameraVideoTimeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraVideoTimeLabel.h; sourceTree = "<group>"; };
 		E89949F322A538DD00FC85C0 /* SCCameraVideoTimeLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCameraVideoTimeLabel.m; sourceTree = "<group>"; };
 		E89949F522A53BE600FC85C0 /* SCTimeHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCTimeHelper.h; sourceTree = "<group>"; };
@@ -325,16 +322,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		E89949EE22A27E2A00FC85C0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E89949EF22A27E5700FC85C0 /* SCVisualEffectView.h */,
-				E89949F022A27E5700FC85C0 /* SCVisualEffectView.m */,
-			);
-			name = View;
-			path = SimpleCam/Common/View;
-			sourceTree = SOURCE_ROOT;
-		};
 		E8D18EE322586BD600ECFB98 /* Support */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,7 +394,6 @@
 				E8D80C2722901A2300CDB060 /* Category */,
 				E8E578ED2261D2EB0093BB7B /* Utils */,
 				E8D18F0822589B9000ECFB98 /* Define */,
-				E89949EE22A27E2A00FC85C0 /* View */,
 				E8D18EEE225877A600ECFB98 /* ViewController */,
 			);
 			path = Common;
@@ -770,7 +756,6 @@
 				E87C10AF228FE0E200653DDA /* SCCameraViewController+RecordVideo.m in Sources */,
 				E8DA865C22EC4870009AB4EA /* SCAppSetting.m in Sources */,
 				E8D70D162376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m in Sources */,
-				E89949F122A27E5700FC85C0 /* SCVisualEffectView.m in Sources */,
 				E833C7F322ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m in Sources */,
 				E8E578E32261B9580093BB7B /* SCFilterMaterialView.m in Sources */,
 				E8D80C4022A2ADA700CDB060 /* SCFilterCategoryView.m in Sources */,
