@@ -16,6 +16,7 @@
 		884FBE2B28A7E3C800FBBD01 /* SCMetalHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE2A28A7E3C800FBBD01 /* SCMetalHelper.mm */; };
 		884FBE3428AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE3328AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m */; };
 		884FBE3828AD2CB500FBBD01 /* SCColorfulHairFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE3728AD2CB500FBBD01 /* SCColorfulHairFilter.m */; };
+		884FBE3B28AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE3A28AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.m */; };
 		889EDE6C289F549B005C1F2D /* tnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889EDE6A289F549B005C1F2D /* tnn.framework */; };
 		889EDE6D289F549B005C1F2D /* tnn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 889EDE6B289F549B005C1F2D /* tnn.bundle */; };
 		889EDE6F289F567E005C1F2D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889EDE6E289F567E005C1F2D /* Accelerate.framework */; };
@@ -102,6 +103,8 @@
 		884FBE3328AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GPUImageFilter+BugFix.m"; sourceTree = "<group>"; };
 		884FBE3628AD2CB500FBBD01 /* SCColorfulHairFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCColorfulHairFilter.h; sourceTree = "<group>"; };
 		884FBE3728AD2CB500FBBD01 /* SCColorfulHairFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCColorfulHairFilter.m; sourceTree = "<group>"; };
+		884FBE3928AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageStaticSplitFilter.h; sourceTree = "<group>"; };
+		884FBE3A28AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageStaticSplitFilter.m; sourceTree = "<group>"; };
 		889EDE6A289F549B005C1F2D /* tnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tnn.framework; sourceTree = "<group>"; };
 		889EDE6B289F549B005C1F2D /* tnn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = tnn.bundle; sourceTree = "<group>"; };
 		889EDE6E289F567E005C1F2D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -566,6 +569,8 @@
 			children = (
 				E8D70D142376C8030028AF60 /* SCGPUImageDynamicSplitFilter.h */,
 				E8D70D152376C8030028AF60 /* SCGPUImageDynamicSplitFilter.m */,
+				884FBE3928AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.h */,
+				884FBE3A28AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.m */,
 			);
 			path = Split;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				E8D80C3D22997E1500CDB060 /* SCFilterHandler.m in Sources */,
 				E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */,
 				884FBE1428A7459D00FBBD01 /* SCHairSegmentationHandler.mm in Sources */,
+				884FBE3B28AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.m in Sources */,
 				E8DA865022EC3639009AB4EA /* SCSettingViewController.m in Sources */,
 				E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */,
 				889EDE81289FEB15005C1F2D /* SCTNNHelper.mm in Sources */,
