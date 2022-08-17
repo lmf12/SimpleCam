@@ -6,7 +6,7 @@
 
 # 界面预览
 
-<div align=left><img src="https://raw.githubusercontent.com/lmf12/SimpleCam/master/Images/image-ui.jpg" width="600" height="355"/></div>
+<div align=left><img src="Images/image-ui.jpg" width="600" height="355"/></div>
 
 # 如何运行
 
@@ -30,6 +30,7 @@
 * **人脸关键点识别**  👉[效果预览](Images/image-3.gif)
 * **分屏滤镜**  👉[效果预览](Images/image-4.gif)
 * **延时动态分屏滤镜**  👉[效果预览](Images/image-5.gif)
+* **染发效果**  👉[效果预览](Images/image-6.gif)
 
 # 相关文章
 
@@ -42,6 +43,7 @@
 
 | 版本号 | 更新日志 |
 | --- | --- |
+| v0.4.0 | 1. 素材栏逻辑重构 <br> 2. 修复切换比例时，画面变灰问题 <br> 3. 新增染发效果 |
 | v0.3.4 | 1. 适配 iOS13 和 6.5 英寸屏 |
 | v0.3.3 | 1. 修复动态分屏滤镜美颜效果丢失问题 |
 | v0.3.2 | 1. 修复人脸识别开关失效问题 |
