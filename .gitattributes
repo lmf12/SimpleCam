@@ -1,2 +1,3 @@
 SimpleCam/ThirdParty/TNN/** filter=lfs diff=lfs merge=lfs -text
 SimpleCam/Resource/Model/** filter=lfs diff=lfs merge=lfs -text
+Images/** filter=lfs diff=lfs merge=lfs -text

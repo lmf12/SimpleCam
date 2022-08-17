@@ -1,4 +1,4 @@
-<div align=center><img src="https://raw.githubusercontent.com/lmf12/SimpleCam/master/Images/image-head.jpg" width="450" height="150"/></div>
+<div align=center><img src="Images/image-head.jpg" width="450" height="150"/></div>
 
 # 简介
 
@@ -25,11 +25,11 @@
 * **前后置切换**
 * **手动对焦**
 * **焦距调整**
-* **自定义抖音滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-2.gif)
-* **美颜滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-1.gif)
-* **人脸关键点识别**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-3.gif)
-* **分屏滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-4.gif)
-* **延时动态分屏滤镜**  👉[效果预览](https://github.com/lmf12/SimpleCam/blob/master/Images/image-5.gif)
+* **自定义抖音滤镜**  👉[效果预览](Images/image-2.gif)
+* **美颜滤镜**  👉[效果预览](Images/image-1.gif)
+* **人脸关键点识别**  👉[效果预览](Images/image-3.gif)
+* **分屏滤镜**  👉[效果预览](Images/image-4.gif)
+* **延时动态分屏滤镜**  👉[效果预览](Images/image-5.gif)
 
 # 相关文章
 
