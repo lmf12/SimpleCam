@@ -35,14 +35,16 @@
 }
 
 - (GPUImageFilter *)filter {
-    if ([self.filterClass isEqualToString:NSStringFromClass([SCGPUImageCustomFilter class])]) {
+    Class filterClass = NSClassFromString(self.filterClass);
+    if ([filterClass isEqual:[SCGPUImageCustomFilter class]] ||
+        [filterClass isSubclassOfClass:[SCGPUImageCustomFilter class]]) {
         NSString *vsh = [NSString stringWithFormat:@"%@/Vertex.vsh", self.floderPath];
         NSString *fsh = [NSString stringWithFormat:@"%@/Fragment.fsh", self.floderPath];
-        return [[SCGPUImageCustomFilter alloc] initWithVertexShaderFile:vsh
-                                                     fragmentShaderFile:fsh
-                                                               uniforms:self.uniforms];
+        return [[filterClass alloc] initWithVertexShaderFile:vsh
+                                          fragmentShaderFile:fsh
+                                                    uniforms:self.uniforms];
     }
-    return [[NSClassFromString(self.filterClass) alloc] init];
+    return [[filterClass alloc] init];
 }
 
 - (NSString *)floderPath {

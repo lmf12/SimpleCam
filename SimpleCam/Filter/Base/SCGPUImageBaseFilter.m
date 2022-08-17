@@ -14,7 +14,9 @@
             fragmentShaderFromString:(NSString *)fragmentShaderString {
     self = [super initWithVertexShaderFromString:vertexShaderString
                         fragmentShaderFromString:fragmentShaderString];
-    self.timeUniform = [filterProgram uniformIndex:@"time"];
+    runSynchronouslyOnVideoProcessingQueue(^{
+        self.timeUniform = [filterProgram uniformIndex:@"time"];
+    });
     self.time = 0.0f;
     self.facesPoints = 0;
     self.facesPointCount = 0;

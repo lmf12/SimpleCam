@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 191A603F1782103A77B17274 /* libPods-SimpleCam.a */; };
+		884FBE1428A7459D00FBBD01 /* SCHairSegmentationHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE1328A7459D00FBBD01 /* SCHairSegmentationHandler.mm */; };
+		884FBE1728A747E100FBBD01 /* hair_segmentation.tnnmodel in Resources */ = {isa = PBXBuildFile; fileRef = 884FBE1528A747E100FBBD01 /* hair_segmentation.tnnmodel */; };
+		884FBE1828A747E100FBBD01 /* hair_segmentation.tnnproto in Resources */ = {isa = PBXBuildFile; fileRef = 884FBE1628A747E100FBBD01 /* hair_segmentation.tnnproto */; };
+		884FBE2028A74C3300FBBD01 /* SCHairSegmentationFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE1E28A74C3300FBBD01 /* SCHairSegmentationFilter.m */; };
+		884FBE2328A74E8700FBBD01 /* GPUImageFramebuffer+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE2228A74E8700FBBD01 /* GPUImageFramebuffer+Extention.m */; };
+		884FBE2B28A7E3C800FBBD01 /* SCMetalHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE2A28A7E3C800FBBD01 /* SCMetalHelper.mm */; };
+		884FBE3428AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FBE3328AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m */; };
+		889EDE6C289F549B005C1F2D /* tnn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889EDE6A289F549B005C1F2D /* tnn.framework */; };
+		889EDE6D289F549B005C1F2D /* tnn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 889EDE6B289F549B005C1F2D /* tnn.bundle */; };
+		889EDE6F289F567E005C1F2D /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889EDE6E289F567E005C1F2D /* Accelerate.framework */; };
+		889EDE71289F5685005C1F2D /* CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889EDE70289F5685005C1F2D /* CoreML.framework */; };
+		889EDE81289FEB15005C1F2D /* SCTNNHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE80289FEB15005C1F2D /* SCTNNHelper.mm */; };
+		889EDE85289FFC53005C1F2D /* SCAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE84289FFC53005C1F2D /* SCAIManager.m */; };
+		889EDE8E28A0190E005C1F2D /* SCMetalTextureConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE8D28A0190E005C1F2D /* SCMetalTextureConverter.m */; };
+		889EDE9128A02327005C1F2D /* Default.metal in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE9028A02327005C1F2D /* Default.metal */; };
 		E833C7F322ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */; };
 		E84EA79122B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */; };
 		E84EA79222B14C5A00A07DBE /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78422B14C5A00A07DBE /* libMGFacepp-0.5.2.a */; };
@@ -72,6 +87,29 @@
 		18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.release.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.release.xcconfig"; sourceTree = "<group>"; };
 		191A603F1782103A77B17274 /* libPods-SimpleCam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleCam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70BCE07029C9C80FA29BB356 /* Pods-SimpleCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleCam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SimpleCam/Pods-SimpleCam.debug.xcconfig"; sourceTree = "<group>"; };
+		884FBE1228A7459D00FBBD01 /* SCHairSegmentationHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCHairSegmentationHandler.h; sourceTree = "<group>"; };
+		884FBE1328A7459D00FBBD01 /* SCHairSegmentationHandler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SCHairSegmentationHandler.mm; sourceTree = "<group>"; };
+		884FBE1528A747E100FBBD01 /* hair_segmentation.tnnmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = hair_segmentation.tnnmodel; sourceTree = "<group>"; };
+		884FBE1628A747E100FBBD01 /* hair_segmentation.tnnproto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hair_segmentation.tnnproto; sourceTree = "<group>"; };
+		884FBE1E28A74C3300FBBD01 /* SCHairSegmentationFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCHairSegmentationFilter.m; sourceTree = "<group>"; };
+		884FBE1F28A74C3300FBBD01 /* SCHairSegmentationFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCHairSegmentationFilter.h; sourceTree = "<group>"; };
+		884FBE2128A74E8700FBBD01 /* GPUImageFramebuffer+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPUImageFramebuffer+Extention.h"; sourceTree = "<group>"; };
+		884FBE2228A74E8700FBBD01 /* GPUImageFramebuffer+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GPUImageFramebuffer+Extention.m"; sourceTree = "<group>"; };
+		884FBE2928A7E3C800FBBD01 /* SCMetalHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCMetalHelper.h; sourceTree = "<group>"; };
+		884FBE2A28A7E3C800FBBD01 /* SCMetalHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SCMetalHelper.mm; sourceTree = "<group>"; };
+		884FBE3228AC0DAB00FBBD01 /* GPUImageFilter+BugFix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPUImageFilter+BugFix.h"; sourceTree = "<group>"; };
+		884FBE3328AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "GPUImageFilter+BugFix.m"; sourceTree = "<group>"; };
+		889EDE6A289F549B005C1F2D /* tnn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tnn.framework; sourceTree = "<group>"; };
+		889EDE6B289F549B005C1F2D /* tnn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = tnn.bundle; sourceTree = "<group>"; };
+		889EDE6E289F567E005C1F2D /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		889EDE70289F5685005C1F2D /* CoreML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreML.framework; path = System/Library/Frameworks/CoreML.framework; sourceTree = SDKROOT; };
+		889EDE7D289FEA48005C1F2D /* SCTNNHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCTNNHelper.h; sourceTree = "<group>"; };
+		889EDE80289FEB15005C1F2D /* SCTNNHelper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SCTNNHelper.mm; sourceTree = "<group>"; };
+		889EDE83289FFC53005C1F2D /* SCAIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCAIManager.h; sourceTree = "<group>"; };
+		889EDE84289FFC53005C1F2D /* SCAIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCAIManager.m; sourceTree = "<group>"; };
+		889EDE8C28A0190E005C1F2D /* SCMetalTextureConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCMetalTextureConverter.h; sourceTree = "<group>"; };
+		889EDE8D28A0190E005C1F2D /* SCMetalTextureConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCMetalTextureConverter.m; sourceTree = "<group>"; };
+		889EDE9028A02327005C1F2D /* Default.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Default.metal; sourceTree = "<group>"; };
 		E833C7F122ACB2500065E557 /* SCGPUImageFaceFeatureFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageFaceFeatureFilter.h; sourceTree = "<group>"; };
 		E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageFaceFeatureFilter.m; sourceTree = "<group>"; };
 		E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGLicMgrSDK-0.3.1.a"; sourceTree = "<group>"; };
@@ -204,7 +242,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889EDE71289F5685005C1F2D /* CoreML.framework in Frameworks */,
+				889EDE6F289F567E005C1F2D /* Accelerate.framework in Frameworks */,
 				23196AFDEBC99FC481EB50DE /* libPods-SimpleCam.a in Frameworks */,
+				889EDE6C289F549B005C1F2D /* tnn.framework in Frameworks */,
 				E84EA79122B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a in Frameworks */,
 				E84EA79222B14C5A00A07DBE /* libMGFacepp-0.5.2.a in Frameworks */,
 			);
@@ -216,9 +257,65 @@
 		1D126C5FDA277328199720A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				889EDE70289F5685005C1F2D /* CoreML.framework */,
+				889EDE6E289F567E005C1F2D /* Accelerate.framework */,
 				191A603F1782103A77B17274 /* libPods-SimpleCam.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		884FBE1D28A74C3300FBBD01 /* Hair */ = {
+			isa = PBXGroup;
+			children = (
+				884FBE1F28A74C3300FBBD01 /* SCHairSegmentationFilter.h */,
+				884FBE1E28A74C3300FBBD01 /* SCHairSegmentationFilter.m */,
+			);
+			path = Hair;
+			sourceTree = "<group>";
+		};
+		889EDE69289F549B005C1F2D /* TNN */ = {
+			isa = PBXGroup;
+			children = (
+				889EDE6A289F549B005C1F2D /* tnn.framework */,
+				889EDE6B289F549B005C1F2D /* tnn.bundle */,
+			);
+			path = TNN;
+			sourceTree = "<group>";
+		};
+		889EDE82289FFC39005C1F2D /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				889EDE83289FFC53005C1F2D /* SCAIManager.h */,
+				889EDE84289FFC53005C1F2D /* SCAIManager.m */,
+				884FBE1228A7459D00FBBD01 /* SCHairSegmentationHandler.h */,
+				884FBE1328A7459D00FBBD01 /* SCHairSegmentationHandler.mm */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		889EDE8628A00E4B005C1F2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				889EDE8728A00E4B005C1F2D /* hair_segmentation */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		889EDE8728A00E4B005C1F2D /* hair_segmentation */ = {
+			isa = PBXGroup;
+			children = (
+				884FBE1528A747E100FBBD01 /* hair_segmentation.tnnmodel */,
+				884FBE1628A747E100FBBD01 /* hair_segmentation.tnnproto */,
+			);
+			path = hair_segmentation;
+			sourceTree = "<group>";
+		};
+		889EDE8F28A0229B005C1F2D /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				889EDE9028A02327005C1F2D /* Default.metal */,
+			);
+			path = Shader;
 			sourceTree = "<group>";
 		};
 		90A037665DA0A7DBC57C8190 /* Pods */ = {
@@ -479,6 +576,10 @@
 				E8B95C1E22A402FB00F51025 /* UIButton+Extention.m */,
 				E8D80C3122992E7000CDB060 /* GPUImageMovieWriter+BugFix.h */,
 				E8D80C3222992E7000CDB060 /* GPUImageMovieWriter+BugFix.m */,
+				884FBE3228AC0DAB00FBBD01 /* GPUImageFilter+BugFix.h */,
+				884FBE3328AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m */,
+				884FBE2128A74E8700FBBD01 /* GPUImageFramebuffer+Extention.h */,
+				884FBE2228A74E8700FBBD01 /* GPUImageFramebuffer+Extention.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -486,6 +587,7 @@
 		E8D80C3722994EF900CDB060 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				889EDE69289F549B005C1F2D /* TNN */,
 				E85B56DD22D9A22400DCACA1 /* LFGPUImageBeautyFilter */,
 				E84EA77E22B14C5A00A07DBE /* Facepp */,
 			);
@@ -498,6 +600,7 @@
 				E8D80C5522A38C5D00CDB060 /* Base */,
 				E833C7F022ACB2060065E557 /* Face */,
 				E8D70D00237693EE0028AF60 /* Split */,
+				884FBE1D28A74C3300FBBD01 /* Hair */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -567,6 +670,12 @@
 				E8AFD98A22AC203600787BDA /* SCFaceDetectorManager.mm */,
 				E8DA865A22EC4870009AB4EA /* SCAppSetting.h */,
 				E8DA865B22EC4870009AB4EA /* SCAppSetting.m */,
+				889EDE7D289FEA48005C1F2D /* SCTNNHelper.h */,
+				889EDE80289FEB15005C1F2D /* SCTNNHelper.mm */,
+				884FBE2928A7E3C800FBBD01 /* SCMetalHelper.h */,
+				884FBE2A28A7E3C800FBBD01 /* SCMetalHelper.mm */,
+				889EDE8C28A0190E005C1F2D /* SCMetalTextureConverter.h */,
+				889EDE8D28A0190E005C1F2D /* SCMetalTextureConverter.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -574,6 +683,7 @@
 		E8FC20E72261EB3700BB1BD9 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				889EDE8628A00E4B005C1F2D /* Model */,
 				E8FC20E82261EB3700BB1BD9 /* Image */,
 			);
 			path = Resource;
@@ -609,6 +719,8 @@
 			isa = PBXGroup;
 			children = (
 				E8559E102887024D003A95F2 /* Material */,
+				889EDE8F28A0229B005C1F2D /* Shader */,
+				889EDE82289FFC39005C1F2D /* AI */,
 				E8559E0C28870116003A95F2 /* Config */,
 				E8D80C3722994EF900CDB060 /* ThirdParty */,
 				E8D18EEA2258775A00ECFB98 /* Common */,
@@ -689,8 +801,11 @@
 			files = (
 				E8FF5A5622586A090088C1B2 /* LaunchScreen.storyboard in Resources */,
 				E8559E112887024D003A95F2 /* Material in Resources */,
+				889EDE6D289F549B005C1F2D /* tnn.bundle in Resources */,
 				E8FF5A5322586A090088C1B2 /* Assets.xcassets in Resources */,
 				E8559E0E288701AA003A95F2 /* Tab.json in Resources */,
+				884FBE1828A747E100FBBD01 /* hair_segmentation.tnnproto in Resources */,
+				884FBE1728A747E100FBBD01 /* hair_segmentation.tnnmodel in Resources */,
 				E8FF5A5122586A090088C1B2 /* Main.storyboard in Resources */,
 				E84EA79322B14C5A00A07DBE /* megviifacepp_0_5_2_model in Resources */,
 				E8FC20EB2261EB3800BB1BD9 /* filter_sample.jpg in Resources */,
@@ -765,8 +880,10 @@
 				E8D80C3622992F2800CDB060 /* SCGPUImageMovieWriter.m in Sources */,
 				E8D80C3D22997E1500CDB060 /* SCFilterHandler.m in Sources */,
 				E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */,
+				884FBE1428A7459D00FBBD01 /* SCHairSegmentationHandler.mm in Sources */,
 				E8DA865022EC3639009AB4EA /* SCSettingViewController.m in Sources */,
 				E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */,
+				889EDE81289FEB15005C1F2D /* SCTNNHelper.mm in Sources */,
 				E8FF5A5922586A090088C1B2 /* main.m in Sources */,
 				E84EA79422B14C5A00A07DBE /* MGFaceLicenseHandle.m in Sources */,
 				E87C10A3228FB46E00653DDA /* SCVideoResultViewController.m in Sources */,
@@ -775,6 +892,7 @@
 				E8E578E62261BA7B0093BB7B /* SCFilterMaterialViewCell.m in Sources */,
 				E8D80C2A22901A6100CDB060 /* UIView+Extention.m in Sources */,
 				E87C10AC228FCC6300653DDA /* SCFileHelper.m in Sources */,
+				884FBE2028A74C3300FBBD01 /* SCHairSegmentationFilter.m in Sources */,
 				E8B95C1F22A402FB00F51025 /* UIButton+Extention.m in Sources */,
 				E8AFD98B22AC203600787BDA /* SCFaceDetectorManager.mm in Sources */,
 				E8E578F02261D2FB0093BB7B /* SCFilterHelper.m in Sources */,
@@ -782,6 +900,7 @@
 				E85B56E022D9A22500DCACA1 /* LFGPUImageBeautyFilter.m in Sources */,
 				E8DA865322EC3757009AB4EA /* SCSettingSectionModel.m in Sources */,
 				E8D18EF1225877A600ECFB98 /* SCViewController.m in Sources */,
+				884FBE2B28A7E3C800FBBD01 /* SCMetalHelper.mm in Sources */,
 				E8D18EFE2258893800ECFB98 /* SCCameraViewController+UI.m in Sources */,
 				E8FF5A4B22586A090088C1B2 /* AppDelegate.m in Sources */,
 				E89949FD22A5612100FC85C0 /* SCCameraViewController+Notification.m in Sources */,
@@ -792,12 +911,17 @@
 				E8D80C3322992E7000CDB060 /* GPUImageMovieWriter+BugFix.m in Sources */,
 				E8D18EF82258823200ECFB98 /* SCCapturingButton.m in Sources */,
 				E89949ED22A25C8C00FC85C0 /* UIDevice+Extention.m in Sources */,
+				884FBE3428AC0DAB00FBBD01 /* GPUImageFilter+BugFix.m in Sources */,
 				E8D80C4322A2AF0D00CDB060 /* SCFilterCategoryCell.m in Sources */,
 				E8E578F92261DD590093BB7B /* SCFilterManager.m in Sources */,
 				E8DA865622EC376E009AB4EA /* SCSettingModel.m in Sources */,
+				884FBE2328A74E8700FBBD01 /* GPUImageFramebuffer+Extention.m in Sources */,
 				E89949F422A538DD00FC85C0 /* SCCameraVideoTimeLabel.m in Sources */,
+				889EDE8E28A0190E005C1F2D /* SCMetalTextureConverter.m in Sources */,
+				889EDE9128A02327005C1F2D /* Default.metal in Sources */,
 				E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */,
 				E87C109E228C68DA00653DDA /* SCCameraTopView.m in Sources */,
+				889EDE85289FFC53005C1F2D /* SCAIManager.m in Sources */,
 				E87C10B2228FEA7B00653DDA /* SCVideoModel.m in Sources */,
 				E8DA865922EC378E009AB4EA /* SCSettingCell.m in Sources */,
 			);
@@ -936,6 +1060,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P79J85545;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/TNN",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleCam/Support/SimpleCam-Prefix.pch";
 				INFOPLIST_FILE = SimpleCam/Info.plist;
@@ -947,6 +1075,28 @@
 					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Face++/MegviiLicMgr-iOS-SDK",
 					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MegviiLicMgr-iOS-SDK",
 					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MGFaceppSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GPUImage\"",
+					"-l\"Masonry\"",
+					"-l\"RSSwizzle\"",
+					"-l\"Toast\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"UIKit\"",
+					"-force_load",
+					"\"$(PROJECT_DIR)/$(PRODUCT_NAME)/ThirdParty/TNN/tnn.framework/tnn\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyman.SimpleCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -961,6 +1111,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7P79J85545;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SimpleCam/ThirdParty/TNN",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SimpleCam/Support/SimpleCam-Prefix.pch";
 				INFOPLIST_FILE = SimpleCam/Info.plist;
@@ -972,6 +1126,28 @@
 					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Face++/MegviiLicMgr-iOS-SDK",
 					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MegviiLicMgr-iOS-SDK",
 					"$(PROJECT_DIR)/SimpleCam/ThirdParty/Facepp/MGFaceppSDK",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"GPUImage\"",
+					"-l\"Masonry\"",
+					"-l\"RSSwizzle\"",
+					"-l\"Toast\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"CoreMedia\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"UIKit\"",
+					"-force_load",
+					"\"$(PROJECT_DIR)/$(PRODUCT_NAME)/ThirdParty/TNN/tnn.framework/tnn\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyman.SimpleCam;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,0 +1,7 @@
+{
+    "id" : "segment",
+    "tab_id" : "hair",
+    "name" : "分割图",
+    "class" : "SCHairSegmentationFilter",
+    "sort" : "1"
+}

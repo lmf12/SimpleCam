@@ -17,5 +17,6 @@
 #import "UIView+Extention.h"
 #import "UIDevice+Extention.h"
 #import "UIButton+Extention.h"
+#import "GPUImageFramebuffer+Extention.h"
 
 #endif

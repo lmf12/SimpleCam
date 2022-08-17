@@ -74,12 +74,14 @@ NSString * const kSCGPUImageDynamicSplitFilterShaderString = SHADER_STRING
 - (instancetype)init {
     self = [super initWithFragmentShaderFromString:kSCGPUImageDynamicSplitFilterShaderString];
     if (self) {
-        firstTextureUniform = [filterProgram uniformIndex:@"inputImageTexture1"];
-        secondTextureUniform = [filterProgram uniformIndex:@"inputImageTexture2"];
-        thirdTextureUniform = [filterProgram uniformIndex:@"inputImageTexture3"];
-        fourthTextureUniform = [filterProgram uniformIndex:@"inputImageTexture4"];
-        
-        textureCountUniform = [filterProgram uniformIndex:@"textureCount"];
+        runSynchronouslyOnVideoProcessingQueue(^{
+            firstTextureUniform = [filterProgram uniformIndex:@"inputImageTexture1"];
+            secondTextureUniform = [filterProgram uniformIndex:@"inputImageTexture2"];
+            thirdTextureUniform = [filterProgram uniformIndex:@"inputImageTexture3"];
+            fourthTextureUniform = [filterProgram uniformIndex:@"inputImageTexture4"];
+            
+            textureCountUniform = [filterProgram uniformIndex:@"textureCount"];
+        });
     }
     return self;
 }
@@ -151,6 +153,8 @@ NSString * const kSCGPUImageDynamicSplitFilterShaderString = SHADER_STRING
     glVertexAttribPointer(filterTextureCoordinateAttribute, 2, GL_FLOAT, 0, 0, textureCoordinates);
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    
+    glFlush();
     
     [firstInputFramebuffer unlock];
     

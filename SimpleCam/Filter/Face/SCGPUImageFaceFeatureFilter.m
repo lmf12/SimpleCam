@@ -62,8 +62,10 @@ NSString *const kGPUImageFaceFeatureFragmentShaderString = SHADER_STRING
     self = [super initWithVertexShaderFromString:kGPUImageFaceFeatureVertexShaderString
                         fragmentShaderFromString:kGPUImageFaceFeatureFragmentShaderString];
     if (self) {
-        self.isPointUniform = [filterProgram uniformIndex:@"isPoint"];
-        self.pointSizeUniform = [filterProgram uniformIndex:@"pointSize"];
+        runSynchronouslyOnVideoProcessingQueue(^{
+            self.isPointUniform = [filterProgram uniformIndex:@"isPoint"];
+            self.pointSizeUniform = [filterProgram uniformIndex:@"pointSize"];
+        });
     }
     return self;
 }
@@ -108,6 +110,8 @@ NSString *const kGPUImageFaceFeatureFragmentShaderString = SHADER_STRING
         glVertexAttribPointer(filterPositionAttribute, 2, GL_FLOAT, 0, 0, self.facesPoints);
         glDrawArrays(GL_POINTS, 0, self.facesPointCount);
     }
+    
+    glFlush();
     
     [firstInputFramebuffer unlock];
     
