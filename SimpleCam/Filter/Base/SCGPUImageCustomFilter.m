@@ -12,31 +12,32 @@
 
 - (instancetype)initWithVertexShaderFile:(NSString *)vertexShaderPath
                       fragmentShaderFile:(NSString *)fragmentShaderPath {
-    return [self initWithVertexShaderFile:vertexShaderPath
-                       fragmentShaderFile:fragmentShaderPath
-                                 uniforms:nil];
-}
-
-- (instancetype)initWithVertexShaderFile:(NSString *)vertexShaderPath
-                      fragmentShaderFile:(NSString *)fragmentShaderPath
-                                uniforms:(NSDictionary *)uniforms {
     NSString *fsh = [NSString stringWithContentsOfFile:fragmentShaderPath
                                               encoding:NSUTF8StringEncoding
                                                  error:nil];
     NSString *vsh = [NSString stringWithContentsOfFile:vertexShaderPath
                                               encoding:NSUTF8StringEncoding
                                                  error:nil];
-    fsh = fsh.length > 0 ? fsh : kGPUImagePassthroughFragmentShaderString;
-    vsh = vsh.length > 0 ? vsh : kGPUImageVertexShaderString;
-    self = [super initWithVertexShaderFromString:vsh fragmentShaderFromString:fsh];
-    if (self) {
-        if (uniforms) {
-            [uniforms enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-                [self setFloat:value.floatValue forUniformName:key];
-            }];
-        }
-    }
+    self = [self initWithVertexShaderFromString:vsh fragmentShaderFromString:fsh];
     return self;
+}
+
+
+- (instancetype)initWithVertexShaderFromString:(NSString *)vertexShaderString
+                      fragmentShaderFromString:(NSString *)fragmentShaderString {
+    fragmentShaderString = fragmentShaderString.length > 0 ? fragmentShaderString : kGPUImagePassthroughFragmentShaderString;
+    vertexShaderString = vertexShaderString.length > 0 ? vertexShaderString : kGPUImageVertexShaderString;
+    self = [super initWithVertexShaderFromString:vertexShaderString fragmentShaderFromString:fragmentShaderString];
+    return self;
+}
+
+- (void)setUniforms:(NSDictionary *)uniforms {
+    if (!uniforms) {
+        return;
+    }
+    [uniforms enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [self setFloat:value.floatValue forUniformName:key];
+    }];
 }
 
 @end

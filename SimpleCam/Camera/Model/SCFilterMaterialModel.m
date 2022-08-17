@@ -35,16 +35,24 @@
 }
 
 - (GPUImageFilter *)filter {
+    GPUImageFilter *filter = nil;
     Class filterClass = NSClassFromString(self.filterClass);
-    if ([filterClass isEqual:[SCGPUImageCustomFilter class]] ||
-        [filterClass isSubclassOfClass:[SCGPUImageCustomFilter class]]) {
-        NSString *vsh = [NSString stringWithFormat:@"%@/Vertex.vsh", self.floderPath];
-        NSString *fsh = [NSString stringWithFormat:@"%@/Fragment.fsh", self.floderPath];
-        return [[filterClass alloc] initWithVertexShaderFile:vsh
-                                          fragmentShaderFile:fsh
-                                                    uniforms:self.uniforms];
+    NSString *vsh = [NSString stringWithFormat:@"%@/Vertex.vsh", self.floderPath];
+    NSString *fsh = [NSString stringWithFormat:@"%@/Fragment.fsh", self.floderPath];
+    BOOL hasCustomShader = ([[NSFileManager defaultManager] fileExistsAtPath:vsh] ||
+                            [[NSFileManager defaultManager] fileExistsAtPath:fsh]);
+    BOOL isCustomFilter = ([filterClass isEqual:[SCGPUImageCustomFilter class]] ||
+                           [filterClass isSubclassOfClass:[SCGPUImageCustomFilter class]]);
+    if (hasCustomShader && isCustomFilter) {
+        filter = [[filterClass alloc] initWithVertexShaderFile:vsh
+                                            fragmentShaderFile:fsh];
+    } else {
+        filter = [[filterClass alloc] init];
     }
-    return [[filterClass alloc] init];
+    if ([filter isKindOfClass:[SCGPUImageCustomFilter class]]) {
+        [((SCGPUImageCustomFilter *)filter) setUniforms:self.uniforms];
+    }
+    return filter;
 }
 
 - (NSString *)floderPath {

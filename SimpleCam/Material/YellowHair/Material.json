@@ -1,0 +1,13 @@
+{
+    "id" : "yellow_hair",
+    "tab_id" : "hair",
+    "name" : "金发",
+    "class" : "SCColorfulHairFilter",
+    "sort" : "5",
+    "uniforms" : {
+        "colorR" : "1.0",
+        "colorG" : "0.8",
+        "colorB" : "0.0",
+        "colorA" : "0.6"
+    }
+}

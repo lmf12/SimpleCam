@@ -13,8 +13,6 @@
 - (instancetype)initWithVertexShaderFile:(NSString *)vertexShaderPath
                       fragmentShaderFile:(NSString *)fragmentShaderPath;
 
-- (instancetype)initWithVertexShaderFile:(NSString *)vertexShaderPath
-                      fragmentShaderFile:(NSString *)fragmentShaderPath
-                                uniforms:(NSDictionary *)uniforms;
+- (void)setUniforms:(NSDictionary *)uniforms;
 
 @end

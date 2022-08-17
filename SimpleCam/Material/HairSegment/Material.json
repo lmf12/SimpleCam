@@ -1,5 +1,5 @@
 {
-    "id" : "segment",
+    "id" : "hair_segment",
     "tab_id" : "hair",
     "name" : "分割图",
     "class" : "SCHairSegmentationFilter",

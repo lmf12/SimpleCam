@@ -1,0 +1,13 @@
+{
+    "id" : "blue_hair",
+    "tab_id" : "hair",
+    "name" : "蓝发",
+    "class" : "SCColorfulHairFilter",
+    "sort" : "4",
+    "uniforms" : {
+        "colorR" : "0.0",
+        "colorG" : "0.0",
+        "colorB" : "1.0",
+        "colorA" : "0.3"
+    }
+}
