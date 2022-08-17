@@ -46,7 +46,7 @@ NSString * const kSCColorfulHairFilterShaderString = SHADER_STRING
 
     float resultLightness = lightness(color.rgb);
     
-    gl_FragColor = color * (originLightness / resultLightness);
+    gl_FragColor = vec4(color.rgb * (originLightness / resultLightness), 1.0);
  }
 
 );
