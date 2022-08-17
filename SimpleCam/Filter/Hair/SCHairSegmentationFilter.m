@@ -27,6 +27,14 @@
     }
 }
 
+- (void)newFrameReadyAtTime:(CMTime)frameTime atIndex:(NSInteger)textureIndex {
+    CVPixelBufferRef inputPixelBuffer = firstInputFramebuffer.renderTarget;
+    if (inputPixelBuffer) {
+        [[SCAIManager shareManager] hairSegmentationWithSrcPixelBuffer:inputPixelBuffer dstTexture:self.hairTexture];
+    }
+    [super newFrameReadyAtTime:frameTime atIndex:textureIndex];
+}
+
 - (void)renderToTextureWithVertices:(const GLfloat *)vertices textureCoordinates:(const GLfloat *)textureCoordinates {
     if (self.preventRendering)
     {
@@ -55,7 +63,6 @@
     
     CVPixelBufferRef inputPixelBuffer = firstInputFramebuffer.renderTarget;
     if (inputPixelBuffer) {
-        [[SCAIManager shareManager] hairSegmentationWithSrcPixelBuffer:inputPixelBuffer dstTexture:self.hairTexture];
         GLint maskUniform = [filterProgram uniformIndex:@"hairMask"];
         glActiveTexture(GL_TEXTURE3);
         glBindTexture(GL_TEXTURE_2D, self.hairFramebuffer.texture);
