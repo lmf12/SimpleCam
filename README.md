@@ -10,7 +10,10 @@
 
 # 如何运行
 
-本项目采用 CocoaPods 来引入第三方库，运行项目前，请先用终端进入项目根目录，执行 `pod install` 来下载第三方库。
+1. 将代码拉取到本地
+2. 使用终端进入项目根目录
+3. 执行 `git lfs pull` 保证依赖的文件都下载成功
+4. 执行 `pod install` 来下载第三方库
 
 在 v0.2.0 之后的版本，项目集成了 Face++ 人脸识别，需要你先去 Face++ 的官网申请 API Key，然后找到 `MGNetAccount.h` 文件，将申请好的 API Key 填入。整个申请过程比较简单，具体步骤可以参考 [这个文档](https://console.faceplusplus.com.cn/documents/5671787)。
 
@@ -63,6 +66,7 @@
 * [OpenCV](https://opencv.org/)
 * [Stasm](http://www.milbo.users.sonic.net/stasm/)
 * [Face++](https://www.faceplusplus.com.cn/)
+* [TNN](https://github.com/Tencent/TNN)
 
 # License
 
