@@ -40,6 +40,7 @@
 * [使用 GPUImage 实现一个简单相机](http://www.lymanli.com/2019/06/15/ios-gpuimage-camera/)
 * [在 GPUImage 中检测人脸关键点](http://www.lymanli.com/2019/09/29/ios-gpuimage-face-detect/)
 * [如何优雅地实现一个分屏滤镜](http://www.lymanli.com/2019/11/09/ios-gpuimage-split-filter/)
+* [在 GPUImage 中实现染发效果](http://www.lymanli.com/2022/08/27/ios-gpuimage-hair-segmentation/)
 
 # 版本更新
 
