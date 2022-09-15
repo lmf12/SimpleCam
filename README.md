@@ -1,4 +1,4 @@
-<div align=center><img src="Images/image-head.jpg" width="450" height="150"/></div>
+<div align=center><img src="https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-head.jpg" width="450" height="150"/></div>
 
 # 简介
 
@@ -6,14 +6,13 @@
 
 # 界面预览
 
-<div align=left><img src="Images/image-ui.jpg" width="600" height="355"/></div>
+<div align=left><img src="https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-ui.jpg" width="600" height="355"/></div>
 
 # 如何运行
 
 1. 将代码拉取到本地
 2. 使用终端进入项目根目录
-3. 执行 `git lfs pull` 保证依赖的文件都下载成功
-4. 执行 `pod install` 来下载第三方库
+3. 执行 `pod install` 来下载第三方库
 
 在 v0.2.0 之后的版本，项目集成了 Face++ 人脸识别，需要你先去 Face++ 的官网申请 API Key，然后找到 `MGNetAccount.h` 文件，将申请好的 API Key 填入。整个申请过程比较简单，具体步骤可以参考 [这个文档](https://console.faceplusplus.com.cn/documents/5671787)。
 
@@ -28,12 +27,12 @@
 * **前后置切换**
 * **手动对焦**
 * **焦距调整**
-* **自定义抖音滤镜**  👉[效果预览](Images/image-2.gif)
-* **美颜滤镜**  👉[效果预览](Images/image-1.gif)
-* **人脸关键点识别**  👉[效果预览](Images/image-3.gif)
-* **分屏滤镜**  👉[效果预览](Images/image-4.gif)
-* **延时动态分屏滤镜**  👉[效果预览](Images/image-5.gif)
-* **染发效果**  👉[效果预览](Images/image-6.gif)
+* **自定义抖音滤镜**  👉[效果预览](https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-2.gif)
+* **美颜滤镜**  👉[效果预览](https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-1.gif)
+* **人脸关键点识别**  👉[效果预览](https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-3.gif)
+* **分屏滤镜**  👉[效果预览](https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-4.gif)
+* **延时动态分屏滤镜**  👉[效果预览](https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-5.gif)
+* **染发效果**  👉[效果预览](https://github.com/lmf12/ImageHost/blob/master/SimpleCam/image-6.gif)
 
 # 相关文章
 
