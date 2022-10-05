@@ -25,6 +25,17 @@
 		889EDE85289FFC53005C1F2D /* SCAIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE84289FFC53005C1F2D /* SCAIManager.m */; };
 		889EDE8E28A0190E005C1F2D /* SCMetalTextureConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE8D28A0190E005C1F2D /* SCMetalTextureConverter.m */; };
 		889EDE9128A02327005C1F2D /* Default.metal in Sources */ = {isa = PBXBuildFile; fileRef = 889EDE9028A02327005C1F2D /* Default.metal */; };
+		E8133FCB28E9C60D00F6A791 /* SCFaceAlignmentHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8133FCA28E9C60D00F6A791 /* SCFaceAlignmentHandler.mm */; };
+		E8133FD228E9E89F00F6A791 /* blazeface.tnnmodel in Resources */ = {isa = PBXBuildFile; fileRef = E8133FCF28E9E89F00F6A791 /* blazeface.tnnmodel */; };
+		E8133FD328E9E89F00F6A791 /* blazeface_anchors.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8133FD028E9E89F00F6A791 /* blazeface_anchors.txt */; };
+		E8133FD428E9E89F00F6A791 /* blazeface.tnnproto in Resources */ = {isa = PBXBuildFile; fileRef = E8133FD128E9E89F00F6A791 /* blazeface.tnnproto */; };
+		E8133FDC28E9F01500F6A791 /* youtu_face_alignment_phase2.tnnproto in Resources */ = {isa = PBXBuildFile; fileRef = E8133FD628E9F01500F6A791 /* youtu_face_alignment_phase2.tnnproto */; };
+		E8133FDD28E9F01500F6A791 /* youtu_face_alignment_phase1.tnnmodel in Resources */ = {isa = PBXBuildFile; fileRef = E8133FD728E9F01500F6A791 /* youtu_face_alignment_phase1.tnnmodel */; };
+		E8133FDE28E9F01500F6A791 /* youtu_mean_pts_phase2.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8133FD828E9F01500F6A791 /* youtu_mean_pts_phase2.txt */; };
+		E8133FDF28E9F01500F6A791 /* youtu_mean_pts_phase1.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8133FD928E9F01500F6A791 /* youtu_mean_pts_phase1.txt */; };
+		E8133FE028E9F01500F6A791 /* youtu_face_alignment_phase2.tnnmodel in Resources */ = {isa = PBXBuildFile; fileRef = E8133FDA28E9F01500F6A791 /* youtu_face_alignment_phase2.tnnmodel */; };
+		E8133FE128E9F01500F6A791 /* youtu_face_alignment_phase1.tnnproto in Resources */ = {isa = PBXBuildFile; fileRef = E8133FDB28E9F01500F6A791 /* youtu_face_alignment_phase1.tnnproto */; };
+		E8133FE428EAA59100F6A791 /* SCFaceDetectorHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8133FE328EAA59100F6A791 /* SCFaceDetectorHandler.mm */; };
 		E833C7F322ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */; };
 		E84EA79122B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */; };
 		E84EA79222B14C5A00A07DBE /* libMGFacepp-0.5.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E84EA78422B14C5A00A07DBE /* libMGFacepp-0.5.2.a */; };
@@ -42,6 +53,7 @@
 		E87C10AF228FE0E200653DDA /* SCCameraViewController+RecordVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10AE228FE0E200653DDA /* SCCameraViewController+RecordVideo.m */; };
 		E87C10B2228FEA7B00653DDA /* SCVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10B1228FEA7B00653DDA /* SCVideoModel.m */; };
 		E87C10B52290009A00653DDA /* SCCapturingModeSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E87C10B42290009A00653DDA /* SCCapturingModeSwitchView.m */; };
+		E88A03D428EAD2D600934BE0 /* SCFaceInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E88A03D328EAD2D600934BE0 /* SCFaceInfoModel.m */; };
 		E89949ED22A25C8C00FC85C0 /* UIDevice+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */; };
 		E89949F422A538DD00FC85C0 /* SCCameraVideoTimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F322A538DD00FC85C0 /* SCCameraVideoTimeLabel.m */; };
 		E89949F722A53BE600FC85C0 /* SCTimeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E89949F622A53BE600FC85C0 /* SCTimeHelper.m */; };
@@ -116,6 +128,19 @@
 		889EDE8C28A0190E005C1F2D /* SCMetalTextureConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCMetalTextureConverter.h; sourceTree = "<group>"; };
 		889EDE8D28A0190E005C1F2D /* SCMetalTextureConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCMetalTextureConverter.m; sourceTree = "<group>"; };
 		889EDE9028A02327005C1F2D /* Default.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Default.metal; sourceTree = "<group>"; };
+		E8133FC928E9C60D00F6A791 /* SCFaceAlignmentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFaceAlignmentHandler.h; sourceTree = "<group>"; };
+		E8133FCA28E9C60D00F6A791 /* SCFaceAlignmentHandler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SCFaceAlignmentHandler.mm; sourceTree = "<group>"; };
+		E8133FCF28E9E89F00F6A791 /* blazeface.tnnmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = blazeface.tnnmodel; sourceTree = "<group>"; };
+		E8133FD028E9E89F00F6A791 /* blazeface_anchors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blazeface_anchors.txt; sourceTree = "<group>"; };
+		E8133FD128E9E89F00F6A791 /* blazeface.tnnproto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = blazeface.tnnproto; sourceTree = "<group>"; };
+		E8133FD628E9F01500F6A791 /* youtu_face_alignment_phase2.tnnproto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = youtu_face_alignment_phase2.tnnproto; sourceTree = "<group>"; };
+		E8133FD728E9F01500F6A791 /* youtu_face_alignment_phase1.tnnmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = youtu_face_alignment_phase1.tnnmodel; sourceTree = "<group>"; };
+		E8133FD828E9F01500F6A791 /* youtu_mean_pts_phase2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = youtu_mean_pts_phase2.txt; sourceTree = "<group>"; };
+		E8133FD928E9F01500F6A791 /* youtu_mean_pts_phase1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = youtu_mean_pts_phase1.txt; sourceTree = "<group>"; };
+		E8133FDA28E9F01500F6A791 /* youtu_face_alignment_phase2.tnnmodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = youtu_face_alignment_phase2.tnnmodel; sourceTree = "<group>"; };
+		E8133FDB28E9F01500F6A791 /* youtu_face_alignment_phase1.tnnproto */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = youtu_face_alignment_phase1.tnnproto; sourceTree = "<group>"; };
+		E8133FE228EAA59100F6A791 /* SCFaceDetectorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFaceDetectorHandler.h; sourceTree = "<group>"; };
+		E8133FE328EAA59100F6A791 /* SCFaceDetectorHandler.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SCFaceDetectorHandler.mm; sourceTree = "<group>"; };
 		E833C7F122ACB2500065E557 /* SCGPUImageFaceFeatureFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCGPUImageFaceFeatureFilter.h; sourceTree = "<group>"; };
 		E833C7F222ACB2500065E557 /* SCGPUImageFaceFeatureFilter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCGPUImageFaceFeatureFilter.m; sourceTree = "<group>"; };
 		E84EA78022B14C5A00A07DBE /* libMGLicMgrSDK-0.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libMGLicMgrSDK-0.3.1.a"; sourceTree = "<group>"; };
@@ -156,6 +181,8 @@
 		E87C10B1228FEA7B00653DDA /* SCVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCVideoModel.m; sourceTree = "<group>"; };
 		E87C10B32290009A00653DDA /* SCCapturingModeSwitchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCapturingModeSwitchView.h; sourceTree = "<group>"; };
 		E87C10B42290009A00653DDA /* SCCapturingModeSwitchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCCapturingModeSwitchView.m; sourceTree = "<group>"; };
+		E88A03D228EAD2D600934BE0 /* SCFaceInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCFaceInfoModel.h; sourceTree = "<group>"; };
+		E88A03D328EAD2D600934BE0 /* SCFaceInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCFaceInfoModel.m; sourceTree = "<group>"; };
 		E89949EB22A25C8C00FC85C0 /* UIDevice+Extention.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Extention.h"; sourceTree = "<group>"; };
 		E89949EC22A25C8C00FC85C0 /* UIDevice+Extention.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Extention.m"; sourceTree = "<group>"; };
 		E89949F222A538DD00FC85C0 /* SCCameraVideoTimeLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCCameraVideoTimeLabel.h; sourceTree = "<group>"; };
@@ -293,10 +320,15 @@
 		889EDE82289FFC39005C1F2D /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				E88A03D128EAD2B600934BE0 /* Model */,
 				889EDE83289FFC53005C1F2D /* SCAIManager.h */,
 				889EDE84289FFC53005C1F2D /* SCAIManager.m */,
 				884FBE1228A7459D00FBBD01 /* SCHairSegmentationHandler.h */,
 				884FBE1328A7459D00FBBD01 /* SCHairSegmentationHandler.mm */,
+				E8133FC928E9C60D00F6A791 /* SCFaceAlignmentHandler.h */,
+				E8133FCA28E9C60D00F6A791 /* SCFaceAlignmentHandler.mm */,
+				E8133FE228EAA59100F6A791 /* SCFaceDetectorHandler.h */,
+				E8133FE328EAA59100F6A791 /* SCFaceDetectorHandler.mm */,
 			);
 			path = AI;
 			sourceTree = "<group>";
@@ -304,6 +336,8 @@
 		889EDE8628A00E4B005C1F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E8133FD528E9F01500F6A791 /* youtu_face_alignment */,
+				E8133FCE28E9E89F00F6A791 /* blazeface */,
 				889EDE8728A00E4B005C1F2D /* hair_segmentation */,
 			);
 			path = Model;
@@ -333,6 +367,29 @@
 				18622C5B371DAD04180D97FB /* Pods-SimpleCam.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E8133FCE28E9E89F00F6A791 /* blazeface */ = {
+			isa = PBXGroup;
+			children = (
+				E8133FD028E9E89F00F6A791 /* blazeface_anchors.txt */,
+				E8133FCF28E9E89F00F6A791 /* blazeface.tnnmodel */,
+				E8133FD128E9E89F00F6A791 /* blazeface.tnnproto */,
+			);
+			path = blazeface;
+			sourceTree = "<group>";
+		};
+		E8133FD528E9F01500F6A791 /* youtu_face_alignment */ = {
+			isa = PBXGroup;
+			children = (
+				E8133FD728E9F01500F6A791 /* youtu_face_alignment_phase1.tnnmodel */,
+				E8133FDB28E9F01500F6A791 /* youtu_face_alignment_phase1.tnnproto */,
+				E8133FDA28E9F01500F6A791 /* youtu_face_alignment_phase2.tnnmodel */,
+				E8133FD628E9F01500F6A791 /* youtu_face_alignment_phase2.tnnproto */,
+				E8133FD928E9F01500F6A791 /* youtu_mean_pts_phase1.txt */,
+				E8133FD828E9F01500F6A791 /* youtu_mean_pts_phase2.txt */,
+			);
+			path = youtu_face_alignment;
 			sourceTree = "<group>";
 		};
 		E833C7F022ACB2060065E557 /* Face */ = {
@@ -425,6 +482,15 @@
 				E87C10A8228FB4DF00653DDA /* SCVideoResultViewController+UI.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E88A03D128EAD2B600934BE0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E88A03D228EAD2D600934BE0 /* SCFaceInfoModel.h */,
+				E88A03D328EAD2D600934BE0 /* SCFaceInfoModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E8D18EE322586BD600ECFB98 /* Support */ = {
@@ -809,13 +875,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8133FDF28E9F01500F6A791 /* youtu_mean_pts_phase1.txt in Resources */,
 				E8FF5A5622586A090088C1B2 /* LaunchScreen.storyboard in Resources */,
 				E8559E112887024D003A95F2 /* Material in Resources */,
+				E8133FDD28E9F01500F6A791 /* youtu_face_alignment_phase1.tnnmodel in Resources */,
 				889EDE6D289F549B005C1F2D /* tnn.bundle in Resources */,
 				E8FF5A5322586A090088C1B2 /* Assets.xcassets in Resources */,
+				E8133FDE28E9F01500F6A791 /* youtu_mean_pts_phase2.txt in Resources */,
+				E8133FE028E9F01500F6A791 /* youtu_face_alignment_phase2.tnnmodel in Resources */,
+				E8133FDC28E9F01500F6A791 /* youtu_face_alignment_phase2.tnnproto in Resources */,
+				E8133FD428E9E89F00F6A791 /* blazeface.tnnproto in Resources */,
 				E8559E0E288701AA003A95F2 /* Tab.json in Resources */,
+				E8133FD328E9E89F00F6A791 /* blazeface_anchors.txt in Resources */,
 				884FBE1828A747E100FBBD01 /* hair_segmentation.tnnproto in Resources */,
 				884FBE1728A747E100FBBD01 /* hair_segmentation.tnnmodel in Resources */,
+				E8133FE128E9F01500F6A791 /* youtu_face_alignment_phase1.tnnproto in Resources */,
+				E8133FD228E9E89F00F6A791 /* blazeface.tnnmodel in Resources */,
 				E8FF5A5122586A090088C1B2 /* Main.storyboard in Resources */,
 				E84EA79322B14C5A00A07DBE /* megviifacepp_0_5_2_model in Resources */,
 				E8FC20EB2261EB3800BB1BD9 /* filter_sample.jpg in Resources */,
@@ -891,6 +966,7 @@
 				E8D80C3D22997E1500CDB060 /* SCFilterHandler.m in Sources */,
 				E8D18EE922586CEC00ECFB98 /* SCCameraViewController.m in Sources */,
 				884FBE1428A7459D00FBBD01 /* SCHairSegmentationHandler.mm in Sources */,
+				E8133FE428EAA59100F6A791 /* SCFaceDetectorHandler.mm in Sources */,
 				884FBE3B28AD524C00FBBD01 /* SCGPUImageStaticSplitFilter.m in Sources */,
 				E8DA865022EC3639009AB4EA /* SCSettingViewController.m in Sources */,
 				E8D18EF5225879A200ECFB98 /* SCCameraManager.m in Sources */,
@@ -906,6 +982,7 @@
 				E87C10AC228FCC6300653DDA /* SCFileHelper.m in Sources */,
 				884FBE2028A74C3300FBBD01 /* SCHairSegmentationFilter.m in Sources */,
 				E8B95C1F22A402FB00F51025 /* UIButton+Extention.m in Sources */,
+				E8133FCB28E9C60D00F6A791 /* SCFaceAlignmentHandler.mm in Sources */,
 				E8AFD98B22AC203600787BDA /* SCFaceDetectorManager.mm in Sources */,
 				E8E578F02261D2FB0093BB7B /* SCFilterHelper.m in Sources */,
 				E8D18F132258A3AB00ECFB98 /* SCPhotoResultViewController+UI.m in Sources */,
@@ -929,6 +1006,7 @@
 				E8DA865622EC376E009AB4EA /* SCSettingModel.m in Sources */,
 				884FBE2328A74E8700FBBD01 /* GPUImageFramebuffer+Extention.m in Sources */,
 				E89949F422A538DD00FC85C0 /* SCCameraVideoTimeLabel.m in Sources */,
+				E88A03D428EAD2D600934BE0 /* SCFaceInfoModel.m in Sources */,
 				889EDE8E28A0190E005C1F2D /* SCMetalTextureConverter.m in Sources */,
 				889EDE9128A02327005C1F2D /* Default.metal in Sources */,
 				E87C10A9228FB4DF00653DDA /* SCVideoResultViewController+UI.m in Sources */,

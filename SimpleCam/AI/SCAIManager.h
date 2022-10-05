@@ -17,4 +17,7 @@
 - (void)hairSegmentationWithSrcPixelBuffer:(CVPixelBufferRef)srcPixelBuffer
                                 dstTexture:(id<MTLTexture>)dstTexture;
 
+// 获取人脸识别结果
+- (void)detectFaceWithPixelBuffer:(CVPixelBufferRef)pixelBuffer;
+
 @end

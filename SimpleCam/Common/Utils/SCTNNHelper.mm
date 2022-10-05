@@ -38,24 +38,16 @@
                                    param:outputParam];
 }
 
-+ (void)processInstance:(shared_ptr<Instance>)instance
-            withLibrary:(id<MTLLibrary>)library
-     preprocessFunction:(NSString *)preprocessFunction
-    postprocessFunction:(NSString *)postprocessFunction
-                  input:(id<MTLTexture>)input
-                 output:(id<MTLTexture>)output {
-    if (!library || !preprocessFunction || !postprocessFunction) {
-        return;
-    }
-    [self customPreprocessWithInstance:instance
-                               library:library
-                          functionName:preprocessFunction
-                             withInput:input];
++ (map<string, shared_ptr<Mat>>)processInstance:(shared_ptr<Instance>)instance
+                                 withInputParam:(MatConvertParam)inputParam
+                                    outputParam:(MatConvertParam)outputParam
+                                          input:(id<MTLTexture>)input {
+    [self defaultPreprocessWithInstance:instance
+                              withInput:input
+                                  param:inputParam];
     [self processInstance:instance];
-    [self customPostprocessWithInstance:instance
-                                library:library
-                           functionName:postprocessFunction
-                             withOutput:output];
+    return [self defaultPostprocessWithInstance:instance
+                                          param:outputParam];
 }
 
 + (id<MTLTexture>)processTextureWithInstance:(shared_ptr<Instance>)instance
@@ -84,7 +76,7 @@
                     input:inputTexture
                    output:resultTexture];
     
-    // resize 输入纹理
+    // resize 输出纹理
     if (input.width != (int)outputSize.width || input.height != (int)outputSize.height) {
         resultTexture = [SCMetalHelper resizeTexture:resultTexture
                                         commandQueue:commandQueue
@@ -95,11 +87,10 @@
     return resultTexture;
 }
 
-+ (id<MTLTexture>)processTextureWithInstance:(shared_ptr<Instance>)instance
-                                 withLibrary:(id<MTLLibrary>)library
-                          preprocessFunction:(NSString *)preprocessFunction
-                         postprocessFunction:(NSString *)postprocessFunction
-                                       input:(id<MTLTexture>)input {
++ (map<string, shared_ptr<Mat>>)processWithInstance:(shared_ptr<Instance>)instance
+                                     withInputParam:(MatConvertParam)inputParam
+                                        outputParam:(MatConvertParam)outputParam
+                                              input:(id<MTLTexture>)input {
     id<MTLCommandQueue> commandQueue = [self fetchCommandQueueWithInstance:instance];
     id<MTLTexture> inputTexture = input;
     // resize 输入纹理
@@ -111,27 +102,17 @@
                                           dstHeight:inputSize.height];
     }
     
-    // 创建输出纹理
-    CGSize outputSize = [self outputSize:instance];
-    id<MTLTexture> resultTexture = [SCMetalHelper createTextureWithWidth:outputSize.width
-                                                                  height:outputSize.height];
-    
-    [self processInstance:instance
-              withLibrary:library
-       preprocessFunction:preprocessFunction
-      postprocessFunction:postprocessFunction
-                    input:inputTexture
-                   output:resultTexture];
-    
-    // resize 输入纹理
-    if (input.width != (int)outputSize.width || input.height != (int)outputSize.height) {
-        resultTexture = [SCMetalHelper resizeTexture:resultTexture
-                                        commandQueue:commandQueue
-                                            dstWidth:input.width
-                                           dstHeight:input.height];
+    BlobMap outputBlobs;
+    Status status = instance->GetAllOutputBlobs(outputBlobs);
+    if (status != TNN_OK) {
+        NSLog(@"Error: get output blobs failed");
+        return map<string, shared_ptr<Mat>>();
     }
-    
-    return resultTexture;
+        
+    return [self processInstance:instance
+                  withInputParam:inputParam
+                     outputParam:outputParam
+                           input:inputTexture];
 }
 
 + (CGSize)inputSize:(shared_ptr<Instance>)instance {
@@ -151,13 +132,17 @@
 }
 
 + (CGSize)outputSize:(shared_ptr<Instance>)instance {
+    return [self outputSize:instance name:""];
+}
+
++ (CGSize)outputSize:(shared_ptr<Instance>)instance name:(string)name {
     BlobMap outputBlobs;
     Status status = instance->GetAllOutputBlobs(outputBlobs);
     if (status != TNN_OK) {
         NSLog(@"Error: get output blobs failed");
         return CGSizeZero;
     }
-    Blob *networkOutput = outputBlobs.begin()->second;
+    Blob *networkOutput = name.length() > 0 ? outputBlobs[name] : outputBlobs.begin()->second;
     
     auto dims = networkOutput->GetBlobDesc().dims;
     int width = dims[3];
@@ -250,47 +235,39 @@
     preprocessor->ConvertFromMatAsync(inputMat, param, (__bridge void*)commandQueue);
 }
 
-// 自定义预处理
-+ (void)customPreprocessWithInstance:(shared_ptr<Instance>)instance
-                             library:(id<MTLLibrary>)library
-                        functionName:(NSString *)functionName
-                           withInput:(id<MTLTexture>)input {
-    BlobMap inputBlobs;
-    Status status = instance->GetAllInputBlobs(inputBlobs);
+// 默认后处理
++ (map<string, shared_ptr<Mat>>)defaultPostprocessWithInstance:(shared_ptr<Instance>)instance
+                                                         param:(MatConvertParam)param {
+    map<string, shared_ptr<Mat>> map;
+    
+    BlobMap outputBlobs;
+    Status status = instance->GetAllOutputBlobs(outputBlobs);
     if (status != TNN_OK) {
-        NSLog(@"Error: get input blobs failed");
-        return;
+        NSLog(@"Error: get output blobs failed");
+        return map;
     }
-    Blob *networkInput = inputBlobs.begin()->second;
     
-    id<MTLCommandQueue> commandQueue = [self fetchCommandQueueWithInstance:instance];
-    id<MTLCommandBuffer> commandBuffer = [commandQueue commandBuffer];
-    [commandBuffer enqueue];
-    
-    id<MTLBuffer> blobBuffer = (__bridge id<MTLBuffer>)(void *)networkInput->GetHandle().base;
-    NSUInteger blobOffset = (NSUInteger)networkInput->GetHandle().bytes_offset;
-    
-    id<MTLComputeCommandEncoder> encoder = [commandBuffer computeCommandEncoder];
-    
-    id<MTLComputePipelineState> pipelineState = [self computePipelineStateWithLibrary:library functionName:functionName];
-    [encoder setComputePipelineState:pipelineState];
-    [encoder setTexture:input atIndex:0];
-    [encoder setBuffer:blobBuffer offset:blobOffset atIndex:0];
-    
-    CGSize inputSize = [self inputSize:instance];
-    NSUInteger width = pipelineState.threadExecutionWidth;
-    NSUInteger height = pipelineState.maxTotalThreadsPerThreadgroup / width;
-    MTLSize groupThreads = {width, height, (NSUInteger)1};
-    MTLSize groups = {(((int)inputSize.width + width - 1) / width),
-                      (((int)inputSize.height + height - 1) / height), 1};
-    [encoder dispatchThreadgroups:groups threadsPerThreadgroup:groupThreads];
-    [encoder endEncoding];
-    
-    [commandBuffer commit];
-    [commandBuffer waitUntilScheduled];
+    vector<string> outputNames = [self outputNamesWithInstance:instance];
+    for (string name : outputNames) {
+        Blob *networkOutput = outputBlobs[name];
+        
+        std::shared_ptr<Mat> outputMat = nullptr;
+        shared_ptr<BlobConverter> postprocessor = make_shared<BlobConverter>(networkOutput);
+        
+        status = instance->GetOutputMat(outputMat,
+                                        param,
+                                        name,
+                                        DEVICE_ARM,
+                                        [self outputMatTypeWithInstance:instance name:name]);
+        if (status != TNN_OK) {
+            NSLog(@"Error: get output Mat failed");
+            return map;
+        }
+        map[name] = outputMat;
+    }
+    return map;
 }
 
-// 默认后处理
 + (void)defaultPostprocessWithInstance:(shared_ptr<Instance>)instance
                             withOutput:(id<MTLTexture>)output
                                  param:(MatConvertParam)param {
@@ -309,44 +286,6 @@
     postprocessor->ConvertToMatAsync(outputMat, param, (__bridge void*)commandQueue);
 }
 
-// 自定义后处理
-+ (void)customPostprocessWithInstance:(shared_ptr<Instance>)instance
-                              library:(id<MTLLibrary>)library
-                         functionName:(NSString *)functionName
-                           withOutput:(id<MTLTexture>)output {
-    BlobMap outputBlobs;
-    Status status = instance->GetAllOutputBlobs(outputBlobs);
-    if (status != TNN_OK) {
-        NSLog(@"Error: get output blobs failed");
-        return;
-    }
-    Blob *networkOutput = outputBlobs.begin()->second;
-    
-    id<MTLCommandQueue> commandQueue = [self fetchCommandQueueWithInstance:instance];
-    id<MTLCommandBuffer> commandBuffer = [commandQueue commandBuffer];
-    [commandBuffer enqueue];
-    
-    id<MTLBuffer> blobBuffer = (__bridge id<MTLBuffer>)(void *)networkOutput->GetHandle().base;
-    NSUInteger blobOffset = (NSUInteger)networkOutput->GetHandle().bytes_offset;
-        
-    id<MTLComputeCommandEncoder> encoder = [commandBuffer computeCommandEncoder];
-    
-    id<MTLComputePipelineState> pipelineState = [self computePipelineStateWithLibrary:library functionName:functionName];
-    [encoder setComputePipelineState:pipelineState];
-    [encoder setTexture:output atIndex:0];
-    [encoder setBuffer:blobBuffer offset:blobOffset atIndex:0];
-    
-    NSUInteger width = pipelineState.threadExecutionWidth;
-    NSUInteger height = pipelineState.maxTotalThreadsPerThreadgroup / width;
-    MTLSize groupThreads = {width, height, (NSUInteger)1};
-    MTLSize groups = {((output.width + width - 1) / width), ((output.height + height - 1) / height), 1};
-    [encoder dispatchThreadgroups:groups threadsPerThreadgroup:groupThreads];
-    [encoder endEncoding];
-    
-    [commandBuffer commit];
-    [commandBuffer waitUntilScheduled];
-}
-
 // 模型执行
 + (void)processInstance:(shared_ptr<Instance>)instance {
     Status status = instance->ForwardAsync([]{});
@@ -360,6 +299,27 @@
 + (id<MTLComputePipelineState>)computePipelineStateWithLibrary:(id<MTLLibrary>)library functionName:(NSString *)functionName {
     id <MTLFunction> function = [library newFunctionWithName:functionName];
     return function ? [library.device newComputePipelineStateWithFunction:function error:nil] : nil;
+}
+
++ (MatType)outputMatTypeWithInstance:(shared_ptr<Instance>)instance
+                                name:(string)name {
+    BlobMap outputBlobs;
+    instance->GetAllOutputBlobs(outputBlobs);
+    auto blob = (name == "") ? outputBlobs.begin()->second : outputBlobs[name];
+    if (blob->GetBlobDesc().data_type == DATA_TYPE_INT32) {
+        return NC_INT32;
+    }
+    return NCHW_FLOAT;
+}
+
++ (vector<string>)outputNamesWithInstance:(shared_ptr<Instance>)instance {
+    vector<string> names;
+    BlobMap outputBlobs;
+    instance->GetAllOutputBlobs(outputBlobs);
+    for (const auto& item : outputBlobs) {
+        names.push_back(item.first);
+    }
+    return names;
 }
 
 @end

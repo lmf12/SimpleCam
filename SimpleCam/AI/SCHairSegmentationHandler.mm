@@ -13,18 +13,6 @@
 
 #import "SCHairSegmentationHandler.h"
 
-MatConvertParam inputParam = {
-    {1.0 / (255 * 0.229), 1.0 / (255 * 0.224), 1.0 / (255 * 0.225), 0.0},
-    {-0.485 / 0.229, -0.456 / 0.224, -0.406 / 0.225, 0.0},
-    true
-};
-
-MatConvertParam outputParam = {
-    {255, 255, 255, 0},
-    {0, 0, 0, 255},
-    true
-};
-
 @interface SCHairSegmentationHandler ()
 
 @property (nonatomic, strong) SCMetalTextureConverter *textureConverter;
@@ -47,7 +35,7 @@ MatConvertParam outputParam = {
 
 - (CVPixelBufferRef)hairSegmentationPixelBufferWithPixelBuffer:(CVPixelBufferRef)pixelBuffer {
     id<MTLTexture> texture = [self.textureConverter textureWithPixelBuffer:pixelBuffer];
-    id<MTLTexture> resultTexture = [SCTNNHelper processTextureWithInstance:self.tnnInstance withInputParam:inputParam outputParam:outputParam input:texture];
+    id<MTLTexture> resultTexture = [SCTNNHelper processTextureWithInstance:self.tnnInstance withInputParam:[self inputParam] outputParam:[self outputParam] input:texture];
     CVPixelBufferRef resultPixelBuffer = [self.textureConverter pixelBufferWithTexture:resultTexture];
     return resultPixelBuffer;
 }
@@ -55,7 +43,7 @@ MatConvertParam outputParam = {
 - (void)hairSegmentationWithSrcPixelBuffer:(CVPixelBufferRef)srcPixelBuffer
                                 dstTexture:(id<MTLTexture>)dstTexture {
     id<MTLTexture> texture = [self.textureConverter textureWithPixelBuffer:srcPixelBuffer];
-    id<MTLTexture> resultTexture = [SCTNNHelper processTextureWithInstance:self.tnnInstance withInputParam:inputParam outputParam:outputParam input:texture];
+    id<MTLTexture> resultTexture = [SCTNNHelper processTextureWithInstance:self.tnnInstance withInputParam:[self inputParam] outputParam:[self outputParam] input:texture];
     [self.textureConverter drawSrcTexture:resultTexture toDstTexture:dstTexture];
 }
 
@@ -69,6 +57,22 @@ MatConvertParam outputParam = {
     self.tnnInstance = [SCTNNHelper createInstanceWithProtoPath:protoPath modelPath:modelPath];
     id<MTLCommandQueue> commandQueue = [SCTNNHelper commandQueue:self.tnnInstance];
     self.textureConverter = [[SCMetalTextureConverter alloc] initWithCommandQueue:commandQueue];
+}
+
+- (MatConvertParam)inputParam {
+    return {
+        {1.0 / (255 * 0.229), 1.0 / (255 * 0.224), 1.0 / (255 * 0.225), 0.0},
+        {-0.485 / 0.229, -0.456 / 0.224, -0.406 / 0.225, 0.0},
+        true
+    };
+}
+
+- (MatConvertParam)outputParam {
+    return {
+        {255, 255, 255, 0},
+        {0, 0, 0, 255},
+        true
+    };
 }
 
 @end
