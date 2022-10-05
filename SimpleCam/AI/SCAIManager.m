@@ -7,7 +7,7 @@
 //
 
 #import "SCHairSegmentationHandler.h"
-#import "SCFaceAlignmentHandler.h"
+#import "SCFaceRecognitionHandler.h"
 
 #import "SCAIManager.h"
 
@@ -16,7 +16,7 @@ static SCAIManager *_AIManager;
 @interface SCAIManager ()
 
 @property (nonatomic, strong) SCHairSegmentationHandler *hairSegmentationHandler;
-@property (nonatomic, strong) SCFaceAlignmentHandler *faceAlignmentHandler;
+@property (nonatomic, strong) SCFaceRecognitionHandler *faceRecognitionHandler;
 
 @end
 
@@ -51,14 +51,14 @@ static SCAIManager *_AIManager;
 }
 
 - (void)detectFaceWithPixelBuffer:(CVPixelBufferRef)pixelBuffer {
-    [self.faceAlignmentHandler detectFaceWithPixelBuffer:pixelBuffer];
+    [self.faceRecognitionHandler detectFaceWithPixelBuffer:pixelBuffer];
 }
 
 #pragma mark - Private
 
 - (void)commonInit {
     self.hairSegmentationHandler = [[SCHairSegmentationHandler alloc] init];
-    self.faceAlignmentHandler = [[SCFaceAlignmentHandler alloc] init];
+    self.faceRecognitionHandler = [[SCFaceRecognitionHandler alloc] init];
 }
 
 @end

@@ -10,6 +10,10 @@
 
 @interface SCFaceAlignmentHandler : NSObject
 
+- (instancetype)initWithProtoName:(NSString *)protoName
+                        modelName:(NSString *)modelName
+                      meanPtsName:(NSString *)meanPtsName;
+
 - (void)detectFaceWithPixelBuffer:(CVPixelBufferRef)pixelBuffer;
 
 @end
